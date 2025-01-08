@@ -50,3 +50,7 @@ rsconnect/
 
 # Mac OS Items
 *Icon*
+.DS_Store
+.AppleDouble
+.LSOverride
+
