@@ -1,8 +1,0 @@
-"0","count.extracts    <- extracts %>% select(ExtractID, SampleID) %>% distinct() %>% "
-"0","  group_by(SampleID)  %>% "
-"0","  mutate(n_dna_extracts = n_distinct(ExtractID)) %>% ungroup() %>% select(-ExtractID)"
-"0",""
-"0","count.libraries <- compilation %>% select(SequenceID, ExtractID, SampleID) %>% distinct() %>% "
-"0","  group_by(ExtractID) %>% mutate(n_16s_extract = n_distinct(SequenceID)) %>% ungroup() %>%"
-"0","  group_by(SampleID)  %>% mutate(n_16s_sample  = n_distinct(SequenceID)) %>% ungroup() %>% select(-SequenceID)"
-"0",""
