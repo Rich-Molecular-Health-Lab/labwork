@@ -1,0 +1,4 @@
+SampleID	CollectionDate	Subj_Certainty	Subject	SampleCollectedBy	SampleNotes	ExtractID	ExtractDate	ExtractConc	ExtractedBy	ExtractKit	ExtractBox	ExtractNotes	LibraryCode	LibPrepWorkflow	LibPrepDate	SequenceID	LibraryTube	LibraryBarcode	LibraryConc_QC2	LibraryTotalPoolVol
+BLANK-001	2010-01-01	yes	Unknown	Unknown	Unknown	BLANK-001	2010-01-01	0	Unknown	Unknown	Unknown	Unknown	Unknown	Unknown	2010-01-01	BLANK-001	1	Unknown	0	0
+BLANK-002	2010-01-01	yes	Unknown	Unknown	Unknown	BLANK-002	2010-01-01	0	Unknown	Unknown	Unknown	Unknown	Unknown	Unknown	2010-01-01	BLANK-002	2	Unknown	0	0
+BLANK-003	2010-01-01	yes	Unknown	Unknown	Unknown	BLANK-003	2010-01-01	0	Unknown	Unknown	Unknown	Unknown	Unknown	Unknown	2010-01-01	BLANK-003	3	Unknown	0	0

@@ -1,0 +1,120 @@
+---
+title: "Lab Notebook Entry - Library Prep"
+author: "`r params$setup$LibPrepBy`"
+date: "`r params$setup$LibPrepDate`"
+output: 
+  html_document:
+    code_download: true
+    toc: true
+    toc_location: "before"
+    toc_depth: 4
+    number_sections: false
+    toc_float: true
+    code_folding: "hide"
+    fig_caption: true
+params:
+    setup: NA
+    step_data: NA
+    steps: NA
+    libprep: NA
+    libraries: NA
+    extracts: NA
+    rxns: NA
+    
+---
+
+
+```{r include=FALSE}
+path     <- config::get(config = paste0("params$setup$", sampleset))
+notebook <- config::get(config = paste0("params$setup$", LibPrepBy))
+
+source(paste0(path$setup))
+
+opts_chunk$set(message = FALSE,
+               warning = FALSE,
+               echo    = FALSE,
+               include = TRUE,
+               eval    = TRUE)
+```
+
+
+```{r}
+samples <-  case_when(
+    params$setup$sampleset == "loris"    ~ "Pygmy Loris DNA Extracts (Feces)",
+    params$setup$sampleset == "marmoset" ~ "Marmoset DNA Extracts (Feces)",
+    params$setup$sampleset == "bat_wild" ~ "Bat DNA Extracts (Feces)",
+    params$setup$sampleset == "envir"    ~ "DNA Extracts from Environmental Sampling",
+    params$setup$sampleset == "isolates" ~ "Purified DNA from Bacterial Isolates",
+  )
+
+```
+
+
+```{r}
+tagList(tags$h1(paste(params$libprep$workflow)),
+        tags$h2(paste("Starting from ", samples)))
+```
+
+
+## Summary
+
+```{r}
+tagList(
+  tags$h3(paste0("ID Code for Sequencing Run: "    , params$setup$LibraryCode)),
+  tags$h4(paste0("Total Libraries Prepped: "       , params$setup$n_rxns)),
+  tags$em(paste0("Number of Negative Controls: "   , params$setup$n_controls))
+)
+
+as_tibble(params$libprep) %>%
+  select(
+    TubeNo,
+    SequenceID,
+    Barcode) %>%
+  gt() %>%
+  cols_label(
+    TubeNo        ~ "Tube Label",
+    SequenceID    ~ "Sequenced Library ID",
+    Barcode       ~ "Barcode"
+  ) %>%
+  opt_stylize(6, "pink")
+```
+
+
+### Reaction Volumes
+
+```{r}
+as_tibble(params$rxns) %>%
+  select(-N) %>%
+  gt(rowname_col = "Reagent", groupname_col = "step") %>%
+  cols_label(
+    Volume_rxn   ~ "Volume per rxn (ul)",
+    Volume_total ~ "Total Volume (ul)"
+  ) %>%
+  summary_rows(columns = c("Volume_rxn", "Volume_total"), fns = "sum") %>%
+  fmt_units()  %>%
+  opt_stylize(6, "pink")
+```
+
+
+
+## Procedure Steps and Notes
+
+```{r}
+steps <- as.list(params$step_data)
+
+
+tagList(
+        tags$blockquote(params$setup$setup_note),
+        tags$ol(
+          lapply(step_data, function(step) {
+            tagList(
+            tags$li(step$detail),
+            tags$p(step$timestamp),
+            if (!is.null(step$note)) tags$blockquote(step$note),
+            tags$hr()
+            )
+          })
+        ),
+        tags$blockquote(params$setup$conclusion_note)
+      )
+```

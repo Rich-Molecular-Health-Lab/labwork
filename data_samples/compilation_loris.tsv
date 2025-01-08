@@ -1,0 +1,415 @@
+SampleID	CollectionDate	Subj_Certainty	Subject	SampleCollectedBy	SampleNotes	ExtractID	ExtractDate	ExtractConc	ExtractedBy	ExtractKit	ExtractBox	ExtractNotes	LibraryCode	LibPrepWorkflow	LibPrepDate	SequenceID	LibraryTube	LibraryBarcode	LibraryConc_QC2	LibraryTotalPoolVol
+HDZ-001	2023-11-04	yes	Warble	HDZ Keepers		HDZ-001-E1	2024-07-26	39	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL011	rapid16s	2024-08-21	HDZ-001-S231	1	16S1		NA
+HDZ-002	2023-11-01	yes	Warble	HDZ Keepers		HDZ-002-E1	2024-02-12	40	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL005	rapid16s	2024-07-17	HDZ-002-S93	1	16S1	1.9	61
+HDZ-004	2023-10-28	yes	Warble	HDZ Keepers	Vaginal closure began	HDZ-004-E1	2023-11-03	55	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-004-S3	3	16S3	8.5	28
+HDZ-005	2023-10-27	yes	Warble	HDZ Keepers	Suspected date of conception	HDZ-005-E1	2023-11-03	24	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-005-S11	11	16S11	1.78	28
+HDZ-010	2023-10-31	yes	Culi	HDZ Keepers		HDZ-010-E1	2024-01-10	11	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-010-S23	23	16S23	3.91	28
+HDZ-011	2023-10-29	yes	Culi	HDZ Keepers		HDZ-011-E1	2023-11-10	45	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-011-S10	10	16S10	6.3	28
+HDZ-013	2023-10-26	yes	Culi	HDZ Keepers		HDZ-013-E1	2023-11-10	42	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-013-S8	8	16S8	2.13	28
+HDZ-014	2023-10-27	yes	Culi	HDZ Keepers		HDZ-014-E1	2023-11-10	22	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-014-S18	18	16S18	1.89	28
+HDZ-015	2023-10-30	yes	Warble	HDZ Keepers		HDZ-015-E1	2023-11-15	7.1	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL002	rapid16s	2024-06-10	HDZ-015-S28	5	16S5	1.73	40
+HDZ-016	2023-11-01	yes	Culi	HDZ Keepers		HDZ-016-E1	2024-01-17	22	SA/MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-016-S21	21	16S21	2.83	28
+HDZ-018	2023-10-30	yes	Culi	HDZ Keepers		HDZ-018-E1	2023-11-15	9.3	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL002	rapid16s	2024-06-10	HDZ-018-S30	7	16S7	6	40
+HDZ-019	2023-10-29	yes	Warble	HDZ Keepers	Complete vaginal closure	HDZ-019-E1	2023-11-15	22	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-019-S13	13	16S13	2.67	28
+HDZ-020	2023-11-04	yes	Culi	HDZ Keepers		HDZ-020-E1	2024-01-10	15	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-020-S12	12	16S12	2.27	28
+HDZ-021	2023-10-28	yes	Culi	HDZ Keepers		HDZ-021-E1	2024-01-10	19	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-021-S7	7	16S7	2.93	28
+HDZ-022	2023-11-03	yes	Culi	HDZ Keepers		HDZ-022-E1	2024-01-10	11	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL002	rapid16s	2024-06-10	HDZ-022-S31	8	16S8	5.7	40
+HDZ-023	2023-11-03	yes	Warble	HDZ Keepers		HDZ-023-E1	2024-01-17	29	SA/MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-023-S20	20	16S20	5.6	28
+HDZ-024	2023-11-02	yes	Culi	HDZ Keepers		HDZ-024-E1	2024-01-17	23	SA/MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-024-S19	19	16S19	8.7	28
+HDZ-025	2023-10-31	yes	Warble	HDZ Keepers		HDZ-025-E1	2024-01-10	24	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-025-S17	17	16S17	2.39	28
+HDZ-026	2023-11-02	yes	Culi	HDZ Keepers		HDZ-026-E1	2024-01-17	28	SA/MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-026-S15	15	16S15	3.05	28
+HDZ-027	2023-11-05	yes	Warble	HDZ Keepers		HDZ-027-E1	2024-01-10	11	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL002	rapid16s	2024-06-10	HDZ-027-S32	9	16S9	3.99	40
+HDZ-028	2023-11-05	yes	Culi	HDZ Keepers		HDZ-028-E1	2024-01-10	20	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-028-S16	16	16S16	7	28
+HDZ-028	2023-11-05	yes	Culi	HDZ Keepers		HDZ-028-E1	2024-01-10	20	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL002	rapid16s	2024-06-10	HDZ-028-S36	13	16S13	5.3	40
+HDZ-029	2023-11-02	no	Unknown	HDZ Keepers		HDZ-029-E1	2024-01-10	12	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-029-S14	14	16S14	3.69	28
+HDZ-030	2023-11-06	yes	Warble	HDZ Keepers		HDZ-030-E1	2024-01-17	21	SA/MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-030-S6	6	16S6	6.6	28
+HDZ-030	2023-11-06	yes	Warble	HDZ Keepers		HDZ-030-E1	2024-01-17	21	SA/MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL002	rapid16s	2024-06-10	HDZ-030-S37	14	16S14	3.83	40
+HDZ-032	2023-11-11	yes	Culi	HDZ Keepers		HDZ-032-E1	2024-02-12	93	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL002	rapid16s	2024-06-10	HDZ-032-S46	24	16S24	2.89	40
+HDZ-033	2023-11-11	yes	Warble	HDZ Keepers		HDZ-033-E1	2024-02-12	86	SA/WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL002	rapid16s	2024-06-10	HDZ-033-S43	21	16S21	1.48	40
+HDZ-034	2023-11-12	yes	Warble	HDZ Keepers		HDZ-034-E1	2024-02-12	89	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL002	rapid16s	2024-06-10	HDZ-034-S44	22	16S22	0.776	40
+HDZ-035	2023-11-06	yes	Culi	HDZ Keepers		HDZ-035-E1	2024-02-12	94	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL009	rapid16s	2024-08-16	HDZ-035-S185	1	16S1		NA
+HDZ-036	2023-11-09	yes	Warble	HDZ Keepers		HDZ-036-E1	2024-04-08	29	WJ/MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL005	rapid16s	2024-07-17	HDZ-036-S94	2	16S2	1	61
+HDZ-037	2023-11-10	yes	Culi	HDZ Keepers		HDZ-037-E1	2024-02-12	94	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL009	rapid16s	2024-08-16	HDZ-037-S186	2	16S2		NA
+HDZ-038	2023-11-12	yes	Culi	HDZ Keepers		HDZ-038-E1	2024-01-06	90	SA/WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL002	rapid16s	2024-06-10	HDZ-038-S45	23	16S23	0.672	40
+HDZ-039	2023-11-14	yes	Culi	HDZ Keepers		HDZ-039-E1	2024-01-24	11	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL002	rapid16s	2024-06-10	HDZ-039-S33	10	16S10	7	40
+HDZ-040	2023-11-09	yes	Culi	HDZ Keepers		HDZ-040-E1	2024-02-12	83	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL009	rapid16s	2024-08-16	HDZ-040-S187	3	16S3		NA
+HDZ-041	2023-11-13	yes	Warble	HDZ Keepers		HDZ-041-E1	2024-02-12	15	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL003	rapid16s	2024-06-12	HDZ-041-S53	7	16S7	1.43	55
+HDZ-042	2023-11-13	yes	Culi	HDZ Keepers		HDZ-042-E1	2024-02-12	67	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL009	rapid16s	2024-08-16	HDZ-042-S188	4	16S4		NA
+HDZ-044	2023-11-19	no	Warble	HDZ Keepers		HDZ-044-E1	2024-02-12	97	SA/WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL009	rapid16s	2024-08-16	HDZ-044-S189	5	16S5		NA
+HDZ-045	2023-11-07	yes	Warble	HDZ Keepers		HDZ-045-E1	2024-04-08	7.2	WJ/MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-045-S49	3	16S3	1.47	55
+HDZ-046	2023-11-14	yes	Culi	HDZ Keepers		HDZ-046-E1	2024-01-06	6.3	SA/WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL003	rapid16s	2024-06-12	HDZ-046-S48	2	16S2	0.701	55
+HDZ-047	2023-11-15	yes	Culi	HDZ Keepers		HDZ-047-E1	2024-02-12	94	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL009	rapid16s	2024-08-16	HDZ-047-S190	6	16S6		NA
+HDZ-049	2023-11-18	no	Warble	HDZ Keepers		HDZ-049-E1	2024-02-12	52	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL016	rapid16s	2024-09-20	HDZ-049-E1-S346	1	16S1		NA
+HDZ-050	2023-11-08	yes	Warble	HDZ Keepers		HDZ-050-E1	2024-02-12	56	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL011	rapid16s	2024-08-21	HDZ-050-S232	2	16S2		NA
+HDZ-051	2023-11-14	yes	Warble	HDZ Keepers		HDZ-051-E1	2024-01-06	17	SA/WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL003	rapid16s	2024-06-12	HDZ-051-S54	8	16S8	5.4	55
+HDZ-052	2023-11-13	yes	Warble	HDZ Keepers		HDZ-052-E1	2024-04-08	7.5	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-052-S50	4	16S4	2.19	55
+HDZ-053	2023-11-18	yes	Culi	HDZ Keepers		HDZ-053-E1	2024-02-12	104	SA/WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL009	rapid16s	2024-08-16	HDZ-053-S191	7	16S7		NA
+HDZ-054	2023-11-19	yes	Culi	HDZ Keepers		HDZ-054-E1	2024-02-12	66	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL009	rapid16s	2024-08-16	HDZ-054-S192	8	16S8		NA
+HDZ-055	NA	no	Unknown	HDZ Keepers	No date or name on tube, gathered from zoo on 12/13 (AMR)	HDZ-055-E1	2024-02-25	49	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-055-S22	22	16S22	2.77	28
+HDZ-057	2023-11-26	yes	Culi	HDZ Keepers		HDZ-057-E1	2024-01-24	77	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL011	rapid16s	2024-08-21	HDZ-057-S233	3	16S3		NA
+HDZ-058	2023-11-21	yes	Culi	HDZ Keepers		HDZ-058-E1	2024-02-12	25	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL003	rapid16s	2024-06-12	HDZ-058-S63	17	16S17	3.9	55
+HDZ-060	2023-12-15	yes	Culi	HDZ Keepers		HDZ-060-E1	2024-04-08	35	WJ/MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-060-S80	11	16S11	4.24	40
+HDZ-063	2023-11-24	yes	Culi	HDZ Keepers		HDZ-063-E1	2024-02-25	66	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-063-S1	1	16S1	4.08	28
+HDZ-064	2023-11-23	yes	Culi	HDZ Keepers		HDZ-064-E1	2024-02-25	90	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-064-S2	2	16S2	2.91	28
+HDZ-065	2023-12-03	yes	Culi	HDZ Keepers		HDZ-065-E1	2024-02-25	27	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-065-S4	4	16S4	3.39	28
+HDZ-066	2023-11-30	yes	Culi	HDZ Keepers		HDZ-066-E1	2024-02-25	63	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-066-S5	5	16S5	4.11	28
+HDZ-067	2023-11-27	no	Warble	HDZ Keepers		HDZ-067-E1	2024-02-25	62	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL001	rapid16s	2024-05-16	HDZ-067-S9	9	16S9	2.97	28
+HDZ-068	2023-11-24	yes	Warble	HDZ Keepers		HDZ-068-E1	2024-02-29	4.8	WJ, MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1	Not sure if these samples were extracted twice, but Missy extracted them on 2/29/24	PL002	rapid16s	2024-06-10	HDZ-068-S26	3	16S3	4.73	40
+HDZ-069	2023-11-22	yes	Culi	HDZ Keepers		HDZ-069-E1	2024-01-24	69	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL009	rapid16s	2024-08-16	HDZ-069-S193	9	16S9		NA
+HDZ-070	2023-12-02	yes	Warble	HDZ Keepers		HDZ-070-E1	2024-02-29	7.5	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL002	rapid16s	2024-06-10	HDZ-070-S29	6	16S6	4.55	40
+HDZ-071	2023-12-02	yes	Culi	HDZ Keepers		HDZ-071-E1	2024-01-24	35	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL004	rapid16s	2024-06-13	HDZ-071-S79	10	16S10	1.19	40
+HDZ-072	2023-11-29	yes	Warble	HDZ Keepers		HDZ-072-E1	2024-02-29	11	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL002	rapid16s	2024-06-10	HDZ-072-S34	11	16S11	5.3	40
+HDZ-073	2023-11-26	yes	Warble	HDZ Keepers		HDZ-073-E1	2024-02-25	59	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL009	rapid16s	2024-08-16	HDZ-073-S194	10	16S10		NA
+HDZ-076	2023-12-01	yes	Culi	HDZ Keepers		HDZ-076-E1	2024-02-29	1.4	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL002	rapid16s	2024-06-10	HDZ-076-S24	1	16S1	5.4	40
+HDZ-077	2023-11-27	no	Culi	HDZ Keepers		HDZ-077-E1	2024-02-29	28	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL002	rapid16s	2024-06-10	HDZ-077-S38	16	16S16	0.854	40
+HDZ-078	2023-11-23	yes	Culi	HDZ Keepers		HDZ-078-E1	2024-02-29	5.6	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL002	rapid16s	2024-06-10	HDZ-078-S27	4	16S4	5.8	40
+HDZ-079	2023-11-22	yes	Warble	HDZ Keepers		HDZ-079-E1	2024-02-29	1.5	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL002	rapid16s	2024-06-10	HDZ-079-S25	2	16S2	4.18	40
+HDZ-081	2023-12-31	yes	Culi	HDZ Keepers		HDZ-081-E1	2024-03-06	65	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL002	rapid16s	2024-06-10	HDZ-081-S40	18	16S18	0.52	40
+HDZ-082	2023-12-29	yes	Warble	HDZ Keepers		HDZ-082-E1	2024-03-06	79	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL002	rapid16s	2024-06-10	HDZ-082-S41	19	16S19	0.912	40
+HDZ-083	2023-12-26	yes	Warble	HDZ Keepers		HDZ-083-E1	2024-03-06	56	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL002	rapid16s	2024-06-10	HDZ-083-S39	17	16S17	0.597	40
+HDZ-084	2023-12-21	yes	Culi	HDZ Keepers		HDZ-084-E1	2024-03-06	11	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL002	rapid16s	2024-06-10	HDZ-084-S35	12	16S12	4.81	40
+HDZ-085	2024-01-01	yes	Culi	HDZ Keepers		HDZ-085-E1	2024-03-06	94	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-085-S92	23	16S23	4.31	40
+HDZ-086	2023-12-30	yes	Culi	HDZ Keepers		HDZ-086-E1	2024-03-06	83	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL002	rapid16s	2024-06-10	HDZ-086-S42	20	16S20	1.56	40
+HDZ-087	2023-12-29	yes	Culi	HDZ Keepers		HDZ-087-E1	2024-04-03	34	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-087-S78	9	16S9	4.23	40
+HDZ-088	2023-12-26	yes	Culi	HDZ Keepers		HDZ-088-E1	2024-04-03	46	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL011	rapid16s	2024-08-21	HDZ-088-S234	4	16S4		NA
+HDZ-089	2023-12-24	yes	Culi	HDZ Keepers		HDZ-089-E1	2024-04-03	25	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL003	rapid16s	2024-06-12	HDZ-089-S64	18	16S18	6.9	55
+HDZ-090	2023-12-30	yes	Warble	HDZ Keepers	Almost no stabilizer in the tube	HDZ-090-E1	2024-04-03	56	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL011	rapid16s	2024-08-21	HDZ-090-S235	5	16S5		NA
+HDZ-091	2023-12-28	yes	Culi	HDZ Keepers		HDZ-091-E1	2024-04-03	52	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL011	rapid16s	2024-08-21	HDZ-091-S236	6	16S6		NA
+HDZ-092	2023-12-25	yes	Warble	HDZ Keepers		HDZ-092-E1	2024-04-03	44	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL011	rapid16s	2024-08-21	HDZ-092-S237	7	16S7		NA
+HDZ-093	2023-12-23	yes	Warble	HDZ Keepers		HDZ-093-E1	2024-04-03	25	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 1		PL003	rapid16s	2024-06-12	HDZ-093-S65	19	16S19	1.69	55
+HDZ-094	2023-11-20	yes	Culi	HDZ Keepers		HDZ-094-E1	2024-04-04	25	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-094-S66	20	16S20	1.46	55
+HDZ-095	2023-10-26	yes	Warble	HDZ Keepers		HDZ-095-E1	2024-08-26	27	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-095-S300	1	16S1		NA
+HDZ-096	2023-12-27	yes	Warble	HDZ Keepers		HDZ-096-E1	2024-04-04	41	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL005	rapid16s	2024-07-17	HDZ-096-S95	3	16S3	2.19	61
+HDZ-097	2023-12-25	yes	Culi	HDZ Keepers		HDZ-097-E1	2024-04-04	83	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-097-S91	22	16S22	6.3	40
+HDZ-098	2023-12-22	yes	Culi	HDZ Keepers		HDZ-098-E1	2024-04-04	47	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL011	rapid16s	2024-08-21	HDZ-098-S238	8	16S8		NA
+HDZ-099	2023-12-21	yes	Warble	HDZ Keepers		HDZ-099-E1	2024-04-04	32	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-099-S72	3	16S3	4.72	40
+HDZ-101	2023-12-24	yes	Warble	HDZ Keepers	Very little stabilizer in the tube	HDZ-101-E1	2024-04-04	20	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-101-S57	11	16S11	0.878	55
+HDZ-102	2023-12-23	no	Culi	HDZ Keepers		HDZ-102-E1	2024-04-04	32	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL005	rapid16s	2024-07-17	HDZ-102-S96	4	16S4	1.21	61
+HDZ-103	2023-12-22	yes	Warble	HDZ Keepers		HDZ-103-E1	2024-04-04	46	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL011	rapid16s	2024-08-21	HDZ-103-S239	9	16S9		NA
+HDZ-104	2023-11-20	yes	Warble	HDZ Keepers		HDZ-104-E1	2024-04-08	26	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-104-S69	23	16S23	2.51	55
+HDZ-105	2023-12-28	yes	Warble	HDZ Keepers		HDZ-105-E1	2024-04-08	39	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL005	rapid16s	2024-07-17	HDZ-105-S97	5	16S5	0.826	61
+HDZ-106	2024-01-01	yes	Warble	HDZ Keepers		HDZ-106-E1	2024-04-08	40	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-106-S83	14	16S14	4.82	40
+HDZ-107	2024-01-02	yes	Warble	HDZ Keepers		HDZ-107-E1	2024-04-08	17	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-107-S55	9	16S9	5.2	55
+HDZ-108	2023-12-27	yes	Culi	HDZ Keepers		HDZ-108-E1	2024-04-08	21	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-108-S60	14	16S14	3.88	55
+HDZ-109	2023-12-31	yes	Warble	HDZ Keepers		HDZ-109-E1	2024-04-08	43	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL011	rapid16s	2024-08-21	HDZ-109-S240	10	16S10		NA
+HDZ-155	2023-12-15	yes	Warble	HDZ Keepers		HDZ-155-E1	2024-04-09	25	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-155-S67	21	16S21	1.71	55
+HDZ-156	2023-12-15	yes	Culi	HDZ Keepers		HDZ-156-E1	2024-04-09	25	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-156-S68	22	16S22	2.31	55
+HDZ-157	2023-12-14	yes	Warble	HDZ Keepers		HDZ-157-E1	2024-04-09	57	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL011	rapid16s	2024-08-21	HDZ-157-S241	11	16S11		NA
+HDZ-158	2024-07-16	no	Warble	HDZ Keepers		HDZ-158-E1	2024-08-27	39	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-158-S301	2	16S2		NA
+HDZ-159	2024-07-02	yes	Warble	HDZ Keepers		HDZ-159-E1	2024-08-27	22	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-159-S302	3	16S3		NA
+HDZ-160	2024-06-10	yes	Warble	HDZ Keepers		HDZ-160-E1	2024-07-26	45	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL011	rapid16s	2024-08-21	HDZ-160-S242	12	16S12		NA
+HDZ-161	2023-12-16	yes	Warble	HDZ Keepers		HDZ-161-E1	2024-04-09	34	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-161-S77	8	16S8	2.17	40
+HDZ-162	2023-12-17	yes	Warble	HDZ Keepers		HDZ-162-E1	2024-04-09	41	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL011	rapid16s	2024-08-21	HDZ-162-S243	13	16S13		NA
+HDZ-163	2023-12-19	yes	Culi	HDZ Keepers		HDZ-163-E1	2024-04-09	40	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-163-S82	13	16S13	3.7	40
+HDZ-164	2024-06-13	yes	Warble	HDZ Keepers		HDZ-164-E1	2024-07-26	18	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL009	rapid16s	2024-08-16	HDZ-164-S195	11	16S11		NA
+HDZ-165	2024-05-14	yes	Warble	HDZ Keepers		HDZ-165-E1	2024-07-26	22	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL009	rapid16s	2024-08-16	HDZ-165-S196	12	16S12		NA
+HDZ-166	2024-05-14	yes	Culi	HDZ Keepers		HDZ-166-E1	2024-07-26	9.1	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL009	rapid16s	2024-08-16	HDZ-166-S197	13	16S13		NA
+HDZ-167	2023-12-14	yes	Culi	HDZ Keepers		HDZ-167-E1	2024-04-09	75	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL009	rapid16s	2024-08-16	HDZ-167-S198	14	16S14		NA
+HDZ-168	2023-12-17	yes	Culi	HDZ Keepers		HDZ-168-E1	2024-04-09	20	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-168-S58	12	16S12	1.62	55
+HDZ-169	2023-12-18	yes	Culi	HDZ Keepers		HDZ-169-E1	2024-04-09	45	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL011	rapid16s	2024-08-21	HDZ-169-S244	14	16S14		NA
+HDZ-170	2023-12-18	yes	Warble	HDZ Keepers		HDZ-170-E1	2024-04-09	46	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL011	rapid16s	2024-08-21	HDZ-170-S245	15	16S15		NA
+HDZ-171	2024-06-28	yes	Warble	HDZ Keepers		HDZ-171-E1	2024-08-27	32	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-171-S303	4	16S4		NA
+HDZ-172	2024-06-29	yes	Warble	HDZ Keepers		HDZ-172-E1	2024-08-27	76	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-172-S304	5	16S5		NA
+HDZ-173	2023-12-14	yes	Warble	HDZ Keepers		HDZ-173-E1	2024-04-09	53	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL011	rapid16s	2024-08-21	HDZ-173-S246	16	16S16		NA
+HDZ-174	2023-12-16	yes	Culi	HDZ Keepers		HDZ-174-E1	2024-04-09	52	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL011	rapid16s	2024-08-21	HDZ-174-S247	17	16S17		NA
+HDZ-175	2023-12-13	yes	Culi	HDZ Keepers		HDZ-175-E1	2024-04-15	22	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-175-S61	15	16S15	1.89	55
+HDZ-176	2023-12-09	yes	Culi	HDZ Keepers		HDZ-176-E1	2024-04-15	7.7	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-176-S51	5	16S5	1.13	55
+HDZ-177	2023-12-13	yes	Warble	HDZ Keepers		HDZ-177-E1	2024-04-15	4.9	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-177-S47	1	16S1	2.68	55
+HDZ-178	2024-06-20	yes	Warble	HDZ Keepers		HDZ-178-E1	2024-07-26	60	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL009	rapid16s	2024-08-16	HDZ-178-S199	15	16S15		NA
+HDZ-179	2023-12-11	yes	Culi	HDZ Keepers		HDZ-179-E1	2024-04-15	32	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL005	rapid16s	2024-07-17	HDZ-179-S98	6	16S6	0.864	61
+HDZ-180	2023-12-12	yes	Culi	HDZ Keepers		HDZ-180-E1	2024-04-15	26	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL005	rapid16s	2024-07-17	HDZ-180-S99	7	16S7	1.37	61
+HDZ-181	2023-12-10	yes	Culi	HDZ Keepers		HDZ-181-E1	2024-04-15	33	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-181-S74	5	16S5	1.43	40
+HDZ-182	2023-12-08	yes	Culi	HDZ Keepers		HDZ-182-E1	2024-04-15	13	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-182-S52	6	16S6	1.07	55
+HDZ-183	2023-12-07	yes	Warble	HDZ Keepers		HDZ-183-E1	2024-04-15	41	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-183-S84	15	16S15	3.7	40
+HDZ-184	2023-12-07	yes	Culi	HDZ Keepers		HDZ-184-E1	2024-04-15	53	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL011	rapid16s	2024-08-21	HDZ-184-S248	18	16S18		NA
+HDZ-186	2023-12-06	yes	Warble	HDZ Keepers		HDZ-186-E1	2024-04-15	33	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-186-S73	4	16S4	3.47	40
+HDZ-187	2023-12-06	yes	Culi	HDZ Keepers		HDZ-187-E1	2024-04-15	32	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-187-S71	2	16S2	2.38	40
+HDZ-188	2023-12-05	yes	Warble	HDZ Keepers		HDZ-188-E1	2024-04-15	24	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-188-S62	16	16S16	1.77	55
+HDZ-189	2024-06-06	yes	Warble	HDZ Keepers		HDZ-189-E1	2024-07-26	68	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL009	rapid16s	2024-08-16	HDZ-189-S200	16	16S16		NA
+HDZ-190	2024-01-06	yes	Culi	HDZ Keepers		HDZ-190-E1	2024-04-15	20	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-190-S59	13	16S13	3.55	55
+HDZ-191	2024-01-07	yes	Warble	HDZ Keepers	Tests indicate Warble is not pregnant, no metaboilte evidence of conception	HDZ-191-E1	2024-04-15	18	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL003	rapid16s	2024-06-12	HDZ-191-S56	10	16S10	1.57	55
+HDZ-192	2024-01-07	yes	Culi	HDZ Keepers		HDZ-192-E1	2024-04-15	33	MB	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-192-S75	6	16S6	3	40
+HDZ-193	2024-01-06	yes	Warble	HDZ Keepers		HDZ-193-E1	2024-05-20	26	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL004	rapid16s	2024-06-13	HDZ-193-S70	1	16S1	2.73	40
+HDZ-194	2024-02-02	yes	Warble	HDZ Keepers		HDZ-194-E1	2024-05-20	53	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL004	rapid16s	2024-06-13	HDZ-194-S87	18	16S18	1.76	40
+HDZ-195	2023-12-09	yes	Warble	HDZ Keepers		HDZ-195-E1	2024-05-20	61	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL009	rapid16s	2024-08-16	HDZ-195-S201	17	16S17		NA
+HDZ-196	2024-02-05	yes	Culi	HDZ Keepers		HDZ-196-E1	2024-05-20	33	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL004	rapid16s	2024-06-13	HDZ-196-S76	7	16S7	2.56	40
+HDZ-197	2024-02-04	yes	Culi	HDZ Keepers		HDZ-197-E1	2024-05-20	58	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL009	rapid16s	2024-08-16	HDZ-197-S202	18	16S18		NA
+HDZ-198	2024-02-08	yes	Culi	HDZ Keepers		HDZ-198-E1	2024-05-20	70	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL004	rapid16s	2024-06-13	HDZ-198-S88	19	16S19	1.98	40
+HDZ-199	2024-02-06	yes	Warble	HDZ Keepers		HDZ-199-E1	2024-05-20	52	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL004	rapid16s	2024-06-13	HDZ-199-S86	17	16S17	2.19	40
+HDZ-200	2024-02-03	yes	Warble	HDZ Keepers		HDZ-200-E1	2024-05-30	36	SA/ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-200-S100	8	16S8	1.9	61
+HDZ-201	2024-02-03	yes	Culi	HDZ Keepers		HDZ-201-E1	2024-05-30	100	SA/ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL016	rapid16s	2024-09-20	HDZ-201-E1-S347	2	16S2		NA
+HDZ-202	2024-01-27	yes	Culi	HDZ Keepers		HDZ-202-E1	2024-05-30	100	SA/ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL016	rapid16s	2024-09-20	HDZ-202-E1-S348	3	16S3		NA
+HDZ-203	2024-01-26	yes	Culi	HDZ Keepers		HDZ-203-E1	2024-06-13	70	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL009	rapid16s	2024-08-16	HDZ-203-S203	19	16S19		NA
+HDZ-204	2024-01-29	yes	Culi	HDZ Keepers		HDZ-204-E1	2024-06-13	43	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL011	rapid16s	2024-08-21	HDZ-204-S249	19	16S19		NA
+HDZ-205	2024-01-29	yes	Warble	HDZ Keepers		HDZ-205-E1	2024-06-13	21	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-205-S101	9	16S9	3.75	61
+HDZ-206	2024-01-30	no	Unknown	HDZ Keepers		HDZ-206-E1	2024-06-13	48	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL007	rapid16s	2024-07-22	HDZ-206-S139	1	16S1		NA
+HDZ-207	2024-01-27	yes	Warble	HDZ Keepers		HDZ-207-E1	2024-06-13	12	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-207-S102	10	16S10	3.36	61
+HDZ-208	2024-01-30	yes	Warble	HDZ Keepers		HDZ-208-E1	2024-06-13	11	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-208-S103	11	16S11	3.73	61
+HDZ-209	2024-01-26	yes	Warble	HDZ Keepers		HDZ-209-E1	2024-06-06	40	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-209-S104	12	16S12	1.35	61
+HDZ-210	2024-03-14	yes	Warble	HDZ Keepers		HDZ-210-E1	2024-06-06	38	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-210-S105	13	16S13	2.07	61
+HDZ-211	2024-03-22	yes	Culi	HDZ Keepers		HDZ-211-E1	2024-06-06	24	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-211-S106	14	16S14	0.976	61
+HDZ-212	2024-03-27	yes	Warble	HDZ Keepers		HDZ-212-E1	2024-06-06	42	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL011	rapid16s	2024-08-21	HDZ-212-S250	20	16S20		NA
+HDZ-213	2024-03-31	no	Unknown	HDZ Keepers		HDZ-213-E1	2024-06-14	31	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-213-S107	15	16S15	1.34	61
+HDZ-214	2024-06-02	yes	Warble	HDZ Keepers		HDZ-214-E1	2024-07-26	43	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL011	rapid16s	2024-08-21	HDZ-214-S251	21	16S21		NA
+HDZ-215	2024-03-27	yes	Culi	HDZ Keepers		HDZ-215-E1	2024-06-14	11	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-215-S108	16	16S16	1.38	61
+HDZ-217	2024-03-26	yes	Warble	HDZ Keepers		HDZ-217-E1	2024-05-02	72	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-217-S89	20	16S20	1.15	40
+HDZ-218	2024-03-21	yes	Warble	HDZ Keepers		HDZ-218-E1	2024-05-02	58	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL009	rapid16s	2024-08-16	HDZ-218-S204	20	16S20		NA
+HDZ-219	2024-03-16	yes	Culi	HDZ Keepers		HDZ-219-E1	2024-05-02	37	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-219-S81	12	16S12	4.43	40
+HDZ-220	2024-03-17	yes	Culi	HDZ Keepers		HDZ-220-E1	2024-05-02	42	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-220-S85	16	16S16	1.51	40
+HDZ-221	2024-03-14	yes	Culi	HDZ Keepers		HDZ-221-E1	2024-05-02	76	WJ	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 2		PL004	rapid16s	2024-06-13	HDZ-221-S90	21	16S21	1.64	40
+HDZ-222	2024-03-02	yes	Culi	HDZ Keepers		HDZ-222-E1	2024-06-06	8.5	SA/ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-222-S109	17	16S17	2.03	61
+HDZ-223	2024-03-25	yes	Warble	HDZ Keepers		HDZ-223-E1	2024-06-20	77	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-223-S122	7	16S7		NA
+HDZ-224	2024-03-25	yes	Culi	HDZ Keepers		HDZ-224-E1	2024-06-20	66	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-224-S123	8	16S8		NA
+HDZ-226	2024-03-30	yes	Culi	HDZ Keepers		HDZ-226-E1	2024-06-20	42	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-226-S124	9	16S9		NA
+HDZ-227	2024-03-29	yes	Culi	HDZ Keepers		HDZ-227-E1	2024-06-27	44	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-227-S128	13	16S13		NA
+HDZ-228	2024-03-27	yes	Warble	HDZ Keepers		HDZ-228-E1	2024-06-27	67	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-228-S129	14	16S14		NA
+HDZ-229	2024-03-21	yes	Culi	HDZ Keepers		HDZ-229-E1	2024-06-27	96	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-229-S130	15	16S15		NA
+HDZ-230	2024-03-01	yes	Culi	HDZ Keepers		HDZ-230-E1	2024-08-23	28	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-230-S277	1	16S1		NA
+HDZ-231	2024-02-29	yes	Culi	HDZ Keepers		HDZ-231-E1	2024-08-23	33	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-231-S278	2	16S2		NA
+HDZ-232	2024-02-28	yes	Warble	HDZ Keepers		HDZ-232-E1	2024-08-23	28	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-232-S279	3	16S3		NA
+HDZ-233	2024-02-28	yes	Culi	HDZ Keepers		HDZ-233-E1	2024-08-23	35	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-233-S280	4	16S4		NA
+HDZ-234	2024-02-07	yes	Warble	HDZ Keepers		HDZ-234-E1	2024-08-23	72	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-234-S281	5	16S5		NA
+HDZ-235	2024-02-07	yes	Culi	HDZ Keepers		HDZ-235-E1	2024-08-23	41	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-235-S282	6	16S6		NA
+HDZ-236	2024-02-27	yes	Culi	HDZ Keepers		HDZ-236-E1	2024-08-23	49	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-236-S283	7	16S7		NA
+HDZ-237	2024-02-08	yes	Warble	HDZ Keepers		HDZ-237-E1	2024-08-26	54	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-237-S305	6	16S6		NA
+HDZ-238	2024-02-06	yes	Culi	HDZ Keepers		HDZ-238-E1	2024-08-26	81	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-238-S306	7	16S7		NA
+HDZ-239	2024-02-05	yes	Warble	HDZ Keepers		HDZ-239-E1	2024-08-26	39	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-239-S307	8	16S8		NA
+HDZ-240	2024-01-20	yes	Culi	HDZ Keepers		HDZ-240-E1	2024-07-10	36	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-240-S140	2	16S2		NA
+HDZ-241	2024-02-23	yes	Culi	HDZ Keepers		HDZ-241-E1	2024-07-10	53	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-241-S141	3	16S3		NA
+HDZ-242	2024-02-23	yes	Warble	HDZ Keepers		HDZ-242-E1	2024-07-10	46	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-242-S142	4	16S4		NA
+HDZ-243	2024-02-26	yes	Culi	HDZ Keepers		HDZ-243-E1	2024-07-10	100	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-243-S143	5	16S5		NA
+HDZ-244	2024-02-27	yes	Warble	HDZ Keepers		HDZ-244-E1	2024-07-10	62	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-244-S144	6	16S6		NA
+HDZ-245	2024-01-16	yes	Culi	HDZ Keepers		HDZ-245-E1	2024-07-10	42	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-245-S145	7	16S7		NA
+HDZ-246	2024-01-18	yes	Warble	HDZ Keepers		HDZ-246-E1	2024-07-10	29	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-246-S146	8	16S8		NA
+HDZ-247	2024-01-20	yes	Warble	HDZ Keepers		HDZ-247-E1	2024-07-10	39	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-247-S147	9	16S9		NA
+HDZ-248	2024-01-21	yes	Warble	HDZ Keepers		HDZ-248-E1	2024-07-10	42	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-248-S148	10	16S10		NA
+HDZ-249	2024-01-19	yes	Culi	HDZ Keepers		HDZ-249-E1	2024-07-10	34	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-249-S149	11	16S11		NA
+HDZ-250	2024-01-21	yes	Culi	HDZ Keepers		HDZ-250-E1	2024-07-10	38	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-250-S150	12	16S12		NA
+HDZ-251	2024-01-16	yes	Warble	HDZ Keepers		HDZ-251-E1	2024-07-10	45	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-251-S151	13	16S13		NA
+HDZ-252	2024-01-18	yes	Culi	HDZ Keepers		HDZ-252-E1	2024-07-10	57	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-252-S152	14	16S14		NA
+HDZ-253	2024-01-17	yes	Culi	HDZ Keepers		HDZ-253-E1	2024-07-10	32	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-253-S153	15	16S15		NA
+HDZ-254	2024-02-02	yes	Culi	HDZ Keepers		HDZ-254-E1	2024-07-10	41	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-254-S154	16	16S16		NA
+HDZ-258	2024-01-10	yes	Culi	HDZ Keepers		HDZ-258-E1	2024-07-12	37	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-258-S162	1	16S1		NA
+HDZ-259	2024-01-13	yes	Warble	HDZ Keepers		HDZ-259-E1	2024-07-12	52	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-259-S163	2	16S2		NA
+HDZ-260	2024-01-28	yes	Warble	HDZ Keepers		HDZ-260-E1	2024-07-12	15	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-260-S164	3	16S3		NA
+HDZ-262	2024-01-24	yes	Culi	HDZ Keepers		HDZ-262-E1	2024-07-15	38	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-262-S165	4	16S4		NA
+HDZ-263	2024-01-09	no	Culi	HDZ Keepers		HDZ-263-E1	2024-07-15	73	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-263-S166	5	16S5		NA
+HDZ-264	2024-01-08	yes	Culi	HDZ Keepers		HDZ-264-E1	2024-07-15	45	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-264-S167	6	16S6		NA
+HDZ-265	2024-01-23	yes	Warble	HDZ Keepers		HDZ-265-E1	2024-07-15	59	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL009	rapid16s	2024-08-16	HDZ-265-S205	21	16S21		NA
+HDZ-266	2024-01-28	yes	Culi	HDZ Keepers		HDZ-266-E1	2024-07-15	40	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL012	rapid16s	2024-08-30	HDZ-266-S254	1	16S1		NA
+HDZ-267	2024-01-22	yes	Warble	HDZ Keepers		HDZ-267-E1	2024-07-15	34	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL012	rapid16s	2024-08-30	HDZ-267-S255	2	16S2		NA
+HDZ-268	2024-01-08	yes	Warble	HDZ Keepers		HDZ-268-E1	2024-08-26	50	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-268-S308	9	16S9		NA
+HDZ-269	2024-01-14	yes	Culi	HDZ Keepers		HDZ-269-E1	2024-08-26	1.8	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-269-S309	10	16S10		NA
+HDZ-270	2024-01-22	yes	Culi	HDZ Keepers		HDZ-270-E1	2024-08-26	53	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-270-S310	11	16S11		NA
+HDZ-271	2024-01-25	yes	Culi	HDZ Keepers		HDZ-271-E1	2024-08-26	51	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-271-S311	12	16S12		NA
+HDZ-272	2024-01-21	yes	Culi	HDZ Keepers		HDZ-272-E1	2024-08-26	39	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-272-S312	13	16S13		NA
+HDZ-273	2024-01-23	yes	Culi	HDZ Keepers		HDZ-273-E1	2024-08-26	24	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-273-S313	14	16S14		NA
+HDZ-274	2024-01-15	yes	Culi	HDZ Keepers		HDZ-274-E1	2024-08-26	40	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-274-S314	15	16S15		NA
+HDZ-301	2024-02-22	yes	Culi	HDZ Keepers		HDZ-301-E1	2024-06-14	9.2	SA/EK	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-301-S110	18	16S18	5.6	61
+HDZ-302	2024-02-25	yes	Warble	HDZ Keepers		HDZ-302-E1	2024-06-14	18	SA/EK	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-302-S111	19	16S19	1.3	61
+HDZ-303	2024-02-13	yes	Warble	HDZ Keepers		HDZ-303-E1	2024-06-14	16	SA/EK	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-303-S112	20	16S20	1.92	61
+HDZ-304	2024-02-15	yes	Warble	HDZ Keepers		HDZ-304-E1	2024-06-14	1.3	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-304-S113	21	16S21	0.778	61
+HDZ-305	2024-02-19	yes	Culi	HDZ Keepers		HDZ-305-E1	2024-06-14	40	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-305-S114	22	16S22	1.27	61
+HDZ-306	2024-02-11	yes	Warble	HDZ Keepers		HDZ-306-E1	2024-06-14	4.3	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL005	rapid16s	2024-07-17	HDZ-306-S115	23	16S23	4.59	61
+HDZ-307	2024-02-09	yes	Warble	HDZ Keepers		HDZ-307-E1	2024-06-18	19	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-307-S116	1	16S1		NA
+HDZ-308	2024-02-15	yes	Culi	HDZ Keepers		HDZ-308-E1	2024-06-18	37	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-308-S117	2	16S2		NA
+HDZ-309	2024-02-29	yes	Warble	HDZ Keepers		HDZ-309-E1	2024-06-18	49	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-309-S118	3	16S3		NA
+HDZ-310	2024-02-20	yes	Culi	HDZ Keepers		HDZ-310-E1	2024-06-18	45	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-310-S119	4	16S4		NA
+HDZ-311	2024-12-14	yes	Culi	HDZ Keepers		HDZ-311-E1	2024-06-18	46	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-311-S120	5	16S5		NA
+HDZ-312	2024-02-14	yes	Warble	HDZ Keepers		HDZ-312-E1	2024-06-18	33	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-312-S121	6	16S6		NA
+HDZ-313	2024-02-16	yes	Warble	HDZ Keepers		HDZ-313-E1	2024-06-20	45	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-313-S125	10	16S10		NA
+HDZ-314	2024-02-16	yes	Culi	HDZ Keepers		HDZ-314-E1	2024-06-20	11	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-314-S126	11	16S11		NA
+HDZ-315	2024-02-10	yes	Warble	HDZ Keepers		HDZ-315-E1	2024-06-20	39	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-315-S127	12	16S12		NA
+HDZ-316	2024-03-24	yes	Warble	HDZ Keepers		HDZ-316-E1	2024-08-08	79	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-316-S256	3	16S3		NA
+HDZ-317	2024-02-13	yes	Culi	HDZ Keepers		HDZ-317-E1	2024-07-11	11	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-317-S155	17	16S17		NA
+HDZ-318	2024-02-11	yes	Culi	HDZ Keepers		HDZ-318-E1	2024-07-11	18	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-318-S156	18	16S18		NA
+HDZ-319	2024-02-17	yes	Culi	HDZ Keepers		HDZ-319-E1	2024-07-11	26	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-319-S157	19	16S19		NA
+HDZ-320	2024-02-21	yes	Culi	HDZ Keepers		HDZ-320-E1	2024-06-27	88	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-320-S131	16	16S16		NA
+HDZ-321	2024-03-10	yes	Culi	HDZ Keepers		HDZ-321-E1	2024-06-27	29	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-321-S132	17	16S17		NA
+HDZ-322	2024-03-03	yes	Culi	HDZ Keepers		HDZ-322-E1	2024-06-27	1.2	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-322-S133	18	16S18		NA
+HDZ-323	2024-01-17	yes	Warble	HDZ Keepers		HDZ-323-E1	2024-06-28	34	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-323-S134	19	16S19		NA
+HDZ-324	2024-02-18	yes	Culi	HDZ Keepers		HDZ-324-E1	2024-06-28	23	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-324-S135	20	16S20		NA
+HDZ-325	2024-02-22	yes	Warble	HDZ Keepers		HDZ-325-E1	2024-06-28	37	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-325-S136	21	16S21		NA
+HDZ-326	2024-02-09	yes	Culi	HDZ Keepers		HDZ-326-E1	2024-06-28	37	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-326-S137	22	16S22		NA
+HDZ-327	2024-02-25	yes	Culi	HDZ Keepers		HDZ-327-E1	2024-06-28	13	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL006	rapid16s	2024-07-18	HDZ-327-S138	23	16S23		NA
+HDZ-328	2024-02-24	yes	Culi	HDZ Keepers		HDZ-328-E1	2024-06-28	34	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 3		PL007	rapid16s	2024-07-22	HDZ-328-S158	20	16S20		NA
+HDZ-329	2024-02-18	yes	Warble	HDZ Keepers		HDZ-329-E1	2024-08-28	66	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-329-S315	16	16S16		NA
+HDZ-330	2024-02-10	yes	Culi	HDZ Keepers		HDZ-330-E1	2024-08-28	45	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL015	rapid16s	2024-09-09	HDZ-330-S323	1	16S1		NA
+HDZ-331	2024-02-12	yes	Warble	HDZ Keepers		HDZ-331-E1	2024-08-28	32	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL015	rapid16s	2024-09-09	HDZ-331-S324	2	16S2		NA
+HDZ-332	2024-02-21	yes	Warble	HDZ Keepers		HDZ-332-E1	2024-07-12	27	EK	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-332-S168	7	16S7		NA
+HDZ-333	2024-02-19	yes	Warble	HDZ Keepers		HDZ-333-E1	2024-07-12	69	EK	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-333-S169	8	16S8		NA
+HDZ-334	2024-02-24	yes	Warble	HDZ Keepers		HDZ-334-E1	2024-08-28	37	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL015	rapid16s	2024-09-09	HDZ-334-S325	3	16S3		NA
+HDZ-335	2024-02-20	yes	Warble	HDZ Keepers		HDZ-335-E1	2024-07-12	28	EK	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL012	rapid16s	2024-08-30	HDZ-335-S257	4	16S4		NA
+HDZ-336	2024-02-12	yes	Culi	HDZ Keepers		HDZ-336-E1	2024-07-11	52	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-336-S159	21	16S21		NA
+HDZ-337	2024-03-08	yes	Warble	HDZ Keepers		HDZ-337-E1	2024-07-11	43	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-337-S160	22	16S22		NA
+HDZ-338	2024-03-10	yes	Warble	HDZ Keepers		HDZ-338-E1	2024-07-11	69	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL007	rapid16s	2024-07-22	HDZ-338-S161	23	16S23		NA
+HDZ-339	2024-03-08	yes	Culi	HDZ Keepers		HDZ-339-E1	2024-08-09	76	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL011	rapid16s	2024-08-21	HDZ-339-S252	22	16S22		NA
+HDZ-340	2024-03-18	yes	Warble	HDZ Keepers		HDZ-340-E1	2024-08-28	35	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL015	rapid16s	2024-09-09	HDZ-340-S326	4	16S4		NA
+HDZ-341	2024-03-20	yes	Culi	HDZ Keepers		HDZ-341-E1	2024-07-18	57	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-341-S170	9	16S9		NA
+HDZ-342	2024-03-09	yes	Culi	HDZ Keepers		HDZ-342-E1	2024-07-18	47	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-342-S171	10	16S10		NA
+HDZ-343	2024-03-11	yes	Warble	HDZ Keepers		HDZ-343-E1	2024-07-18	51	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-343-S172	11	16S11		NA
+HDZ-344	2024-03-09	yes	Warble	HDZ Keepers		HDZ-344-E1	2024-08-26	28	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-344-S316	17	16S17		NA
+HDZ-345	2024-03-13	yes	Culi	HDZ Keepers		HDZ-345-E1	2024-08-08	69	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-345-S258	5	16S5		NA
+HDZ-346	2024-03-13	yes	Warble	HDZ Keepers		HDZ-346-E1	2024-08-26	26	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-346-S317	18	16S18		NA
+HDZ-347	2024-03-11	yes	Culi	HDZ Keepers		HDZ-347-E1	2024-08-26	32	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-347-S318	19	16S19		NA
+HDZ-348	2024-03-18	yes	Culi	HDZ Keepers		HDZ-348-E1	2024-08-08	33	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-348-S259	6	16S6		NA
+HDZ-349	2024-03-20	yes	Warble	HDZ Keepers		HDZ-349-E1	2024-07-19	86	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-349-S173	12	16S12		NA
+HDZ-350	2024-03-24	yes	Culi	HDZ Keepers		HDZ-350-E1	2024-07-19	8.4	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-350-S174	13	16S13		NA
+HDZ-351	2024-04-16	yes	Warble	HDZ Keepers		HDZ-351-E1	2024-07-10	1.8	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-351-S175	14	16S14		NA
+HDZ-352	2024-04-16	yes	Culi	HDZ Keepers		HDZ-352-E1	2024-07-10	22	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-352-S176	15	16S15		NA
+HDZ-354	2024-04-19	yes	Culi	HDZ Keepers		HDZ-354-E1	2024-07-10	34	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-354-S177	16	16S16		NA
+HDZ-355	2024-04-20	yes	Warble	HDZ Keepers		HDZ-355-E1	2024-07-22	33	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-355-S178	17	16S17		NA
+HDZ-356	2024-04-26	yes	Warble	HDZ Keepers		HDZ-356-E1	2024-07-22	31	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-356-S179	18	16S18		NA
+HDZ-357	2024-04-14	yes	Culi	HDZ Keepers		HDZ-357-E1	2024-07-22	13	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-357-S180	19	16S19		NA
+HDZ-358	2024-04-15	yes	Culi	HDZ Keepers		HDZ-358-E1	2024-07-22	48	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-358-S181	20	16S20		NA
+HDZ-359	2024-04-15	yes	Warble	HDZ Keepers		HDZ-359-E1	2024-07-22	33	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-359-S182	21	16S21		NA
+HDZ-360	2024-04-22	yes	Warble	HDZ Keepers		HDZ-360-E1	2024-07-22	48	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-360-S183	22	16S22		NA
+HDZ-361	2024-04-20	yes	Culi	HDZ Keepers		HDZ-361-E1	2024-07-22	68	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL008	rapid16s	2024-08-16	HDZ-361-S184	23	16S23		NA
+HDZ-362	2024-04-25	yes	Culi	HDZ Keepers		HDZ-362-E1	2024-08-07	28	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-362-S208	1	16S1		NA
+HDZ-363	2024-04-10	yes	Culi	HDZ Keepers		HDZ-363-E1	2024-08-07	39	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-363-S209	2	16S2		NA
+HDZ-364	2024-04-12	yes	Culi	HDZ Keepers		HDZ-364-E1	2024-08-07	73	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-364-S210	3	16S3		NA
+HDZ-365	2024-04-13	yes	Culi	HDZ Keepers		HDZ-365-E1	2024-08-07	55	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-365-S211	4	16S4		NA
+HDZ-366	2024-04-13	yes	Warble	HDZ Keepers		HDZ-366-E1	2024-08-07	46	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-366-S212	5	16S5		NA
+HDZ-367	2024-04-19	yes	Warble	HDZ Keepers		HDZ-367-E1	2024-08-07	47	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-367-S213	6	16S6		NA
+HDZ-368	2024-04-24	yes	Culi	HDZ Keepers		HDZ-368-E1	2024-08-08	16	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-368-S214	7	16S7		NA
+HDZ-369	2024-04-05	yes	Warble	HDZ Keepers		HDZ-369-E1	2024-08-08	20	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-369-S215	8	16S8		NA
+HDZ-370	2024-04-04	yes	Culi	HDZ Keepers	Whistling, confirmed breeding	HDZ-370-E1	2024-08-08	55	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-370-S216	9	16S9		NA
+HDZ-371	2024-04-04	yes	Warble	HDZ Keepers	Whistling, confirmed breeding	HDZ-371-E1	2024-08-07	22	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-371-S217	10	16S10		NA
+HDZ-372	2024-04-06	yes	Culi	HDZ Keepers		HDZ-372-E1	2024-08-07	26	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-372-S218	11	16S11		NA
+HDZ-373	2024-03-08	yes	Culi	HDZ Keepers		HDZ-373-E1	2024-08-07	11	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-373-S219	12	16S12		NA
+HDZ-374	2024-04-22	yes	Warble	HDZ Keepers		HDZ-374-E1	2024-08-22	56	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-374-S284	8	16S8		NA
+HDZ-375	2024-04-05	yes	Culi	HDZ Keepers		HDZ-375-E1	2024-08-22	36	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-375-S285	9	16S9		NA
+HDZ-376	2024-04-03	yes	Warble	HDZ Keepers	Warble and Culi resting together	HDZ-376-E1	2024-08-22	48	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-376-S286	10	16S10		NA
+HDZ-377	2024-04-03	yes	Culi	HDZ Keepers	Warble and Culi resting together	HDZ-377-E1	2024-08-22	38	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-377-S287	11	16S11		NA
+HDZ-378	2024-04-06	yes	Warble	HDZ Keepers		HDZ-378-E1	2024-08-22	14	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-378-S288	12	16S12		NA
+HDZ-379	2024-04-12	yes	Warble	HDZ Keepers		HDZ-379-E1	2024-08-22	57	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-379-S289	13	16S13		NA
+HDZ-380	2024-04-23	yes	Warble	HDZ Keepers		HDZ-380-E1	2024-08-22	15	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-380-S290	14	16S14		NA
+HDZ-381	2024-04-07	yes	Culi	HDZ Keepers		HDZ-381-E1	2024-08-23	13	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL015	rapid16s	2024-09-09	HDZ-381-S327	5	16S5		NA
+HDZ-382	2024-03-09	yes	Warble	HDZ Keepers		HDZ-382-E1	2024-08-23	9.7	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL015	rapid16s	2024-09-09	HDZ-382-S328	6	16S6		NA
+HDZ-383	2024-03-09	yes	Culi	HDZ Keepers		HDZ-383-E1	2024-08-19	30	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-383-S260	7	16S7		NA
+HDZ-384	2024-03-11	yes	Culi	HDZ Keepers		HDZ-384-E1	2024-08-19	41	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-384-S261	8	16S8		NA
+HDZ-385	2024-03-14	yes	Warble	HDZ Keepers		HDZ-385-E1	2024-08-19	87	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-385-S262	9	16S9		NA
+HDZ-386	2024-04-22	yes	Culi	HDZ Keepers		HDZ-386-E1	2024-08-19	33	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-386-S263	10	16S10		NA
+HDZ-387	2024-04-01	yes	Warble	HDZ Keepers	Warble vulva swollen	HDZ-387-E1	2024-08-19	46	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-387-S264	11	16S11		NA
+HDZ-388	2024-04-01	yes	Culi	HDZ Keepers	Warble vulva swollen	HDZ-388-E1	2024-08-19	63	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-388-S265	12	16S12		NA
+HDZ-389	2024-03-04	yes	Culi	HDZ Keepers		HDZ-389-E1	2024-08-19	84	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-389-S266	13	16S13		NA
+HDZ-390	2024-03-26	yes	Culi	HDZ Keepers		HDZ-390-E1	2024-08-19	18	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-390-S267	14	16S14		NA
+HDZ-391	2024-03-23	yes	Warble	HDZ Keepers		HDZ-391-E1	2024-08-19	45	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-391-S268	15	16S15		NA
+HDZ-392	2024-03-19	yes	Culi	HDZ Keepers		HDZ-392-E1	2024-08-19	7.3	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-392-S269	16	16S16		NA
+HDZ-393	2024-03-17	yes	Warble	HDZ Keepers		HDZ-393-E1	2024-08-19	29	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-393-S270	17	16S17		NA
+HDZ-394	2024-02-01	yes	Culi	HDZ Keepers		HDZ-394-E1	2024-08-19	52	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-394-S271	18	16S18		NA
+HDZ-395	2024-03-05	yes	Culi	HDZ Keepers		HDZ-395-E1	2024-08-19	65	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-395-S272	19	16S19		NA
+HDZ-396	2024-03-12	yes	Culi	HDZ Keepers		HDZ-396-E1	2024-08-19	30	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-396-S273	20	16S20		NA
+HDZ-397	2024-03-07	no	Unknown	HDZ Keepers		HDZ-397-E1	2024-08-19	80	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-397-S274	21	16S21		NA
+HDZ-398	2024-03-07	yes	Culi	HDZ Keepers		HDZ-398-E1	2024-08-23	21	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL015	rapid16s	2024-09-09	HDZ-398-S329	7	16S7		NA
+HDZ-399	2024-03-06	yes	Warble	HDZ Keepers		HDZ-399-E1	2024-08-23	40	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL015	rapid16s	2024-09-09	HDZ-399-S330	8	16S8		NA
+HDZ-400	2024-03-06	yes	Culi	HDZ Keepers		HDZ-400-E1	2024-08-23	44	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL015	rapid16s	2024-09-09	HDZ-400-S331	9	16S9		NA
+HDZ-401	2024-04-02	yes	Culi	HDZ Keepers	Culi scrotum swollen, begin breeding access	HDZ-401-E1	2024-08-23	30	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL015	rapid16s	2024-09-09	HDZ-401-S332	10	16S10		NA
+HDZ-402	2024-03-31	yes	Warble	HDZ Keepers		HDZ-402-E1	2024-08-23	20	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL015	rapid16s	2024-09-09	HDZ-402-S333	11	16S11		NA
+HDZ-403	2024-03-30	yes	Warble	HDZ Keepers		HDZ-403-E1	2024-08-23	4.1	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL015	rapid16s	2024-09-09	HDZ-403-S334	12	16S12		NA
+HDZ-405	2024-03-23	yes	Culi	HDZ Keepers		HDZ-405-E1	2024-08-23	39	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL015	rapid16s	2024-09-09	HDZ-405-S335	13	16S13		NA
+HDZ-406	2024-03-22	yes	Warble	HDZ Keepers		HDZ-406-E1	2024-08-23	38	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL015	rapid16s	2024-09-09	HDZ-406-S336	14	16S14		NA
+HDZ-407	2024-03-15	yes	Warble	HDZ Keepers	Sample is very red	HDZ-407-E1	2024-08-23	18	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL015	rapid16s	2024-09-09	HDZ-407-S337	15	16S15		NA
+HDZ-408	2024-03-15	yes	Culi	HDZ Keepers		HDZ-408-E1	2024-08-23	63	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL015	rapid16s	2024-09-09	HDZ-408-S338	16	16S16		NA
+HDZ-409	2024-03-12	yes	Warble	HDZ Keepers		HDZ-409-E1	2024-08-23	30	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL015	rapid16s	2024-09-09	HDZ-409-S339	17	16S17		NA
+HDZ-410	2024-02-26	yes	Warble	HDZ Keepers		HDZ-410-E1	2024-09-06	62	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-410-E1-S349	4	16S4		NA
+HDZ-411	2024-02-01	yes	Warble	HDZ Keepers		HDZ-411-E1	2024-09-06	45	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-411-E1-S350	5	16S5		NA
+HDZ-412	2024-07-01	yes	Warble	HDZ Keepers		HDZ-412-E1	2024-08-27	44	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-412-S319	20	16S20		NA
+HDZ-413	2024-06-30	yes	Warble	HDZ Keepers		HDZ-413-E1	2024-08-27	72	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-413-S320	21	16S21		NA
+HDZ-414	2024-06-26	yes	Warble	HDZ Keepers		HDZ-414-E1	2024-08-27	88	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-414-S321	22	16S22		NA
+HDZ-415	2024-06-24	no	Warble	HDZ Keepers		HDZ-415-E1	2024-07-26	98	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL009	rapid16s	2024-08-16	HDZ-415-S206	22	16S22		NA
+HDZ-416	2024-06-21	yes	Warble	HDZ Keepers		HDZ-416-E1	2024-07-26	45	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL010	rapid16s	2024-08-21	HDZ-416-S220	13	16S13		NA
+HDZ-417	2024-06-23	yes	Warble	HDZ Keepers		HDZ-417-E1	2024-07-26	57	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL010	rapid16s	2024-08-21	HDZ-417-S221	14	16S14		NA
+HDZ-418	2024-06-27	yes	Warble	HDZ Keepers		HDZ-418-E1	2024-08-30	63	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-418-E1-S351	6	16S6		NA
+HDZ-419	2024-06-25	yes	Warble	HDZ Keepers		HDZ-419-E1	2024-08-30	76	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-419-E1-S352	7	16S7		NA
+HDZ-420	2024-06-19	yes	Warble	HDZ Keepers		HDZ-420-E1	2024-07-26	71	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL009	rapid16s	2024-08-16	HDZ-420-S207	23	16S23		NA
+HDZ-421	2024-06-18	no	Unknown	HDZ Keepers		HDZ-421-E1	2024-07-26	34	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL010	rapid16s	2024-08-21	HDZ-421-S222	15	16S15		NA
+HDZ-422	2024-06-16	yes	Warble	HDZ Keepers		HDZ-422-E1	2024-07-26	107	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL013	rapid16s	2024-08-30	HDZ-422-S291	15	16S15		NA
+HDZ-423	2024-06-17	yes	Warble	HDZ Keepers		HDZ-423-E1	2024-07-26	77	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 4		PL010	rapid16s	2024-08-21	HDZ-423-S223	16	16S16		NA
+HDZ-424	2024-05-13	yes	Warble	HDZ Keepers		HDZ-424-E1	2024-08-06	43	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-424-S224	17	16S17		NA
+HDZ-425	2024-05-08	yes	Warble	HDZ Keepers		HDZ-425-E1	2024-08-06	55	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-425-S225	18	16S18		NA
+HDZ-426	2024-05-08	yes	Culi	HDZ Keepers		HDZ-426-E1	2024-08-06	41	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-426-S226	19	16S19		NA
+HDZ-427	2024-06-07	yes	Warble	HDZ Keepers		HDZ-427-E1	2024-08-30	91	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-427-E1-S353	8	16S8		NA
+HDZ-428	2024-06-12	yes	Warble	HDZ Keepers		HDZ-428-E1	2024-09-04	32	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-428-E1-S354	9	16S9		NA
+HDZ-429	2024-06-16	no	Culi	HDZ Keepers		HDZ-429-E1	2024-09-04	28	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-429-E1-S355	10	16S10		NA
+HDZ-430	2024-05-11	yes	Culi	HDZ Keepers		HDZ-430-E1	2024-08-06	100	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-430-S292	16	16S16		NA
+HDZ-431	2024-05-07	yes	Warble	HDZ Keepers		HDZ-431-E1	2024-08-06	21	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-431-S227	20	16S20		NA
+HDZ-432	2024-05-04	yes	Warble	HDZ Keepers		HDZ-432-E1	2024-08-06	40	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-432-S228	21	16S21		NA
+HDZ-433	2024-05-07	yes	Culi	HDZ Keepers		HDZ-433-E1	2024-08-06	52	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-433-S229	22	16S22		NA
+HDZ-434	2024-05-09	yes	Culi	HDZ Keepers		HDZ-434-E1	2024-08-06	55	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL010	rapid16s	2024-08-21	HDZ-434-S230	23	16S23		NA
+HDZ-435	2024-06-11	yes	Warble	HDZ Keepers		HDZ-435-E1	2024-09-04	79	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-435-E1-S356	11	16S11		NA
+HDZ-436	2024-06-04	yes	Warble	HDZ Keepers		HDZ-436-E1	2024-09-04	78	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-436-E1-S357	12	16S12		NA
+HDZ-437	2024-05-04	yes	Culi	HDZ Keepers		HDZ-437-E1	2024-08-06	72	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL011	rapid16s	2024-08-21	HDZ-437-S253	23	16S23		NA
+HDZ-438	2024-05-03	yes	Culi	HDZ Keepers		HDZ-438-E1	2024-08-06	25	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-438-S275	22	16S22		NA
+HDZ-439	2024-05-03	yes	Warble	HDZ Keepers		HDZ-439-E1	2024-08-06	50	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL012	rapid16s	2024-08-30	HDZ-439-S276	23	16S23		NA
+HDZ-440	2024-05-09	yes	Warble	HDZ Keepers		HDZ-440-E1	2024-08-06	52	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-440-S293	17	16S17		NA
+HDZ-441	2024-06-09	yes	Warble	HDZ Keepers		HDZ-441-E1	2024-08-28	44	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL015	rapid16s	2024-09-09	HDZ-441-S340	18	16S18		NA
+HDZ-442	2024-05-12	yes	Culi	HDZ Keepers		HDZ-442-E1	2024-08-06	66	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-442-S294	18	16S18		NA
+HDZ-443	2024-05-12	yes	Warble	HDZ Keepers		HDZ-443-E1	2024-08-06	45	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-443-S295	19	16S19		NA
+HDZ-444	2024-05-10	yes	Culi	HDZ Keepers		HDZ-444-E1	2024-08-06	51	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-444-S296	20	16S20		NA
+HDZ-445	2024-05-13	yes	Culi	HDZ Keepers		HDZ-445-E1	2024-08-15	91	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-445-S297	21	16S21		NA
+HDZ-446	2024-06-03	yes	Warble	HDZ Keepers		HDZ-446-E1	2024-08-28	27	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL015	rapid16s	2024-09-09	HDZ-446-S341	19	16S19		NA
+HDZ-447	2024-06-05	yes	Warble	HDZ Keepers		HDZ-447-E1	2024-08-28	58	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL015	rapid16s	2024-09-09	HDZ-447-S342	20	16S20		NA
+HDZ-448	2024-05-01	yes	Warble	HDZ Keepers		HDZ-448-E1	2024-08-15	99	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-448-S298	22	16S22		NA
+HDZ-449	2024-04-30	yes	Warble	HDZ Keepers		HDZ-449-E1	2024-08-15	9.8	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 5		PL013	rapid16s	2024-08-30	HDZ-449-S299	23	16S23		NA
+HDZ-450	2024-04-27	yes	Culi	HDZ Keepers		HDZ-450-E1	2024-08-26	60	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL014	rapid16s	2024-09-06	HDZ-450-S322	23	16S23		NA
+HDZ-451	2024-04-27	yes	Warble	HDZ Keepers		HDZ-451-E1	2024-08-28	32	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL015	rapid16s	2024-09-09	HDZ-451-S343	21	16S21		NA
+HDZ-452	2024-04-29	yes	Culi	HDZ Keepers		HDZ-452-E1	2024-08-28	9.3	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL015	rapid16s	2024-09-09	HDZ-452-S344	22	16S22		NA
+HDZ-453	2024-04-29	yes	Warble	HDZ Keepers		HDZ-453-E1	2024-08-28	48	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL015	rapid16s	2024-09-09	HDZ-453-S345	23	16S23		NA
+HDZ-454	2024-07-27	yes	Warble	HDZ Keepers		HDZ-454-E1	2024-08-28	72	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-454-E1-S358	13	16S13		NA
+HDZ-455	2024-07-24	yes	Warble	HDZ Keepers		HDZ-455-E1	2024-08-28	25	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-455-E1-S359	14	16S14		NA
+HDZ-456	2024-07-22	yes	Warble	HDZ Keepers		HDZ-456-E1	2024-08-28	39	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-456-E1-S360	15	16S15		NA
+HDZ-457	2024-07-21	yes	Warble	HDZ Keepers		HDZ-457-E1	2024-08-28	66	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-457-E1-S361	16	16S16		NA
+HDZ-458	2024-07-19	yes	Warble	HDZ Keepers		HDZ-458-E1	2024-09-04	47	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-458-E1-S362	17	16S17		NA
+HDZ-459	2024-07-18	yes	Warble	HDZ Keepers		HDZ-459-E1	2024-09-04	88	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-459-E1-S363	18	16S18		NA
+HDZ-460	2024-07-25	yes	Warble	HDZ Keepers		HDZ-460-E1	2024-09-04	50	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-460-E1-S364	19	16S19		NA
+HDZ-461	2024-07-20	yes	Warble	HDZ Keepers		HDZ-461-E1	2024-09-12	19	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL017	rapid16s	2024-10-25	HDZ-461-S369	1	16S1		NA
+HDZ-462	2024-07-14	no	Warble	HDZ Keepers		HDZ-462-E1	2024-09-12	37	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL017	rapid16s	2024-10-25	HDZ-462-S370	2	16S2		NA
+HDZ-463	2024-07-13	yes	Warble	HDZ Keepers		HDZ-463-E1	2024-09-12	46	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL017	rapid16s	2024-10-25	HDZ-463-S371	3	16S3		NA
+HDZ-464	2024-06-11	yes	Warble	HDZ Keepers		HDZ-464-E1	2024-09-12	36	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL017	rapid16s	2024-10-25	HDZ-464-S372	4	16S4		NA
+HDZ-465	2024-07-09	yes	Warble	HDZ Keepers		HDZ-465-E1	2024-09-12	36	ZE	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL017	rapid16s	2024-10-25	HDZ-465-S373	5	16S5		NA
+HDZ-466	2024-07-23	no	Warble	HDZ Keepers		HDZ-466-E1	2024-09-13	46	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL017	rapid16s	2024-10-25	HDZ-466-S374	6	16S6		NA
+HDZ-467	2024-07-15	yes	Warble	HDZ Keepers		HDZ-467-E1	2024-09-09	10	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-467-E1-S365	20	16S20		NA
+HDZ-468	2024-07-07	yes	Warble	HDZ Keepers		HDZ-468-E1	2024-09-09	43	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-468-E1-S366	21	16S21		NA
+HDZ-469	2024-07-06	yes	Warble	HDZ Keepers		HDZ-469-E1	2024-09-09	51	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-469-E1-S367	22	16S22		NA
+HDZ-470	2024-07-05	yes	Warble	HDZ Keepers		HDZ-470-E1	2024-09-09	52	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL016	rapid16s	2024-09-20	HDZ-470-E1-S368	23	16S23		NA
+HDZ-473	2024-07-08	yes	Warble	HDZ Keepers		HDZ-473-E1	2024-09-13	80	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL017	rapid16s	2024-10-25	HDZ-473-S375	7	16S7		NA
+HDZ-474	2024-06-15	yes	Warble	HDZ Keepers		HDZ-474-E1	2024-09-24	55	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL017	rapid16s	2024-10-25	HDZ-474-S376	8	16S8		NA
+HDZ-475	2024-06-08	yes	Warble	HDZ Keepers		HDZ-475-E1	2024-09-24	75	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL017	rapid16s	2024-10-25	HDZ-475-S377	9	16S9		NA
+HDZ-476	2024-08-08	yes	Warble	HDZ Keepers		HDZ-476-E1	2024-09-25	49	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL017	rapid16s	2024-10-25	HDZ-476-S378	10	16S10		NA
+HDZ-477	2024-08-06	yes	Warble	HDZ Keepers		HDZ-477-E1	2024-09-25	73	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL017	rapid16s	2024-10-25	HDZ-477-S379	11	16S11		NA
+HDZ-478	2024-08-11	yes	Warble	HDZ Keepers		HDZ-478-E1	2024-09-25	48	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL017	rapid16s	2024-10-25	HDZ-478-S380	12	16S12		NA
+HDZ-479	2024-08-28	yes	Warble	HDZ Keepers		HDZ-479-E1	2024-09-25	56	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL017	rapid16s	2024-10-25	HDZ-479-S381	13	16S13		NA
+HDZ-480	2024-09-04	yes	Warble	HDZ Keepers		HDZ-480-E1	2024-09-25	52	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL017	rapid16s	2024-10-25	HDZ-480-S382	14	16S14		NA
+HDZ-481	2024-09-08	yes	Warble	HDZ Keepers		HDZ-481-E1	2024-09-25	51	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 6		PL017	rapid16s	2024-10-25	HDZ-481-S383	15	16S15		NA
+HDZ-482	2024-07-30	yes	Warble	HDZ Keepers		HDZ-482-E1	2024-09-25	68	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL017	rapid16s	2024-10-25	HDZ-482-S384	16	16S16		NA
+HDZ-483	2024-08-02	yes	Warble	HDZ Keepers		HDZ-483-E1	2024-09-25	78	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL017	rapid16s	2024-10-25	HDZ-483-S385	17	16S17		NA
+HDZ-484	2024-08-12	yes	Warble	HDZ Keepers		HDZ-484-E1	2024-09-25	103	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL017	rapid16s	2024-10-25	HDZ-484-S386	18	16S18		NA
+HDZ-485	2024-08-26	yes	Warble	HDZ Keepers		HDZ-485-E1	2024-09-25	61	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL017	rapid16s	2024-10-25	HDZ-485-S387	19	16S19		NA
+HDZ-486	2024-09-13	yes	Warble	HDZ Keepers		HDZ-486-E1	2024-09-25	46	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL017	rapid16s	2024-10-25	HDZ-486-S388	20	16S20		NA
+HDZ-487	2024-09-07	yes	Warble	HDZ Keepers		HDZ-487-E1	2024-09-27	47	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL017	rapid16s	2024-10-25	HDZ-487-S389	21	16S21		NA
+HDZ-488	2024-07-31	yes	Warble	HDZ Keepers		HDZ-488-E1	2024-09-27	59	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL017	rapid16s	2024-10-25	HDZ-488-S390	22	16S22		NA
+HDZ-489	2024-08-03	yes	Warble	HDZ Keepers		HDZ-489-E1	2024-09-27	85	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL017	rapid16s	2024-10-25	HDZ-489-S391	23	16S23		NA
+HDZ-490	2024-08-13	yes	Warble	HDZ Keepers		HDZ-490-E1	2024-09-27	89	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-490-S392	1	16S1		NA
+HDZ-491	2024-08-25	yes	Warble	HDZ Keepers		HDZ-491-E1	2024-10-01	24	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-491-S393	2	16S2		NA
+HDZ-492	2024-09-01	yes	Warble	HDZ Keepers		HDZ-492-E1	2024-10-01	7.4	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-492-S394	3	16S3		NA
+HDZ-493	2024-09-06	yes	Warble	HDZ Keepers		HDZ-493-E1	2024-10-01	57	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-493-S395	4	16S4		NA
+HDZ-494	2024-08-05	yes	Warble	HDZ Keepers		HDZ-494-E1	2024-10-01	76	SA/TR	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-494-S396	5	16S5		NA
+HDZ-495	2024-08-04	yes	Warble	HDZ Keepers		HDZ-495-E1	2024-10-01	27	SA/TR	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-495-S397	6	16S6		NA
+HDZ-496	NA	yes	Warble	HDZ Keepers		HDZ-496-E1	2024-10-01	17	SA/TR	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-496-S398	7	16S7		NA
+HDZ-497	2024-08-19	yes	Warble	HDZ Keepers		HDZ-497-E1	2024-10-02	36	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-497-S399	8	16S8		NA
+HDZ-498	2024-08-31	yes	Warble	HDZ Keepers		HDZ-498-E1	2024-10-02	49	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-498-S400	9	16S9		NA
+HDZ-499	2024-09-05	yes	Warble	HDZ Keepers		HDZ-499-E1	2024-10-02	46	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-499-S401	10	16S10		NA
+HDZ-500	2024-08-09	yes	Warble	HDZ Keepers		HDZ-500-E1	2024-10-02	67	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-500-S402	11	16S11		NA
+HDZ-501	2024-08-14	yes	Warble	HDZ Keepers		HDZ-501-E1	2024-10-02	74	AS	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-501-S403	12	16S12		NA
+HDZ-502	2024-08-17	yes	Warble	HDZ Keepers		HDZ-502-E1	2024-10-08	6.3	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-502-S404	13	16S13		NA
+HDZ-503	2024-08-24	yes	Warble	HDZ Keepers		HDZ-503-E1	2024-10-08	8.8	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-503-S405	14	16S14		NA
+HDZ-504	2024-08-30	yes	Warble	HDZ Keepers		HDZ-504-E1	2024-10-08	6.2	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-504-S406	15	16S15		NA
+HDZ-506	2024-08-25	yes	Warble	HDZ Keepers		HDZ-506-E1	2024-10-08	8.9	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-506-S407	16	16S16		NA
+HDZ-507	2024-08-16	yes	Warble	HDZ Keepers		HDZ-507-E1	2024-10-08	9	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-507-S408	17	16S17		NA
+HDZ-508	2024-08-22	yes	Warble	HDZ Keepers		HDZ-508-E1	2024-10-08	3.1	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-508-S409	18	16S18		NA
+HDZ-509	2024-08-27	yes	Warble	HDZ Keepers		HDZ-509-E1	2024-10-08	10	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-509-S410	19	16S19		NA
+HDZ-510	2024-08-29	yes	Warble	HDZ Keepers		HDZ-510-E1	2024-10-08	7.8	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-510-S411	20	16S20		NA
+HDZ-517	2024-09-04	yes	Warble	HDZ Keepers		HDZ-517-E1	2024-10-08	5.2	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-517-S412	21	16S21		NA
+HDZ-522	2024-09-15	yes	Warble	HDZ Keepers		HDZ-522-E1	2024-10-08	7.1	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-522-S413	22	16S22		NA
+HDZ-525	2024-09-14	yes	Warble	HDZ Keepers		HDZ-525-E1	2024-10-08	11	SA	Quick-DNA Fecal/Soil Microbe	HDZ Loris DNA Extracts Box 7		PL018	rapid16s	2024-10-29	HDZ-525-S414	23	16S23		NA

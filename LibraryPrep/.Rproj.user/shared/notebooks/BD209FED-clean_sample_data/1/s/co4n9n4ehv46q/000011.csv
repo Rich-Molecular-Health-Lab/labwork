@@ -1,0 +1,12 @@
+"0","samples     <- read.csv(path$samples_csv, header = T) %>% "
+"0","                      filter(str_starts(SampleID, ""\\w+"")) %>% "
+"0","                      select(-SampleBox)  %>%"
+"0","                      mutate(SampleID = str_squish(str_trim(SampleID, ""both""))) %>% distinct() %>%"
+"0","                      mutate(CollectionDate     = mdy(SampleDate),"
+"0","                             Subject            = str_squish(str_trim(SampleSubject)),"
+"0","                             .keep = ""unused"") %>% distinct() %>%"
+"0","                      mutate(Subj_Certainty = if_else(Subject %in% subject_list, ""yes"", ""no"")) %>%"
+"0","                      mutate(Subject        = str_remove_all(Subject, ""\\?""))"
+"2","Warning: cannot open file '../data/samples_loris.csv': No such file or directory"
+"2","Error in file(file, ""rt"") : cannot open the connection
+"

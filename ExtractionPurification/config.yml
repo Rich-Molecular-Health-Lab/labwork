@@ -1,0 +1,12 @@
+default:
+  base_path: "../ExtractionPurification/"
+  resources: "../ExtractionPurification/resources/"
+  ui: "../ExtractionPurification/ui/"
+  server: "../ExtractionPurification/server/"
+  samples_loris: "../data_samples/samples_loris.tsv"
+  samples_marmoset: "../data_samples/samples_marmoset.tsv"
+  samples_isolates: "../data_samples/samples_isolates.tsv"
+  samples_bats: "../data_samples/samples_bats.tsv"
+  samples_envir: "../data_samples/samples_envir.tsv"
+  report_template: "../ExtractionPurification/resources/templates/report.Rmd"
+  notebooks: "../Notebooks/"

@@ -1,0 +1,131 @@
+---
+title: "Create Dummy Sample Data"
+author: "Alicia M. Rich, Ph.D."
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    theme:
+      bootswatch: yeti
+params:
+  sampleset: "envir"
+  
+---
+
+```{r global, include=F}
+path <- config::get(config = params$sampleset)
+```
+
+
+```{r global, include=F}
+source(paste0(path$setup))
+opts_chunk$set(message = FALSE,
+               warning = FALSE,
+               echo    = FALSE,
+               include = TRUE,
+               eval    = TRUE)
+
+source(paste0(path$data_functions))
+source(paste0(path$inputs))
+```
+
+
+```{r global, include=F}
+subject_list <- keep_at(subjects, paste0(params$sampleset)) %>% list_flatten(name_spec = "{inner}")
+```
+
+```{r}
+blank_ids      <- c("BLANK-001", "BLANK-002", "BLANK-003")
+blank_dates    <- c(rep(mdy("1-1-10"), times = 3))
+blank_strings  <- c(rep("Unknown", times = 3))
+blank_counts   <- c(rep(0, times = 3))
+
+extracts.export <- tibble(
+         SampleID        = blank_ids,
+         CollectionDate  = blank_dates,
+         Subj_Certainty  = c(rep("yes", times = 3)),
+         Subject         = blank_strings,
+         n_16s_extract   = blank_counts,
+         n_16s_sample    = blank_counts,
+         ExtractID       = blank_ids,
+         ExtractDate     = blank_dates,
+         ExtractConc     = blank_counts,
+         ExtractedBy     = blank_strings,
+         ExtractKit      = blank_strings,
+         ExtractBox      = blank_strings,
+         ExtractNotes    = blank_strings)
+
+samples.export <- tibble(
+         SampleID          = blank_ids,
+         SampleCollectedBy = blank_strings,
+         SampleNotes       = blank_strings,
+         CollectionDate    = blank_dates,
+         Subj_Certainty    = c(rep("yes", times = 3)),
+         Subject           = blank_strings,
+         n_dna_extracts    = blank_counts,
+         n_16s_sample      = blank_counts)
+
+libraries <- tibble(
+  LibraryTube       = c(1:3),
+  ExtractID         = blank_ids,
+  SequenceID        = blank_ids,
+  LibPrepDate       = blank_dates,
+  Pipeline          = blank_strings,
+  LibraryBarcode    = blank_strings,
+  LibraryFinalConc  = blank_counts,
+  LibraryCode       = blank_strings,
+  LibraryPoolVol_ul = blank_counts)
+
+compilation.export <- libraries %>%
+  left_join(extracts.export) %>%
+  left_join(samples.export) %>% distinct() %>%
+  select(SampleID,
+         CollectionDate,
+         Subj_Certainty,
+         Subject,
+         SampleCollectedBy,
+         SampleNotes,
+         ExtractID,
+         ExtractDate,
+         ExtractConc,
+         ExtractedBy,
+         ExtractKit,
+         ExtractBox,
+         ExtractNotes,
+         LibraryCode,
+         LibPrepWorkflow = Pipeline,
+         LibPrepDate,
+         SequenceID,
+         LibraryTube,
+         LibraryBarcode,
+         LibraryConc_QC2     = LibraryFinalConc,
+         LibraryTotalPoolVol = LibraryPoolVol_ul) %>%
+  arrange(SampleID, LibraryCode, LibraryTube)
+  
+```
+
+```{r}
+write.table(compilation.export,
+              paste0(path$compilation),
+              sep       = "\t",
+              quote     = FALSE,
+              row.names = FALSE)
+
+write.table(libraries,
+              paste0(path$libraries),
+              sep       = "\t",
+              quote     = FALSE,
+              row.names = FALSE)
+write.table(extracts.export,
+              paste0(path$extracts),
+              sep       = "\t",
+              quote     = FALSE,
+              row.names = FALSE)
+
+write.table(samples.export,
+              paste0(path$samples),
+              sep       = "\t",
+              quote     = FALSE,
+              row.names = FALSE)
+```
+
+

@@ -1,0 +1,75 @@
+default:
+  global: "../GlobalScripts/"
+  global_cols: "../GlobalScripts/reactable_columns.R"
+  global_helpers: "../GlobalScripts/helper_functions.R"
+  setup: "../GlobalScripts/global.R"
+  inputs: "../GlobalScripts/inputs.R"
+  data_functions: "../../dependencies/functions.R"
+  fonts: "fonts/FA6_Free-Solid-900.otf"
+  
+libprep:
+  wd: "../LibraryPrep/"
+  resources: "../LibraryPrep/resources/"
+  server: "../LibraryPrep/server/server.R"
+  ui: "../LibraryPrep/ui/ui.R"
+  tabs: "../LibraryPrep/ui/ui_tabs.R"
+  steps: "../LibraryPrep/resources/steps.R"
+  load_data: "../LibraryPrep/resources/load_data.R"
+  helper_functions: "../LibraryPrep/resources/helper_functions.R"
+  col_defs: "../LibraryPrep/resources/reactable_columns.R"
+  reactives: "../LibraryPrep/server/reactives.R"
+  render_tables: "../LibraryPrep/server/render_reactables.R"
+  dynamic_ui: "../LibraryPrep/server/dynamic_ui.R"
+  report_template: "../templates/libprep_report.Rmd"
+  
+notebooks:
+  AMR: "../Notebooks/Rich/"
+  SA: "../Notebooks/Azadmanesh/"
+  TA: "../Notebooks/Raad/"
+  TSP: "../Notebooks/Palacio/"
+  DG: "../Notebooks/Gill/"
+  
+loris:
+  extracts: "../data_samples/extracts_loris.tsv"
+  libraries: "../data_samples/libraries_loris.tsv"
+  samples: "../data_samples/samples_loris.tsv"
+  compilation: "../data_samples/compilation_loris.tsv"
+  compilation_csv: "../../data/compilation_loris.csv"
+  extracts_csv: "../../data/extracts_loris.csv"
+  samples_csv: "../../data/samples_loris.csv"
+  
+bats:
+  extracts: "../data_samples/extracts_bats.tsv"
+  libraries: "../data_samples/libraries_bats.tsv"
+  samples: "../data_samples/samples_bats.tsv"
+  compilation: "../data_samples/compilation_bats.tsv"
+  compilation_csv: "../../data/compilation_bats.csv"
+  extracts_csv: "../../data/extracts_bats.csv"
+  samples_csv: "../../data/samples_bats.csv"
+  
+marmoset:
+  extracts: "../data_samples/extracts_marmoset.tsv"
+  samples: "../data_samples/samples_marmoset.tsv"
+  libraries: "../data_samples/libraries_marmoset.tsv"
+  compilation: "../data_samples/compilation_marmoset.tsv"
+  compilation_csv: "../../data/compilation_marmoset.csv"
+  extracts_csv: "../../data/extracts_marmoset.csv"
+  samples_csv: "../../data/samples_marmoset.csv"
+  
+isolates:
+  extracts: "../data_samples/extracts_isolates.tsv"
+  libraries: "../data_samples/libraries_isolates.tsv"
+  samples: "../data_samples/samples_isolates.tsv"
+  compilation: "../data_samples/compilation_isolates.tsv"
+  compilation_csv: "../../data/compilation_isolates.csv"
+  extracts_csv: "../../data/extracts_isolates.csv"
+  samples_csv: "../../data/samples_isolates.csv"
+  
+envir:
+  extracts: "../data_samples/extracts_envir.tsv"
+  libraries: "../data_samples/libraries_envir.tsv"
+  samples: "../data_samples/samples_envir.tsv"
+  compilation: "../data_samples/compilation_envir.tsv"
+  compilation_csv: "../../data/compilation_envir.csv"
+  extracts_csv: "../../data/extracts_envir.csv"
+  samples_csv: "../../data/samples_envir.csv"

@@ -1,0 +1,26 @@
+
+      SampleID       = character(),
+      CollectionDate = as.Date(character()),
+      Subj_Certainty = character(),
+      Subject        = character(),
+      n_16s_extract  = integer(),
+      n_16s_sample   = integer(),
+      ExtractID      = character(),
+      ExtractDate    = as.Date(character()),
+      ExtractConc    = numeric(),
+      ExtractedBy    = character(),
+      ExtractKit     = character(),
+      ExtractBox     = character(),
+      ExtractNotes   = character()
+  
+  
+      LibraryTube        = integer(),      
+      ExtractID          = character(),
+      SequenceID         = character(),
+      LibPrepDate        = as.Date(character()),
+      Pipeline           = character(),
+      LibraryBarcode     = character(),
+      LibraryFinalConc   = numeric(),
+      LibraryCode        = character(),
+      LibraryPoolVol_ul  = numeric()
+    
