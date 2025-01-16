@@ -71,8 +71,7 @@ rxn_vols <- function(rxn, n_rxns) {
 
 read_extracts <- function(path) {
   tibble <- read.table(path, sep = "\t", header = TRUE) %>% 
-    mutate(CollectionDate = ymd(CollectionDate), 
-           ExtractDate    = ymd(ExtractDate))
+    mutate(across(ends_with("Date"), ~ ymd(.)))
   
   return(tibble)
 }
@@ -80,38 +79,28 @@ read_extracts <- function(path) {
 
 read_libraries <- function(path) {
   tibble <- read.table(path, sep = "\t", header = TRUE) %>% 
-    mutate(LibPrepDate = ymd(LibPrepDate))
+    mutate(across(ends_with("Date"), ~ ymd(.)))
   
   return(tibble)
 }
 
 load_data <- function(path) {
   tibble <- read.table(path, sep = "\t", header = TRUE) %>% 
-    mutate(CollectionDate = ymd(CollectionDate),
-           ExtractDate    = ymd(ExtractDate),
-           LibPrepDate    = ymd(LibPrepDate)) %>%
-    select(SampleID         ,  
-           CollectionDate   ,  
-           Subj_Certainty   ,  
-           Subject          ,  
-           SampleCollectedBy,  
-           SampleNotes      ,  
-           ExtractID        ,  
-           ExtractDate      ,  
-           ExtractConc      ,  
-           ExtractedBy      ,  
-           ExtractKit       ,  
-           ExtractBox       ,  
-           ExtractNotes     ,  
-           LibraryCode      ,  
-           LibPrepWorkflow  ,  
-           LibPrepDate      ,  
-           SequenceID       ,  
-           LibraryTube      ,  
-           LibraryBarcode   ,  
-           LibraryConc_QC2  ,  
-           LibraryTotalPoolVol) %>%
-    arrange(SampleID, LibraryCode, LibraryTube) %>% as_tibble()
+    mutate(across(ends_with("Date"), ~ ymd(.)),
+           steps_remaining = factor(steps_remaining, levels = c(
+             "sample not extracted",
+             "extract not sequenced",
+             "sample extracted and sequenced"
+           ))) %>%
+    select(
+      ExtractID         ,
+      Subject          ,
+      Subj_Certainty  ,
+      CollectionDate    , 
+      ExtractConc      ,  
+      steps_remaining   ,
+      ExtractBox       ) %>%
+    arrange(steps_remaining, CollectionDate, Subject) %>% as_tibble()
   
   return(tibble)
 }

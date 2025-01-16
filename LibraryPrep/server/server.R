@@ -70,27 +70,13 @@ server <- function(input, output, session) {
   
   samples    <- reactiveValues(
     compilation   = tibble(
-      SampleID            = character(),  
-      CollectionDate      = as.Date(character()),  
-      Subj_Certainty      = character(),  
-      Subject             = character(),  
-      SampleCollectedBy   = character(),  
-      SampleNotes         = character(),  
-      ExtractID           = character(),  
-      ExtractDate         = as.Date(character()),  
-      ExtractConc         = numeric(),  
-      ExtractedBy         = character(),  
-      ExtractKit          = character(),  
-      ExtractBox          = character(),  
-      ExtractNotes        = character(),  
-      LibraryCode         = character(),  
-      LibPrepWorkflow     = character(),  
-      LibPrepDate         = as.Date(character()),  
-      SequenceID          = character(),  
-      LibraryTube         = integer(),  
-      LibraryBarcode      = character(),  
-      LibraryConc_QC2     = numeric(),  
-      LibraryTotalPoolVol = numeric()
+      ExtractID       = character(),
+      Subject         = character(),
+      Subj_Certainty  = character(),
+      CollectionDate  = ymd(character()),
+      ExtractConc     = numeric(),
+      steps_remaining = factor(),
+      ExtractBox      = character()
     ),
     selected      = tibble(
       ExtractID           = character(), 
