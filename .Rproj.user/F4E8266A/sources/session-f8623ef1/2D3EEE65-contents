@@ -1,0 +1,7 @@
+source(path$steps)
+
+lsk.steps    <- steps %>% keep_at("lsk")      %>% list_flatten(name_spec = "{inner}")
+rap16s.steps <- steps %>% keep_at("rapid16s") %>% list_flatten(name_spec = "{inner}")
+
+print(lsk.steps)
+print(rap16s.steps)

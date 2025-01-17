@@ -1,0 +1,26 @@
+{
+    "id": "4458B38F",
+    "path": "~/GitRepos/richlab_main/labwork/LibraryPrep/server/server.R",
+    "project_path": "LibraryPrep/server/server.R",
+    "type": "r_source",
+    "hash": "884858552",
+    "contents": "",
+    "dirty": false,
+    "created": 1737135244115.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "121,20",
+        "scrollLine": "109"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1737144442,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1737144442412,
+    "read_only": false,
+    "read_only_alternatives": []
+}
