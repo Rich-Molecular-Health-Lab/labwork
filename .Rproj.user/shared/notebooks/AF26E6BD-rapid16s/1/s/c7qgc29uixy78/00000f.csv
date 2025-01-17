@@ -1,8 +1,0 @@
-"0","global      <- config::get(config = ""default"")"
-"0","path        <- config::get(config = ""libprep"")"
-"0",""
-"0","source(global$setup)"
-"2","Warning: cannot open file '../GlobalScripts/global.R': No such file or directory"
-"2","Error in file(filename, ""r"", encoding = encoding) : 
-  cannot open the connection
-"

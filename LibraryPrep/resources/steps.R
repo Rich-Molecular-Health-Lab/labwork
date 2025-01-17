@@ -196,3 +196,8 @@ part3.recs <- accordion_panel(
        card_body("For optimal sequencing performance and improved output on MinION R10.4.1 flow cells (FLO-MIN114), ONT recommends adding Bovine Serum Albumin (BSA) to the flow cell priming mix at a final concentration of 0.2 mg/ml."),
        card_footer("ONT does not recommend using any other albumin type (e.g. recombinant human serum albumin)."))
 )
+
+steps <- list(
+  rapid16s = c(part1_rap16s, part2_rap16s, part3),
+  lsk      = c(part1_lsk, part2_lsk, part3)
+)

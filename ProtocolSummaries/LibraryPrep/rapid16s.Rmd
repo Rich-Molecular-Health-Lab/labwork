@@ -1,5 +1,0 @@
----
-title: "rapid16s"
-output: html_document
----
-

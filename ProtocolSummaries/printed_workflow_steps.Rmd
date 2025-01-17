@@ -18,15 +18,13 @@ params:
 ```{r, include = FALSE}
 global      <- config::get(config = "default")
 
-source(global$set_paths)
 source(global$setup)
+source(global$set_paths)
 source(global$conflicts)
+source(global$inputs)
 source(global$data_functions)
-source(path$helper_functions)
-source(path$load_data)
-source(path$inputs)
-source(path$col_defs)
 source(path$steps)
+source(path$load_data)
 
 opts_chunk$set(message = FALSE,
                warning = FALSE,

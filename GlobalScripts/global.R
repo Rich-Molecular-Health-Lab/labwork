@@ -20,6 +20,7 @@ required_packages <- c(
   "config",
   "conflicted",
   "devtools",
+  "downloadthis",
   "fontawesome",
   "glue",
   "ggtext",
@@ -60,6 +61,7 @@ library(bsicons)
 library(bslib)
 library(conflicted)
 library(devtools)
+library(downloadthis)
 library(fontawesome)
 library(glue)
 library(ggtext)

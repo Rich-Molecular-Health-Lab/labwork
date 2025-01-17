@@ -1,5 +1,6 @@
 default:
   global: "../GlobalScripts/"
+  set_paths: "../GlobalScripts/set_paths.R"
   global_cols: "../GlobalScripts/reactable_columns.R"
   global_helpers: "../GlobalScripts/helper_functions.R"
   setup: "../GlobalScripts/global.R"
@@ -22,6 +23,14 @@ libprep:
   render_tables: "../LibraryPrep/server/render_reactables.R"
   dynamic_ui: "../LibraryPrep/server/dynamic_ui.R"
   report_template: "../templates/libprep_report.Rmd"
+  
+rapid16s:
+  man_protocol: "../ProtocolSummaries/man_protocols/rapid16s.pdf"
+  summary: "../ProtocolSummaries/rapid16s_workflow_steps.html"
+
+lsk:
+  man_protocol: "../ProtocolSummaries/man_protocols/lsk.pdf"
+  summary: "../ProtocolSummaries/lsk_workflow_steps.html"
   
 notebooks:
   AMR: "../Notebooks/Rich/"

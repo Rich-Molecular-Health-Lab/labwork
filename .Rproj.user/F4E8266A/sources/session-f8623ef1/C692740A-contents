@@ -10,7 +10,7 @@ output:
     code_folding: "hide"
     fig_caption: true
 params:
-  workflow: "lsk"
+  workflow: "rapid16s"
                      
 ---
 
@@ -18,15 +18,7 @@ params:
 ```{r, include = FALSE}
 global      <- config::get(config = "default")
 
-source(global$set_paths)
 source(global$setup)
-source(global$conflicts)
-source(global$data_functions)
-source(path$helper_functions)
-source(path$load_data)
-source(path$inputs)
-source(path$col_defs)
-source(path$steps)
 
 opts_chunk$set(message = FALSE,
                warning = FALSE,

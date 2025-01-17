@@ -5,11 +5,6 @@ server <- function(input, output, session) {
   session$setCurrentTheme(bs_theme(bootswatch = "lumen"))
   step_data  <- reactiveValues()
 
-  steps <- list(
-    rapid16s = c(part1_rap16s, part2_rap16s, part3),
-    lsk      = c(part1_lsk, part2_lsk, part3)
-  )
-  
   setup <- reactiveValues(
     steps              = list(),
     workflow           = character(),

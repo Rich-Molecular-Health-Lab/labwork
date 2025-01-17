@@ -1,6 +1,6 @@
 # /LibraryPrep/server/helper_functions.R
 
-source(paste0(path$global_helpers))
+source(global$global_helpers)
 
 calculate_length <- function(fragment_type) {
   case_when(

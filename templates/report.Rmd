@@ -4,8 +4,8 @@ author: "`r params$author` with assist by `r params$assists`"
 date: "`r params$date`"
 output: 
   html_document:
-    code_download: true
-    toc: true
+    code_download: false
+    toc: false
     toc_location: "before"
     toc_depth: 4
     number_sections: false
@@ -20,7 +20,6 @@ params:
     libraries: NA
     extracts: NA
     rxns: NA
-    sampleset: "`r params$setup$sampleset`"
     
 ---
 

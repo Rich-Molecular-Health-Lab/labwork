@@ -3,7 +3,7 @@
     "path": "~/GitRepos/richlab_main/labwork/ProtocolSummaries/printed_workflow_steps.Rmd",
     "project_path": "ProtocolSummaries/printed_workflow_steps.Rmd",
     "type": "r_markdown",
-    "hash": "2073799973",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1737136917377.0,
@@ -12,16 +12,16 @@
     "properties": {
         "chunk_output_type": "inline",
         "source_window_id": "",
-        "Source": "Source",
-        "cursorPosition": "11,7",
+        "Source": "Sourceoewf0p9hk5yn",
+        "cursorPosition": "5,16",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1737149867,
+    "lastKnownWriteTime": 1737153599,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1737149867834,
+    "last_content_update": 1737153599441,
     "read_only": false,
     "read_only_alternatives": []
 }
