@@ -5,6 +5,10 @@ server <- function(input, output, session) {
   session$setCurrentTheme(bs_theme(bootswatch = "lumen"))
   step_data  <- reactiveValues()
 
+  steps <- list(
+    rapid16s = c(part1_rap16s, part2_rap16s, part3),
+    lsk      = c(part1_lsk, part2_lsk, part3)
+  )
   
   setup <- reactiveValues(
     steps              = list(),
@@ -106,6 +110,7 @@ server <- function(input, output, session) {
   report_params <- reactiveValues(
     setup             = list(),
     step_data         = list(),
+    steps             = list(),
     calculations      = tibble(),
     rxns              = tibble(
       step         = character(),
@@ -116,13 +121,13 @@ server <- function(input, output, session) {
     )
   )
   
-  source(path$helper_functions)
-  source(path$load_data)
-  source(path$inputs)
-  source(path$steps)
-  source(path$col_defs)
-  source(path$reactives)
-  source(path$dynamic_ui)
+  source(paste0(path$helper_functions))
+  source(paste0(path$load_data))
+  source(paste0(path$inputs))
+  source(paste0(path$steps))
+  source(paste0(path$col_defs))
+  source(paste0(path$reactives))
+  source(paste0(path$dynamic_ui))
   
   switch_tabs(input, setup)
   link_tabs(input)

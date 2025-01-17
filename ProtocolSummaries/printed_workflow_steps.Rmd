@@ -1,0 +1,95 @@
+---
+title: "`r params$workflow` Workflow Steps"
+author: "Alicia Rich"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme:
+      bootswatch: lumen
+    toc: false
+    code_folding: "hide"
+    fig_caption: true
+params:
+  workflow: "lsk"
+                     
+---
+
+
+```{r, include = FALSE}
+global      <- config::get(config = "default")
+
+source(global$set_paths)
+source(global$setup)
+source(global$conflicts)
+source(global$data_functions)
+source(path$helper_functions)
+source(path$load_data)
+source(path$inputs)
+source(path$col_defs)
+source(path$steps)
+
+opts_chunk$set(message = FALSE,
+               warning = FALSE,
+               echo    = FALSE,
+               include = TRUE,
+               eval    = TRUE,
+               comment = "")
+
+workflow       <- config::get(config = paste0(params$workflow))
+protocol.steps <- steps %>% keep_at(paste0(params$workflow)) %>% list_flatten(name_spec = "{inner}")
+```
+
+_________________________________________________________
+
+```{r}
+download_file(
+  path = workflow$man_protocol,
+  output_name = paste0("manufacturer_protocol_", params$workflow, ".pdf"),
+  button_label = "Download Original Manufacturer Protocol Version",
+  button_type = "default",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
+
+___________________________________________________________
+
+```{r}
+tagList(
+  imap(protocol.steps, ~ { 
+      step_name     <- .y
+      step_content  <- .x
+      main_step     <- step_content[[1]]
+      substeps      <- step_content[-1]
+    substep_list <- if (length(substeps) > 0) {
+      tags$ol(
+        map(names(substeps), ~ tags$li(substeps[[.x]])),
+        style = "list-style-type: lower-alpha;"
+      )
+    } else {
+      NULL
+    }
+
+    div(
+      class = "card mb-3",
+      div(
+        class = "card-header bg-primary text-white", 
+        layout_columns(
+          col_widths = c(1, 11),
+        h4(step_name),
+        h5(main_step),
+        )
+      ),
+      div(
+        class = "card-body", 
+        substep_list
+      )
+    )
+ })
+)
+```
+
+
+
+

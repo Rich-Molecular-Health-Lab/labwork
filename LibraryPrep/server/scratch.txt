@@ -1,0 +1,15 @@
+extracts <- list(
+  loris     = tibble(read_extracts(loris$extracts)),
+  marmoset  = tibble(read_extracts(marmoset$extracts)),
+  isolates  = tibble(read_extracts(isolates$extracts)),
+  bats      = tibble(read_extracts(bats$extracts)),
+  envir     = tibble(read_extracts(envir$extracts))
+)
+
+libraries <- list(
+  loris     = tibble(read_libraries(loris$libraries)),
+  marmoset  = tibble(read_libraries(marmoset$libraries)),
+  isolates  = tibble(read_libraries(isolates$libraries)),
+  bats      = tibble(read_libraries(bats$libraries)),
+  envir     = tibble(read_libraries(envir$libraries))
+)
