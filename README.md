@@ -27,6 +27,20 @@ To use this repository:
    ```
 2. Navigate through the organized directories to locate the relevant files or protocols you need.
 
+---
+
+## Lab Workflow Summaries
+
+## Library Prep
+
+- [Singleplex Prep for Genome Skimming]("ProtocolSummaries/lsk_workflow_steps.html")
+  - shorthand code used: "lsk"
+
+- [24plex Rapid Prep with 16S PCR]("ProtocolSummaries/rapid16s_workflow_steps.html")
+  - shorthand code used: "rapid16s"
+
+---
+
 ## Contact
 
 For questions, feedback, or issues, please reach out to the PI (aliciarich@unomaha.edu) or open an issue in this repository.
