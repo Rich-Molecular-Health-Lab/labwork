@@ -33,10 +33,10 @@ To use this repository:
 
 ## Library Prep
 
-- [Singleplex Prep for Genome Skimming]("ProtocolSummaries/lsk_workflow_steps.html")
+- [Singleplex Prep for Genome Skimming](ProtocolSummaries/lsk_workflow_steps.html)
   - shorthand code used: "lsk"
 
-- [24plex Rapid Prep with 16S PCR]("ProtocolSummaries/rapid16s_workflow_steps.html")
+- [24plex Rapid Prep with 16S PCR](ProtocolSummaries/rapid16s_workflow_steps.html)
   - shorthand code used: "rapid16s"
 
 ---
