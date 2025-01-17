@@ -2,6 +2,7 @@
 .Rhistory
 .Rapp.history
 */.Rhistory
+*/*/.Rhistory
 */.Rapp.history
 
 # Session Data files
@@ -23,6 +24,7 @@
 # RStudio files
 .Rproj.user/
 */.Rproj.user/
+*/*/.Rproj.user/
 
 # produced vignettes
 vignettes/*.html
@@ -54,8 +56,15 @@ rsconnect/
 # Mac OS Items
 *Icon*
 */*Icon*
+*/*/*Icon*
+*/*/*/*Icon*
 .DS_Store
 */.DS_Store
+*/*/.DS_Store
+*/*/*/.DS_Store
 .AppleDouble
 .LSOverride
+
+# Private Files
+Notebooks/*NotesMeetings*
 

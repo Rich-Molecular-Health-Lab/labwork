@@ -1,5 +1,7 @@
 # /GlobalScripts/helper_functions.R
 
+source(global$global_helpers)
+
 make_steps <- function(nested_steps) {
   imap(nested_steps, ~ {
     step_name    <- .y
@@ -86,21 +88,22 @@ read_libraries <- function(path) {
 
 load_data <- function(path) {
   tibble <- read.table(path, sep = "\t", header = TRUE) %>% 
-    mutate(across(ends_with("Date"), ~ ymd(.)),
+    mutate(CollectionDate = ymd(CollectionDate),
            steps_remaining = factor(steps_remaining, levels = c(
              "sample not extracted",
              "extract not sequenced",
              "sample extracted and sequenced"
            ))) %>%
     select(
+      steps_remaining   ,
       ExtractID         ,
       Subject          ,
       Subj_Certainty  ,
       CollectionDate    , 
       ExtractConc      ,  
-      steps_remaining   ,
       ExtractBox       ) %>%
-    arrange(steps_remaining, CollectionDate, Subject) %>% as_tibble()
+    arrange(steps_remaining, CollectionDate, Subject) %>% as_tibble() %>%
+    mutate(steps_remaining = as.character(steps_remaining))
   
   return(tibble)
 }

@@ -8,70 +8,32 @@ cols_rxns <-  list(
 )
 
 cols_compilation <- list(
-  SampleID            = colDef(name = "ID"),
-  CollectionDate      = colDef(name = "Date Collected"     , align = "left" , sortable   = TRUE, format = colFormat(date = TRUE), aggregate = "frequency"),
-  Subj_Certainty      = colDef(name = "Subj Certain?"      , align = "right", filterable = TRUE, aggregate = "unique"   , maxWidth = 80, aggregated = certainty_js, cell = certainty_r),
-  Subject             = colDef(name = "Subj Name"          , align = "left" , filterable = TRUE, aggregate = "frequency", maxWidth = 80 , sortable   = TRUE),
-  SampleCollectedBy   = colDef(name = "Collector"          ),
-  SampleNotes         = colDef(name = "Notes"              , align = "left" , maxWidth = 200) ,
-  ExtractID           = colDef(name = "ID"                 , align = "left" , sortable   = TRUE, filterable = TRUE, aggregate = "count", maxWidth = 125),
-  ExtractDate         = colDef(name = "Date Done"          , align = "left" , sortable   = TRUE, aggregate = "max",format = colFormat(date = TRUE)),
-  ExtractConc         = colDef(name = "Concentration"      , align = "left", filterable = TRUE, aggregate = "max", maxWidth = 125, sortable   = TRUE, format = colFormat(suffix = ngul)),
-  ExtractedBy         = colDef(name = "Done by"),
-  ExtractKit          = colDef(name = "Kit"),
-  ExtractBox          = colDef(name = "Storage Box"        , align = "left" , maxWidth = 150) ,
-  ExtractNotes        = colDef(name = "Notes"              , align = "left" , maxWidth = 200) ,
-  LibraryCode         = colDef(name = "Unique Code for Run", align = "left" , sortable   = TRUE, filterable = TRUE, aggregate = "count", maxWidth = 125)  ,  
-  LibPrepWorkflow     = colDef(name = "Workflow"),
-  LibPrepDate         = colDef(name = "Date"                  , align = "left" , format = colFormat(date = TRUE)),           
-  SequenceID          = colDef(name = "Output ID"             , align = "left" , sortable   = TRUE, filterable = TRUE, aggregate = "count", maxWidth = 125),
-  LibraryTube         = colDef(name = "Tube No.")             ,
-  LibraryBarcode      = colDef(name = "Barcode"               , align = "left"),                                                      
-  LibraryConc_QC2     = colDef(name = "Final Concentration"   , align = "left", maxWidth = 125, format = colFormat(suffix = ngul)) ,            
-  LibraryTotalPoolVol = colDef(name = "Pooled Vol"            , align = "left", format = colFormat(suffix = ul)) ,  
-  .selection          = colDef(name = "Select rows to use", sticky = "left")
+  steps_remaining   = colDef(name = "Sample State", sticky = "left"),
+  ExtractID         = colDef(name = "DNA Extract", aggregate = "count", sticky = "left"),
+  Subject           = colDef(name = "Subject Name", aggregate = "frequency"),
+  Subj_Certainty    = colDef(name = "Subj ID Certain?"),
+  CollectionDate    = colDef(name = "Date Collected", format = colFormat(date = TRUE), aggregate = "count"), 
+  ExtractConc       = colDef(name = "DNA Concentration (ng/ul)", aggregate = "max", format = colFormat(digits = 2)),  
+  ExtractBox        = colDef(name = "Box No."),
+  .selection        = colDef(name = "Select Extracts", sticky = "left")
 )
-
-compilation_groups <- list(
-  colGroup(name = "Samples Collected", columns = c("SampleID", 
-                                                   "CollectionDate", 
-                                                   "Subj_Certainty", 
-                                                   "Subject",
-                                                   "SampleCollectedBy",
-                                                   "SampleNotes")),
-  colGroup(name = "DNA Extracts", columns = c("ExtractID",
-                                              "ExtractDate",
-                                              "ExtractConc",
-                                              "ExtractedBy",
-                                              "ExtractKit",
-                                              "ExtractBox",
-                                              "ExtractNotes")),
-  colGroup(name = "Sequenced Libraries", columns = c("LibraryCode",
-                                                     "LibPrepWorkflow",
-                                                     "LibPrepDate",
-                                                     "SequenceID",
-                                                     "LibraryTube",
-                                                     "LibraryBarcode",
-                                                     "LibraryConc_QC2",
-                                                     "LibraryTotalPoolVol")))
 
 cols_selected <- list(
-  ExtractID           = colDef(name = "DNA Extract ID"     , align = "left" , sortable   = TRUE, filterable = TRUE, aggregate = "count", maxWidth = 125),
-  ExtractDate         = colDef(name = "Date Extracted"     , align = "left" , sortable   = TRUE, aggregate = "max",format = colFormat(date = TRUE)),
-  ExtractedBy         = colDef(name = "Done By"            , align = "left", aggregate = "unique"),
-  ExtractKit          = colDef(name = "Kit"                , align = "left" , filterable = TRUE, maxWidth = 150, sortable = TRUE),
-  ExtractBox          = colDef(name = "Storage Box"        , align = "left" , maxWidth = 150) ,
-  ExtractNotes        = colDef(name = "Notes"              , align = "left" , maxWidth = 200) ,
-  ExtractConc         = colDef(name = "Concentration"      , align = "left", filterable = TRUE, aggregate = "max", maxWidth = 125, sortable   = TRUE, format = colFormat(suffix = ngul)),
-  .selection          = colDef(name =  "Select Extracts"   , sticky = "left")
+  ExtractID         = colDef(name = "DNA Extract", aggregate = "count", sticky = "left"),
+  ExtractConc       = colDef(name = "DNA Concentration (ng/ul)", aggregate = "max", format = colFormat(digits = 2)),    
+  ExtractBox        = colDef(name = "Box No.")
 )
+
 
 cols_review <- list(
   LibraryTube         = colDef(name = "Tube No.")  ,
-  SequenceID          = colDef(name = "Sequenced Output ID"),
+  LibraryCode         = colDef(name = "Pooled Library ID"),
+  SequenceID          = colDef(name = "Sequence Output"),
+  ExtractID           = colDef(name = "DNA Extract"),    
+  ExtractBox          = colDef(name = "Box No."),
   Barcode             = colDef(show = FALSE)   ,            
   BarcodePos          = colDef(show = FALSE)   ,            
-  ExtractConc         = colDef(name = "Extract Concentration", format = colFormat(suffix = ngul)) ,     
+  ExtractConc         = colDef(name = "DNA Concentration", format = colFormat(suffix = ngul, digits = 2)) ,     
   TemplateVolPrep     = colDef(show = FALSE)   ,               
   Length              = colDef(show = FALSE)   ,    
   InputMassStart      = colDef(show = FALSE)   ,    
@@ -88,17 +50,22 @@ cols_review <- list(
   TotalPoolVol        = colDef(show = FALSE)   
 )
 
+  
+
 cols_calculations <- list(
   LibraryTube         = colDef(name = "Tube No.")  ,
-  SequenceID          = colDef(name = "Sequenced Output ID"),
+  LibraryCode         = colDef(name = "Pooled Library ID"),
+  SequenceID          = colDef(name = "Sequence Output"),
+  ExtractID           = colDef(name = "DNA Extract"),    
+  ExtractBox          = colDef(show = FALSE),
   Barcode             = colDef(name = "Barcode"),               
   BarcodePos          = colDef(name = "Barcode Plate Position"),                   
-  ExtractConc         = colDef(name = "Extract Concentration", format = colFormat(suffix = ngul)) ,     
-  TemplateVolPrep     = colDef(name = "Template volume for first rxn",format = colFormat(suffix = ul)) ,             
+  ExtractConc         = colDef(name = "Extract Concentration", format = colFormat(suffix = ngul, digits = 2)) ,     
+  TemplateVolPrep     = colDef(name = "Template volume for first rxn",format = colFormat(suffix = ul, digits = 2)) ,             
   Length              = colDef(show = FALSE)   ,
   InputMassStart      = colDef(show = FALSE)   ,  
-  ExtractInputVol     = colDef(name = "Volume extract to start with",format = colFormat(suffix = ul)) ,             
-  ExtractDiluteWater  = colDef(name = "Volume to dilute extract",format = colFormat(suffix = ul)) ,                                              
+  ExtractInputVol     = colDef(name = "Volume extract to start with",format = colFormat(suffix = ul, digits = 2)) ,             
+  ExtractDiluteWater  = colDef(name = "Volume to dilute extract",format = colFormat(suffix = ul, digits = 2)) ,                                              
   Conc_QC1            = colDef(show = FALSE)   ,               
   Conc_QC2            = colDef(show = FALSE)   ,       
   SampVolPool         = colDef(show = FALSE)   ,      
@@ -112,15 +79,18 @@ cols_calculations <- list(
 
 cols_setup <- list(
   LibraryTube         = colDef(name = "Tube No.")  ,
-  SequenceID          = colDef(name = "Sequenced Output ID"),
+  LibraryCode         = colDef(name = "Pooled Library ID"),
+  SequenceID          = colDef(name = "Sequence Output"),
+  ExtractID           = colDef(name = "DNA Extract"),   
+  ExtractBox          = colDef(name = "Box No."),
   Barcode             = colDef(name = "Barcode"),               
   BarcodePos          = colDef(show = FALSE)   ,            
-  ExtractConc         = colDef(name = "Extract Concentration", format = colFormat(suffix = ngul)) ,     
-  TemplateVolPrep     = colDef(name = "Template volume for first rxn",format = colFormat(suffix = ul)) ,             
+  ExtractConc         = colDef(name = "Extract Concentration", format = colFormat(suffix = ngul, digits = 2)) ,     
+  TemplateVolPrep     = colDef(name = "Template volume for first rxn",format = colFormat(suffix = ul, digits = 2)) ,             
   Length              = colDef(name = "Estimated length (bp)"),
   InputMassStart      = colDef(name = "Optimal starting mass")   ,  
-  ExtractInputVol     = colDef(name = "Volume extract to start with",format = colFormat(suffix = ul)) ,             
-  ExtractDiluteWater  = colDef(name = "Volume to dilute extract",format = colFormat(suffix = ul)) ,                                              
+  ExtractInputVol     = colDef(name = "Volume extract to start with",format = colFormat(suffix = ul, digits = 2)) ,             
+  ExtractDiluteWater  = colDef(name = "Volume to dilute extract",format = colFormat(suffix = ul, digits = 2)) ,                                              
   Conc_QC1            = colDef(show = FALSE)   ,               
   Conc_QC2            = colDef(show = FALSE)   ,       
   SampVolPool         = colDef(show = FALSE)   ,      

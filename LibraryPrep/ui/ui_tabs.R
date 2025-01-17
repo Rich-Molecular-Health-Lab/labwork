@@ -18,9 +18,6 @@ workflow_tab <- function() {
                    actionButton("basics_done", "Next: Select Samples/Extracts")
                )
      
-                
- 
-
 }
 
 
@@ -43,7 +40,6 @@ samples_tab <- function() {
                       title = "Review Selected Samples",
                       value = "review_samples",
                       reactableOutput("review_samples")
-                      
                     )
                   ),
                     actionButton("samples_done", "Click to proceed")

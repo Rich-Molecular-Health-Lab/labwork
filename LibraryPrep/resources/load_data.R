@@ -48,10 +48,6 @@ rxn_fcload  <- tibble(Reagent = c("DNA Template",
                                   "Library Beads (LIB) mixed immediately before use"), 
                       Volume_rxn = c(12, 37.5, 25.5))
 
-steps_rap16s <- c(part1_rap16s, part2_rap16s, part3)
-
-steps_lsk    <- c(part1_lsk, part2_lsk, part3)
-
 rxns_rap16s  <- list(pcr16s   = rxn_pcr16s,
                      fcprime  = rxn_fcprime,
                      fcload   = rxn_fcload)
@@ -127,6 +123,5 @@ rap16s_cycles <- tibble(
     N_Cycles     ~ px(90)
   ) %>%
   opt_stylize(color = "blue", style = 1)
-
 
 

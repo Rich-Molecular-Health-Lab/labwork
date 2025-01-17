@@ -5,6 +5,11 @@ server <- function(input, output, session) {
   session$setCurrentTheme(bs_theme(bootswatch = "lumen"))
   step_data  <- reactiveValues()
 
+  steps <- list(
+    rapid16s = c(part1_rap16s, part2_rap16s, part3),
+    lsk      = c(part1_lsk, part2_lsk, part3)
+  )
+  
   setup <- reactiveValues(
     steps              = list(),
     workflow           = character(),
@@ -52,54 +57,35 @@ server <- function(input, output, session) {
     setup_note         = character(),
     conclusion_note    = character(),
     PoolSamples        = character(),
-    rxns               = list(),
-    summary            = tibble(
-      
-    )
-  )
-  
-  control_rows <- tibble(
-    ExtractID           = "ControlLibPrep", 
-    ExtractDate         = NA,  
-    ExtractedBy         = "None",  
-    ExtractKit          = "None",  
-    ExtractBox          = "None",  
-    ExtractNotes        = "None",  
-    ExtractConc         = 0
+    rxns               = list()
   )
   
   samples    <- reactiveValues(
     compilation   = tibble(
+      steps_remaining = character(),
       ExtractID       = character(),
       Subject         = character(),
       Subj_Certainty  = character(),
-      CollectionDate  = ymd(character()),
+      CollectionDate  = as.Date(character()),
       ExtractConc     = numeric(),
-      steps_remaining = factor(),
       ExtractBox      = character()
     ),
     selected      = tibble(
-      ExtractID           = character(), 
-      ExtractDate         = as.Date(character()),  
-      ExtractedBy         = character(),  
-      ExtractKit          = character(),  
-      ExtractBox          = character(),  
-      ExtractNotes        = character(),  
-      ExtractConc         = numeric() 
+      ExtractID           = character(),  
+      ExtractConc         = numeric() ,
+      ExtractBox          = character()
     ),
     controls = tibble(
-      ExtractID           = "ControlLibPrep", 
-      ExtractDate         = NULL,  
-      ExtractedBy         = "None",  
-      ExtractKit          = "None",  
-      ExtractBox          = "None",  
-      ExtractNotes        = "None",  
-      ExtractConc         = 0
+      ExtractID           = "ControlLibPrep",   
+      ExtractConc         = 0, 
+      ExtractBox          = "None"
     ),
     calculations = tibble(
       LibraryTube         = integer(), 
+      LibraryCode         = character(),
       SequenceID          = character(),  
-      ExtractID           = character(), 
+      ExtractID           = character(),
+      ExtractBox          = character(),
       Barcode             = character(),
       BarcodePos          = character(),
       ExtractConc         = numeric(),
@@ -125,8 +111,7 @@ server <- function(input, output, session) {
     setup             = list(),
     step_data         = list(),
     steps             = list(),
-    selected          = tibble(),
-    libprep_output    = tibble(),
+    calculations      = tibble(),
     rxns              = tibble(
       step         = character(),
       Reagent      = character(),

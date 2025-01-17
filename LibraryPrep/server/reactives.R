@@ -1,39 +1,53 @@
-observe_steps     <- function(input, output, setup, step_data) {
+observe_steps <- function(input, output, setup, step_data) {
   observe({
-    req(setup$steps)
+    req(setup$steps, setup$workflow)  # Ensure `setup$steps` and `setup$workflow` are available
+    
+    # Loop through each step in `setup$steps` and create observers for it
     imap(setup$steps, ~ {
-      step_name    <- .y
-      step_content <- .x
-      main_step    <- step_content[[1]]
+      step_name    <- .y  # Step name
+      step_content <- .x  # Step details
+      main_step    <- step_content[[1]]  # Main step description
       
+      # Initialize `step_data` if not already set
+      if (is.null(step_data[[step_name]])) {
+        step_data[[step_name]] <- reactiveValues(
+          detail    = main_step,
+          note      = NULL,
+          timestamp = "Not completed"
+        )
+      }
+      
+      # Observer for checking a step
       observeEvent(input[[paste0("check_", step_name)]], {
+        req(input[[paste0("check_", step_name)]])  # Ensure checkbox input is available
         toggleCssClass(
           id        = paste0("step_", step_name), 
           class     = "bg-secondary", 
-          condition = input[[paste0("check_", step_name)]])
+          condition = input[[paste0("check_", step_name)]]
+        )
         
-        output[[paste0("stamp_", step_name)]] <- renderText({timestamp("", "")})
-        step_data[[step_name]]$detail         <- main_step
-        step_data[[step_name]]$note           <- if (!is.null(input[[paste0("text_", step_name)]])) {
-          timestamp("Note recorded at ", paste0(": ", input[[paste0("text_", step_name)]]))
-        } else { NULL }
+        timestamp <- timestamp("Completed at ", "")
+        output[[paste0("stamp_", step_name)]] <- renderText({ timestamp })
         
-        step_data[[step_name]]$timestamp      <- timestamp("Completed at ", "")
-        
-      }, ignoreInit = TRUE, once = TRUE)
+        step_data[[step_name]]$timestamp <- timestamp
+      }, ignoreInit = TRUE)
       
+      # Observer for submitting a note
       observeEvent(input[[paste0("submit_", step_name)]], {
+        note_text <- input[[paste0("text_", step_name)]] %||% "No note provided"
+        timestamp <- timestamp("Note recorded at ", "")
         
         output[[paste0("note_", step_name)]] <- renderText({
-          timestamp("Step ", paste0(": ", input[[paste0("text_", step_name)]]))
+          paste0(timestamp, ": ", note_text)
         })
         
-        step_data[[step_name]]$note <- timestamp("Note recorded at ", paste0(": ", input[[paste0("text_", step_name)]]))
-        
+        step_data[[step_name]]$note <- paste0(timestamp, ": ", note_text)
       }, ignoreInit = FALSE)
       
+      # Ensure step data is correctly populated during report generation
       observeEvent(input$generate_report, {
         req(step_data[[step_name]])
+        
         if (is.null(input[[paste0("check_", step_name)]])) {
           step_data[[step_name]]$detail      <- main_step
           step_data[[step_name]]$note        <- NULL
@@ -41,9 +55,7 @@ observe_steps     <- function(input, output, setup, step_data) {
         }
       })
     })
-    
   })
-  
 }
 
 workflow_reactives <- function(input, output, setup, samples) {
@@ -72,23 +84,48 @@ workflow_reactives <- function(input, output, setup, samples) {
     setup$sampleset <- input$select_set
     req(setup$sampleset)
     if (setup$sampleset == "loris") {
-      samples$compilation <- samples$compilation %>% full_join(load_data(loris$compilation), keep = FALSE)
+      data <- read.table(loris$compilation, sep = "\t", header = TRUE)
     } else if (setup$sampleset == "marmoset") {
-      samples$compilation <- samples$compilation %>% full_join(load_data(marmoset$compilation), keep = FALSE)
+      data <- read.table(marmoset$compilation, sep = "\t", header = TRUE)
     } else if (setup$sampleset == "bats") {
-      samples$compilation <- samples$compilation %>% full_join(load_data(bats$compilation), keep = FALSE)
+      data <- read.table(bats$compilation, sep = "\t", header = TRUE)
     } else if (setup$sampleset == "isolates") {
-      samples$compilation <- samples$compilation %>% full_join(load_data(isolates$compilation), keep = FALSE)
+      data <- read.table(isolates$compilation, sep = "\t", header = TRUE)
     } else if (setup$sampleset == "envir") {
-      samples$compilation <- samples$compilation %>% full_join(load_data(envir$compilation), keep = FALSE)
+      data <- read.table(envir$compilation, sep = "\t", header = TRUE)
     }
     
-    req(samples$compilation)
+    req(data)
+    tbl <- data %>% 
+      mutate(CollectionDate = as.Date(CollectionDate)) %>%
+      select(
+        steps_remaining   ,
+        ExtractID         ,
+        Subject          ,
+        Subj_Certainty   ,
+        CollectionDate    , 
+        ExtractConc      ,  
+        ExtractBox       ) %>%
+      arrange(CollectionDate, Subject) %>% as_tibble()
+    
+    req(tbl, samples$compilation)
+    samples$compilation <- samples$compilation %>%
+      full_join(tbl, keep = FALSE)
+  })
+  
+    
+    output$samples_verify <- renderText({
+      print(names(tbl))
+    })
+    
+  
+  observeEvent(input$basics_done, {
     output$samples       <- renderReactable({
-      reactable(samples$compilation, 
-                groupBy             = c("SampleID"),
+      reactable(isolate(samples$compilation), 
+                height              = 600,
+                sortable            = TRUE,
+                filterable          = TRUE,
                 columns             = cols_compilation,
-                columnGroups        = compilation_groups,
                 theme               = format_select,
                 selection           = "multiple", 
                 onClick             = "select",
@@ -97,7 +134,6 @@ workflow_reactives <- function(input, output, setup, samples) {
                 compact             = TRUE)
     })
   })
-  
   
   observeEvent(input$library_code, {
     req(input$library_code)
@@ -146,7 +182,7 @@ workflow_reactives <- function(input, output, setup, samples) {
     req(setup$workflow)
     if (setup$workflow == "rapid16s") {
       setup$rxns                <- rxns_rap16s
-      setup$steps               <- steps_rap16s
+      setup$steps               <- keep_at(steps, "rapid16s") %>% list_flatten(name_spec = "{inner}")
       setup$barcodes            <- barcodes.24
       setup$PoolSamples         <- "Yes"
       setup$fragment_type       <- 2
@@ -158,7 +194,7 @@ workflow_reactives <- function(input, output, setup, samples) {
       
     } else if (setup$workflow == "lsk") {
       setup$rxns                <- rxns_lsk
-      setup$steps               <- steps_lsk
+      setup$steps               <- keep_at(steps, "lsk") %>% list_flatten(name_spec = "{inner}")
       setup$PoolSamples         <- "No"
       setup$TemplateVolLoading  <- 12
       setup$beadvol             <- 40
@@ -170,6 +206,11 @@ workflow_reactives <- function(input, output, setup, samples) {
 
 samples_reactives <- function(input, output, setup, samples, report_params) {
   
+  observeEvent(input$add_controls, {
+    req(input$add_controls)
+    setup$n_controls <- as.numeric(input$add_controls)
+  })
+  
   observeEvent(getReactableState("samples", "selected"), {
     
     selected <- getReactableState("samples", "selected")
@@ -180,22 +221,15 @@ samples_reactives <- function(input, output, setup, samples, report_params) {
     req(selected_extracts)
     samples$selected  <- selected_extracts %>%
       select(ExtractID   ,
-             ExtractDate ,
-             ExtractedBy ,
-             ExtractKit  ,
-             ExtractBox  ,
-             ExtractNotes,
-             ExtractConc ) %>%
+             ExtractConc ,
+             ExtractBox  ) %>%
       distinct()
     
     req(samples$selected)
     setup$n_extracts  <- nrow(samples$selected)
     
-    req(input$add_controls)
-    setup$n_controls <- as.numeric(input$add_controls)
-    
-    req(setup$n_extracts, setup$n_controls)
-    setup$n_rxns      <- sum(setup$n_controls, setup$n_extracts)
+    req(samples$selected, input$add_controls)
+    setup$n_rxns      <- sum(as.numeric(input$add_controls), nrow(samples$selected))
     
     req(setup$n_rxns)
     output$samples_count <- renderText({
@@ -228,24 +262,22 @@ samples_reactives <- function(input, output, setup, samples, report_params) {
     samples$controls <- samples$controls %>%
       slice(rep(1L, length.out = setup$n_controls))
     
-    req(samples$selected, samples$controls, setup$workflow)
+    req(samples$selected, samples$controls)
     working_samples <- samples$selected %>%
-      rows_append(samples$controls) %>%
-      mutate(LibraryTube = row_number(),
-             workflow    = setup$workflow) %>%
-      mutate(SequenceID  = str_glue("{ExtractID}", "-", "{workflow}", "-", "{LibraryTube}")) %>%
-      select(LibraryTube,
-             SequenceID,
-             ExtractID,
-             ExtractConc) 
+      rows_append(samples$controls)
     
-    req(working_samples, samples$calculations)
+    req(working_samples, samples$calculations, setup$LibraryCode)
     samples$calculations <- samples$calculations %>%
-      rows_append(working_samples) 
+      rows_append(working_samples)  %>%
+      mutate(LibraryTube = row_number(),
+             LibraryCode = setup$LibraryCode) %>%
+      mutate(SequenceID  = str_glue("{ExtractID}", "-", "{LibraryCode}", "-", "{LibraryTube}")) %>%
+      distinct()
     
     output$review_samples <- renderReactable({
       reactable(
         samples$calculations,
+        height              = 400,
         columns             = cols_review,
         highlight           = TRUE
       )
@@ -267,8 +299,6 @@ samples_reactives <- function(input, output, setup, samples, report_params) {
         paste0("Confirm individual barcodes to use (", setup$n_rxns, " barcodes needed)")
       })
       
-      
-      
       req(setup$rxns$pcr16s)
       setup$TemplateVolPrep <- setup$rxns$pcr16s  %>% 
         filter(Reagent == "DNA Template") %>% 
@@ -284,19 +314,21 @@ samples_reactives <- function(input, output, setup, samples, report_params) {
       req(combined_tbl)
       report_params$rxns <- combined_tbl
       
-        req(setup$barcodes)
-        output$barcodes           <- renderReactable({
-          reactable(
-            setup$barcodes,
-            columns             = cols_barcodes,
-            columnGroups        = groups_barcodes,
-            theme               = format_select,
-            selection           = "multiple", 
-            onClick             = "select"
-          )
-      })
-      
-      
+        
+        observe({
+          req(setup$barcodes)
+          output$barcodes           <- renderReactable({
+            reactable(
+              setup$barcodes,
+              columns             = cols_barcodes,
+              columnGroups        = groups_barcodes,
+              theme               = format_select,
+              selection           = "multiple", 
+              onClick             = "select", 
+              highlight           = TRUE
+            )
+          })
+        })
       
     } else if (setup$workflow == "lsk") {
       req(samples$calculations)
@@ -338,12 +370,11 @@ barcode_reactives <- function(input, output, setup, samples) {
     req(setup$workflow)
     if (setup$workflow == "rapid16s") {
       
-      
-      req(setup$barcodes)
       observeEvent(getReactableState("barcodes", "selected"), {
         
         selected <- getReactableState("barcodes", "selected")
         
+        req(setup$barcodes)
         selected_columns     <- setup$barcodes[selected, ]
         
         req(selected_columns)
@@ -360,31 +391,31 @@ barcode_reactives <- function(input, output, setup, samples) {
       observeEvent(input$barcode_cols_confirm, {
         nav_select("barcode_tabs", "barcode_wells")
         
-        req(setup$barcode_wells)
         output$barcode_wells  <- renderReactable({
           reactable(
-            setup$barcode_wells,
-            columns            = cols_barcode_wells,
+            isolate(setup$barcode_wells),
+            columns             = cols_barcode_wells,
             theme               = format_select,
             selection           = "multiple", 
-            onClick             = "select")
+            onClick             = "select", 
+            highlight           = TRUE)
         })  
       })
       
-      req(setup$barcode_wells)
       observeEvent(getReactableState("barcode_wells", "selected"), {
         selected           <- getReactableState("barcode_wells", "selected")
+        
+        req(setup$barcode_wells)
         selected_wells     <- setup$barcode_wells[selected, ] %>% distinct()
         
         req(selected_wells, setup$n_rxns)
         output$barcode_footer <- renderText({
-          paste0(length(selected), 
+          paste0(nrow(selected_wells), 
                  " barcodes selected out of ", 
                  setup$n_rxns, 
                  " needed")
         })
-        
-        
+      
         req(selected_wells)
         setup$barcodes_confirmed <- selected_wells
         
@@ -500,6 +531,7 @@ setup_reactives <- function(input, output, setup, samples) {
     output$setup_summary <- renderReactable({
       reactable(
         samples$calculations,
+        height              = 500,
         columns             = cols_setup,
         highlight           = TRUE
       )
@@ -555,8 +587,7 @@ setup_reactives <- function(input, output, setup, samples) {
       output$part1_rap16s       <- renderReactable({
         reactable(
           samples$calculations,
-          columns       = cols_part1_rap16s,
-          theme         = format_checklist
+          columns       = cols_part1_rap16s
         )
       })
       
@@ -626,7 +657,7 @@ part1_reactives <- function(input, output, setup, samples) {
         paste(setup$beadvol)
       })
       
-      req(pooling_result$SampVolPool, setup$beadvol)
+      req(pooling_result$SampVolPool, pooling_result$TotalPoolVol, setup$beadvol)
       samples$calculations <- samples$calculations %>%
         mutate(SampVolPool  = pooling_result$SampVolPool,
                TotalPoolVol = pooling_result$TotalPoolVol,
@@ -799,19 +830,18 @@ conclude_reactives <- function(input, output, setup, samples, report_params, ste
     isolate({
       report_params$setup         <- reactiveValuesToList(setup)
       report_params$steps         <- reactiveValuesToList(setup$steps)
-      report_params$step_data     <- step_data
-      report_params$selected      <- samples$selected
+      report_params$step_data     <- reactiveValuesToList(step_data)
       report_params$params        <- samples$params
       report_params$calculations  <- samples$calculations
     })
     
     output$step_progress <- renderUI({
       req(report_params$step_data)
-      steps <- isolate(reactiveValuesToList(report_params$step_data))
+      steps.list <- isolate(reactiveValuesToList(report_params$step_data))
       tagList(
         if (!is.null(report_params$setup$setup_note)) tags$blockquote(report_params$setup$setup_note),
         tags$ol(
-          lapply(steps, function(step) {
+          lapply(steps.list, function(step) {
             tagList(
               tags$li(step$detail),
               tags$p(step$timestamp),
@@ -849,14 +879,14 @@ conclude_reactives <- function(input, output, setup, samples, report_params, ste
     
     output$download_tsv <- downloadHandler(
       filename = function() {
-        req(report_params$sampleset)
-        subject <- isolate(report_params$sampleset)
-        req(setup$file_prefix)
-        paste0("libraries_", subject, "_updated_", setup$file_prefix, ".tsv")
+        req(report_params$setup$sampleset)
+        subject <- isolate(report_params$setup$sampleset)
+        req(report_params$setup$file_prefix)
+        paste0("libraries_", subject, "_updated_", report_params$setup$file_prefix, ".tsv")
       },
       content  = function(file) { 
-        req(report_params$libprep)
-        library_prep <- isolate(report_params$libprep) 
+        req(report_params$calculations)
+        library_prep <- isolate(report_params$calculations) 
         
         write.csv(library_prep, file, row.names = FALSE)
       }
