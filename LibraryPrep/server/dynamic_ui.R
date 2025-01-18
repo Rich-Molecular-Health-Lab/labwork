@@ -37,6 +37,8 @@ render_dynamic_cards <- function(input, output, setup) {
   observeEvent(input$workflow_done, {
     req(setup$workflow)
     if (setup$workflow == "rapid16s") {
+      
+      
       output$card_I.6. <- renderUI(
           card(
             card_header("In a 0.2 ml thin-walled PCR tube, prepare the reaction mix according to the volumes below."),
@@ -49,8 +51,10 @@ render_dynamic_cards <- function(input, output, setup) {
       
       output$card_I.9. <- renderUI(reactableOutput("extract_prep"))
       
-      output$card_I.10. <- renderUI(gt_output("rap16s_cycles"))
- 
+      output$card_I.10. <- renderUI(gt_output("table_I.10."))
+      
+      output$card_II.1. <- renderUI(gt_output("table_II.1."))
+      
       output$card_II.1. <- renderUI(gt_output("part2_reagents_rap16s"))
       
       output$card_II.4. <- renderUI(uiOutput("qc1_result"))
@@ -65,6 +69,8 @@ render_dynamic_cards <- function(input, output, setup) {
         value_box(title = paste0("Volume AMPure XP Beads (in ", ul, "):"),
                   value = uiOutput("beadvol")))
       
+      
+      
       output$card_II.17. <- renderUI(uiOutput("qc2_result"))
       
       output$card_II.18. <- renderUI(
@@ -73,11 +79,8 @@ render_dynamic_cards <- function(input, output, setup) {
           uiOutput("loading_vol"),
           card_footer("This volume will yield a molecular weight of 50 fmol.")))
       
-      output$card_II.19. <- renderUI(
-        render_card(
-          header = "Adapter Reaction Volumes:",
-          reactable_id = "rapadapter_react",
-          footer_text = "Mix by pipetting."))
+      output$card_II.19. <- renderUI(gt_output("table_II.19."))
+      
     }
     else if (setup$workflow == "lsk") {
       

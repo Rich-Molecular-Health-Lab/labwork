@@ -26,7 +26,15 @@ rxn_pcr16s  <- tibble(Reagent = c("DNA Template",
 
 rxn_rapadapt  <- tibble(Reagent = c("Rapid Adapter (RA)", 
                                    "Adapter Buffer (ADB)"), 
-                      Volume_rxn = c(1.5, 3.5))
+                      Volume_rxn = c(1.5, 3.5)) %>%
+  mutate(Volume_units = str_glue("{Volume_rxn}", " uL")) %>%
+  select(
+    Reagent, Volume_units
+  ) %>%
+  gt() %>%
+  fmt_units(columns = "Volume_units") %>%
+    cols_label(Volume_units = "Volume") %>%
+    opt_stylize(color = "blue", style = 1)
 
 rxn_endprep <- tibble(Reagent = c("DNA Template", 
                                   "DNA CS (optional)",
@@ -43,14 +51,24 @@ rxn_fcprime <- tibble(Reagent = c("Flow Cell Flush (FCF)",
                                   "Bovine Serum Albumin (BSA) at 50 mg/ml",
                                   "Flow Cell Tether (FCT)"), 
                       Volume_rxn = c(1170, 5, 30))
+
 rxn_fcload  <- tibble(Reagent = c("DNA Template",
                                   "Sequencing Buffer (SB)",
                                   "Library Beads (LIB) mixed immediately before use"), 
                       Volume_rxn = c(12, 37.5, 25.5))
 
+rxn_flgprime <- tibble(Reagent = c("Flow Cell Flush (FCF)",
+                                  "Flow Cell Tether (FCT)"), 
+                      Volume_rxn = c(1170, 3))
+
+rxn_flgload  <- tibble(Reagent = c("DNA Template",
+                                   "Sequencing Buffer (SB)",
+                                   "Library Beads (LIB) mixed immediately before use"), 
+                       Volume_rxn = c(5, 15, 10))
+
 rxns_rap16s  <- list(pcr16s   = rxn_pcr16s,
-                     fcprime  = rxn_fcprime,
-                     fcload   = rxn_fcload)
+                     fcprime  = rxn_flgprime,
+                     fcload   = rxn_flgload)
 
 rxns_lsk  <- list(endprep     = rxn_endprep,
                   adapter     = rxn_adapter,

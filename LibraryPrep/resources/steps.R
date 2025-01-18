@@ -1,12 +1,11 @@
 # /LibraryPrep/resources/steps.R
 
 part1_rap16s <- list(
-  list("Select enough barcodes for all extracts.",
-       a = "Check the number of barcodes needed using the extract summary table generated from your setup selections.",
-       b = "Break the set of barcodes needed away from the 96-well plate from the kit and return the rest to storage.",
-       c = "Select the barcodes you will be using from the table below. This will match them in order to each of your extract tubes (see table above)."),
-  list("Thaw the desired barcodes at room temperature."),
-  list("Briefly centrifuge barcodes in a microfuge to make sure the liquid is at the bottom of the tubes and place on ice."),
+  list("Prepare the barcodes you selected in the previous steps.",
+       a = "Check the barcode number and plate position in the table below.",
+       b = "Break the set of barcodes needed away from the 96-well plate from the kit and return the rest to storage."),
+  list("Thaw the selected barcodes at room temperature."),
+  list("Briefly centrifuge barcodes in a microfuge to make sure the liquid is at the bottom of the tubes and cooling block or ice."),
   list("Thaw the LongAmp Hot Start Taq 2X Master Mix, spin down briefly, mix well by pipetting and place on ice."),
   list("Prepare the DNA in nuclease-free water according to the values in the table below.",
        a = "Transfer the 'Extract to add' volume into a 1.5 ml Eppendorf DNA LoBind tube.",
@@ -114,18 +113,46 @@ part2_lsk <- list(
   list("Prepare your final library in 12 µl of Elution Buffer (EB) according to the table below.")) %>%
   set_names(paste0("II.", seq_along(.), "."))
 
-part3 <- list(
-  list("Thaw the Sequencing Buffer (SB), Library Beads (LIB) or Library Solution (LIS, if using), Flow Cell Tether (FCT) and Flow Cell Flush (FCF) at room temperature before mixing by vortexing. Then spin down and store on ice."),
+part3.flongle <- list(
+  list("Thaw the Sequencing Buffer (SB) Library Beads (LIB), Flow Cell Tether (FCT) and Flow Cell Flush (FCF) at room temperature before mixing by vortexing. Then spin down and store on ice."),
   list("To prepare the flow cell priming mix with BSA, combine Flow Cell Flush (FCF) and Flow Cell Tether (FCT), as directed below. Mix by pipetting at room temperature."),
-  list("Open the MinION or GridION device lid and slide the flow cell under the clip. Press down firmly on the flow cell to ensure correct thermal and electrical contact."),
+  list("Open the MinION device lid and place the Flongle adapter into the MinION device."),
+  list("Place the flow cell into the Flongle adapter. Press down firmly on the flow cell until you hear a click.",
+       note = "The flow cell should sit evenly and flat inside the adapter, to avoid any bubbles forming inside the
+fluidic compartments."),
+  list("Peel back the seal tab from the Flongle flow cell, up to a point where the sample port is exposed, as follows:",
+       a = "Lift up the seal tab (image below)",
+       b = "Pull the seal tab to open access to the sample port (image below)",
+       c = "Hold the seal tab open by using adhesive on the tab to stick to the MinION lid (image below)"),
+  list("To prime your flow cell with the mix of Flow Cell Flush (FCF) and Flow Cell Tether (FCT) that was prepared earlier , ensure that there is no air gap in the sample port or the pipette tip.",
+       a = "Place the P200 pipette tip inside the sample port and slowly dispense the 120 µl of priming fluid into the Flongle flow cell by twisting the pipette plunger down (this avoids flushing the flow cell too vigorously)."),
+  list("Prepare the Sequencing Mix as follows:",
+       a = "Vortex the vial of Library Beads (LIB).",
+       b = "Note that the beads settle quickly, so immediately prepare the Sequencing Mix (see below) in a fresh 1.5 ml Eppendorf DNA LoBind tube for loading the Flongle"),
+  list("Add the Sequencing Mix to the flow cell as follows:",
+       a = "Ensure that there is no air gap in the sample port or the pipette tip.",
+       b = "Place the P200 tip inside the sample port and slowly dispense the Sequencing Mix into the flow cell by slowly twisting the pipette plunger down to avoid flushing the flow cell too vigorously (image below)."),
+  list("Seal the Flongle flow cell using the adhesive on the seal tab, as follows:",
+       a = "Stick the transparent adhesive tape to the sample port.",
+       b = "Replace the top (Wheel icon section) of the seal tab to its original position.")) %>%
+  set_names(paste0("III.", seq_along(.), "."))
+
+part3 <- list(
+  list("Thaw the Sequencing Buffer (SB) Library Beads (LIB), Flow Cell Tether (FCT) and Flow Cell Flush (FCF) at room temperature before mixing by vortexing. Then spin down and store on ice."),
+  list("To prepare the flow cell priming mix with BSA, combine Flow Cell Flush (FCF) and Flow Cell Tether (FCT), as follows:",
+       a = "For kits with the old single-use tube format, add 5 µl Bovine Serum Albumin (BSA) at 50 mg/ml and 30 µl Flow Cell Tether (FCT) directly to a tube of Flow Cell Flush (FCF).",
+       b = "For kits with the newer bottle format, follow the volumes shown in the table below.",
+       c = "For either format, mix by pipetting at room temperature."),
+  list("Open the MinION device lid and slide the flow cell under the clip. Press down firmly on the flow cell to ensure correct thermal and electrical contact."),
   list("Slide the flow cell priming port cover clockwise to open the priming port."),
   list("After opening the priming port, check for a small air bubble under the cover. Draw back a small volume to remove any bubbles.",
        a = "Set a P1000 pipette to 200 µl",
        b = "Insert the tip into the priming port",
-       c = "Turn the wheel until the dial shows 220-230 µl, to draw back 20-30 µl, or until you can see a small volume of buffer entering the pipette tip"),
+       c = "Turn the wheel until the dial shows 220-230 µl, to draw back 20-30 µl, or until you can see a small volume of buffer entering the pipette tip",
+       d = "Visually check that there is continuous buffer from the priming port across the sensor array."),
   list("Load 800 µl of the priming mix into the flow cell via the priming port, avoiding the introduction of air bubbles. Wait for five minutes. During this time, prepare the library for loading by following the steps below."),
   list("Thoroughly mix the contents of the Library Beads (LIB) by pipetting."),
-  list("In a new 1.5 ml Eppendorf DNA LoBind tube, prepare the flow cell reaction mix."),
+  list("In a new 1.5 ml Eppendorf DNA LoBind tube, prepare the flow cell reaction mix as follows:"),
   list("Complete the flow cell priming.",
        a = "Gently lift the SpotON sample port cover to make the SpotON sample port accessible.",
        b = "Load 200 µl of the priming mix into the flow cell priming port (not the SpotON sample port), avoiding the introduction of air bubbles."),
@@ -198,6 +225,6 @@ part3.recs <- accordion_panel(
 )
 
 steps <- list(
-  rapid16s = c(part1_rap16s, part2_rap16s, part3),
+  rapid16s = c(part1_rap16s, part2_rap16s, part3.flongle),
   lsk      = c(part1_lsk, part2_lsk, part3)
 )
