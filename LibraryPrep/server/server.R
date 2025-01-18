@@ -4,7 +4,7 @@ server <- function(input, output, session) {
   
   session$setCurrentTheme(bs_theme(bootswatch = "lumen"))
   step_data  <- reactiveValues()
-
+  
   setup <- reactiveValues(
     steps              = list(),
     workflow           = character(),
@@ -14,6 +14,7 @@ server <- function(input, output, session) {
     LibPrepBy          = character(),
     LibPrepAssist      = character(),
     FlowCellType       = character(),
+    FragBuffer         = character(),
     pores_needed       = numeric(),
     FlowCellSerial     = character(),
     SeqDevice          = character(),
@@ -22,11 +23,13 @@ server <- function(input, output, session) {
     Length             = numeric(),
     InputMassStart     = numeric(),
     TemplateVolPrep    = numeric(),
+    concentrations     = list(),
     Conc_QC2           = numeric(),
     LibraryLoadingVol  = numeric(),
     LibraryWaterVol    = numeric(),
     InputMassFinal     = numeric(),
     TemplateVolLoading = numeric(),
+    TotalPoolVol       = numeric(),
     beadvol            = numeric(),
     n_controls         = numeric(),
     n_extracts         = numeric(),
@@ -52,8 +55,7 @@ server <- function(input, output, session) {
     setup_note         = character(),
     conclusion_note    = character(),
     PoolSamples        = character(),
-    rxns               = list()
-  )
+    rxns               = list(rapid16s = rxns_rap16s, lsk = rxns_lsk))
   
   samples    <- reactiveValues(
     compilation   = tibble(

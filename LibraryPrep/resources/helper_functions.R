@@ -35,40 +35,8 @@ calculate_mass_final <- function(fragment_type, Length, strands) {
   )
 }
 
-
-QC1_input <- function(LibraryTube, ExtractConc) {
-  div(
-    style = "display: flex; align-items: center; margin-bottom: 10px;",  
-    div(
-      style = "margin-right: 10px;",  
-      numericInput(
-        inputId = paste0("QC1_", LibraryTube),
-        label   = paste0("Tube ", LibraryTube),
-        value   = ExtractConc,
-        min     = 0,
-        max     = 1000)),
-    checkboxInput(
-      inputId = paste0("QC1_check_", LibraryTube),
-      label = NULL  ))
-}
-
-QC2_input <- function(LibraryTube, Conc_QC1) {
-  div(
-    style = "display: flex; align-items: center; margin-bottom: 10px;",  
-    div(
-      style = "margin-right: 10px;",  
-      numericInput(
-        inputId = paste0("QC2_", LibraryTube),
-        label   = paste0("Tube ", LibraryTube),
-        value   = Conc_QC1,
-        min     = 0,
-        max     = 1000)),
-    checkboxInput(
-      inputId = paste0("QC2_check_", LibraryTube),
-      label = NULL  ))
-}
-
 pooling_calculations <- function(Conc_QC1, 
+                                 LibraryTube, 
                                  max_pool_volume   = 600, 
                                  min_pool_volume   = 37.5, 
                                  per_sample_volume = 44) {
@@ -79,25 +47,35 @@ pooling_calculations <- function(Conc_QC1,
     stop("All concentrations must be positive.")
   }
   
+  # Function to calculate scaled volumes
   scale_volumes <- function(pool_volume) {
     relative_volumes <- (1 / Conc_QC1) / sum(1 / Conc_QC1)
     volumes          <- relative_volumes * pool_volume
     return(volumes)
   }
   
+  # Start with max pool volume and calculate initial volumes
   pool_volume <- max_pool_volume
   volumes <- scale_volumes(pool_volume)
   
+  # Adjust pool volume if any sample exceeds per_sample_volume
   while (any(volumes > per_sample_volume) && pool_volume > min_pool_volume) {
     pool_volume <- pool_volume - 1
     volumes <- scale_volumes(pool_volume)
   }
   
+  # If volumes still exceed per_sample_volume, scale down proportionally
   if (any(volumes > per_sample_volume)) {
     warning("Some samples exceed the available volume even at the minimum pool volume.")
     scale_factor <- per_sample_volume / max(volumes)
     volumes <- volumes * scale_factor
   }
   
-  return(list(SampVolPool = volumes, TotalPoolVol = pool_volume))
+  # Return named list of sample volumes and total pool volume
+  result <- list(
+    SampVolPool = set_names(volumes, LibraryTube),
+    TotalPoolVol = pool_volume
+  )
+  
+  return(result)
 }

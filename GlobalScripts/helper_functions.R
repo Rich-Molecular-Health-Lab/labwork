@@ -1,7 +1,5 @@
 # /GlobalScripts/helper_functions.R
 
-source(global$global_helpers)
-
 make_steps <- function(nested_steps) {
   imap(nested_steps, ~ {
     step_name    <- .y
@@ -68,22 +66,12 @@ ngul        <- " \u006E\u0067\u002F\u00B5\u004C"
 ul          <- " \u00B5\u004C"
 
 rxn_vols <- function(rxn, n_rxns) {
-  rxn %>% mutate(Volume_total = Volume_rxn * n_rxns)
-}
-
-read_extracts <- function(path) {
-  tibble <- read.table(path, sep = "\t", header = TRUE) %>% 
-    mutate(across(ends_with("Date"), ~ ymd(.)))
-  
-  return(tibble)
-}
-
-
-read_libraries <- function(path) {
-  tibble <- read.table(path, sep = "\t", header = TRUE) %>% 
-    mutate(across(ends_with("Date"), ~ ymd(.)))
-  
-  return(tibble)
+  rxn %>% mutate(N_rxns       = n_rxns,
+                 Volume_total = Volume_rxn * n_rxns) %>%
+    select(Reagent,
+           Volume_rxn,
+           N_rxns,
+           Volume_total)
 }
 
 load_data <- function(path) {
@@ -124,38 +112,11 @@ timestamp <- function(prefix, suffix) {
   paste0(prefix, paste(format(Sys.time(), "%Y-%m-%d %H:%M:%S")), suffix)
 }
 
-render_reactable <- function(output, outputId, data, included_columns, ...) {
-  output[[outputId]] <- renderReactable({
-    req(data())  
-    if (nrow(data()) == 0) {
-      return(div("No data available to display."))
-    }
-    reactable(
-      data(),
-      columns             = included_columns,
-      showPageSizeOptions = TRUE, 
-      highlight           = TRUE, 
-      compact             = TRUE,
-      ...
-    )
-  })
-}
-
 render_image <- function(output, outputId, filename, base_path, height = "75%") {
   full_path <- paste0(path$resources, "images/", filename)
   output[[outputId]] <- renderImage({
     list(src = full_path, height = height)
   }, deleteFile = FALSE)
-}
-
-render_card <- function(header, reactable_id, footer_text, checklist = TRUE) {
-  card(
-    card_header(header),
-    reactableOutput(reactable_id),
-    card_footer(
-      footer_text,
-      if (checklist) uiOutput("checklist_tubes") else NULL
-    ))
 }
 
 render_illustration <- function(img) {

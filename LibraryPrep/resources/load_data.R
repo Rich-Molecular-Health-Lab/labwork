@@ -20,60 +20,54 @@ barcodes.24_wells <- barcodes.24 %>%
   ) %>%
   mutate(BarcodePos = paste0(row, column)) 
 
-rxn_pcr16s  <- tibble(Reagent = c("DNA Template", 
+rap16s_pcr  <- tibble(Reagent = c("DNA Template", 
                                   "LongAmp Hot Start Taq 2X Master Mix"), 
                       Volume_rxn = c(15, 25))
 
-rxn_rapadapt  <- tibble(Reagent = c("Rapid Adapter (RA)", 
-                                   "Adapter Buffer (ADB)"), 
-                      Volume_rxn = c(1.5, 3.5)) %>%
+
+lsk_endprep <- tibble(Reagent = c("DNA Template", 
+                                  "DNA CS (optional)",
+                                  "NEBNext FFPE DNA Repair Buffer v2",
+                                  "NEBNext FFPE DNA Repair Mix ",
+                                  "Ultra II End-prep Enzyme Mix"), 
+                      Volume_rxn = c(47, 1, 7, 2, 3))
+lsk_adapter <- tibble(Reagent = c("DNA Template",
+                                  "Ligation Adapter (LA)",
+                                  "Ligation Buffer (LNB)",
+                                  "Salt-T4® DNA Ligase"), 
+                      Volume_rxn = c(60, 5, 25, 10))
+minion_prime <- tibble(Reagent = c("Flow Cell Flush (FCF)",
+                                  "Bovine Serum Albumin (BSA) at 50 mg/ml",
+                                  "Flow Cell Tether (FCT)"), 
+                      Volume_rxn = c(1170, 5, 30))
+
+minion_load  <- tibble(Reagent = c("DNA Template",
+                                  "Sequencing Buffer (SB)",
+                                  "Library Beads (LIB) mixed immediately before use"), 
+                      Volume_rxn = c(12, 37.5, 25.5))
+
+flongle_prime <- tibble(Reagent = c("Flow Cell Flush (FCF)",
+                                  "Flow Cell Tether (FCT)"), 
+                      Volume_rxn = c(1170, 3))
+
+flongle_load  <- tibble(Reagent = c("DNA Template",
+                                   "Sequencing Buffer (SB)",
+                                   "Library Beads (LIB) mixed immediately before use"), 
+                       Volume_rxn = c(5, 15, 10))
+
+
+rap16s_adapt  <- tibble(Reagent = c("Rapid Adapter (RA)", 
+                                    "Adapter Buffer (ADB)"), 
+                        Volume_rxn = c(1.5, 3.5)) %>%
   mutate(Volume_units = str_glue("{Volume_rxn}", " uL")) %>%
   select(
     Reagent, Volume_units
   ) %>%
   gt() %>%
   fmt_units(columns = "Volume_units") %>%
-    cols_label(Volume_units = "Volume") %>%
-    opt_stylize(color = "blue", style = 1)
+  cols_label(Volume_units = "Volume") %>%
+  opt_stylize(color = "blue", style = 1)
 
-rxn_endprep <- tibble(Reagent = c("DNA Template", 
-                                  "DNA CS (optional)",
-                                  "NEBNext FFPE DNA Repair Buffer v2",
-                                  "NEBNext FFPE DNA Repair Mix ",
-                                  "Ultra II End-prep Enzyme Mix"), 
-                      Volume_rxn = c(47, 1, 7, 2, 3))
-rxn_adapter <- tibble(Reagent = c("DNA Template",
-                                  "Ligation Adapter (LA)",
-                                  "Ligation Buffer (LNB)",
-                                  "Salt-T4® DNA Ligase"), 
-                      Volume_rxn = c(60, 5, 25, 10))
-rxn_fcprime <- tibble(Reagent = c("Flow Cell Flush (FCF)",
-                                  "Bovine Serum Albumin (BSA) at 50 mg/ml",
-                                  "Flow Cell Tether (FCT)"), 
-                      Volume_rxn = c(1170, 5, 30))
-
-rxn_fcload  <- tibble(Reagent = c("DNA Template",
-                                  "Sequencing Buffer (SB)",
-                                  "Library Beads (LIB) mixed immediately before use"), 
-                      Volume_rxn = c(12, 37.5, 25.5))
-
-rxn_flgprime <- tibble(Reagent = c("Flow Cell Flush (FCF)",
-                                  "Flow Cell Tether (FCT)"), 
-                      Volume_rxn = c(1170, 3))
-
-rxn_flgload  <- tibble(Reagent = c("DNA Template",
-                                   "Sequencing Buffer (SB)",
-                                   "Library Beads (LIB) mixed immediately before use"), 
-                       Volume_rxn = c(5, 15, 10))
-
-rxns_rap16s  <- list(pcr16s   = rxn_pcr16s,
-                     fcprime  = rxn_flgprime,
-                     fcload   = rxn_flgload)
-
-rxns_lsk  <- list(endprep     = rxn_endprep,
-                  adapter     = rxn_adapter,
-                  fcprime     = rxn_fcprime,
-                  fcload      = rxn_fcload)
 
 part2_reagents_rap16s <- tibble(
   Reagent = c("Rapid Adapter (RA)",
@@ -142,4 +136,27 @@ rap16s_cycles <- tibble(
   ) %>%
   opt_stylize(color = "blue", style = 1)
 
+flg_prime <- flongle_prime %>%
+  mutate(Volume_units = str_glue("{Volume_rxn}", " uL")) %>%
+  select(
+    Reagent, Volume_units
+  ) %>%
+  gt() %>%
+  fmt_units(columns = "Volume_units") %>%
+  cols_label(Volume_units = "Volume") %>%
+  opt_stylize(color = "blue", style = 1)
+
+mn_prime <- minion_prime %>%
+  mutate(Volume_units = str_glue("{Volume_rxn}", " uL")) %>%
+  select(
+    Reagent, Volume_units
+  ) %>%
+  gt() %>%
+  fmt_units(columns = "Volume_units") %>%
+  cols_label(Volume_units = "Volume") %>%
+  opt_stylize(color = "blue", style = 1)
+
+
+rxns_rap16s  <- list(rap16s_pcr, flongle_load)
+rxns_lsk     <- list(lsk_endprep, lsk_adapter, minion_load)
 

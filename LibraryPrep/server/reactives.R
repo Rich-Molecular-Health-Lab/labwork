@@ -114,10 +114,6 @@ workflow_reactives <- function(input, output, setup, samples) {
   })
   
     
-    output$samples_verify <- renderText({
-      print(names(tbl))
-    })
-    
   
   observeEvent(input$basics_done, {
     output$samples       <- renderReactable({
@@ -356,89 +352,6 @@ samples_reactives <- function(input, output, setup, samples, report_params) {
       
       req(combined_tbl)
       report_params$rxns <- combined_tbl
-      
-    }
-    
-  })
-  
-  
-}
-
-barcode_reactives <- function(input, output, setup, samples) {
-  
-  observe({
-    req(setup$workflow)
-    if (setup$workflow == "rapid16s") {
-      
-      observeEvent(getReactableState("barcodes", "selected"), {
-        
-        selected <- getReactableState("barcodes", "selected")
-        
-        req(setup$barcodes)
-        selected_columns     <- setup$barcodes[selected, ]
-        
-        req(selected_columns)
-        setup$barcode_wells <- selected_columns %>%
-          pivot_longer(
-            cols      = !column,
-            names_to  = "row",
-            values_to = "Barcode"
-          ) %>%
-          mutate(BarcodePos = paste0(row, column))
-        
-      })
-      
-      observeEvent(input$barcode_cols_confirm, {
-        nav_select("barcode_tabs", "barcode_wells")
-        
-        output$barcode_wells  <- renderReactable({
-          reactable(
-            isolate(setup$barcode_wells),
-            columns             = cols_barcode_wells,
-            theme               = format_select,
-            selection           = "multiple", 
-            onClick             = "select", 
-            highlight           = TRUE)
-        })  
-      })
-      
-      observeEvent(getReactableState("barcode_wells", "selected"), {
-        selected           <- getReactableState("barcode_wells", "selected")
-        
-        req(setup$barcode_wells)
-        selected_wells     <- setup$barcode_wells[selected, ] %>% distinct()
-        
-        req(selected_wells, setup$n_rxns)
-        output$barcode_footer <- renderText({
-          paste0(nrow(selected_wells), 
-                 " barcodes selected out of ", 
-                 setup$n_rxns, 
-                 " needed")
-        })
-      
-        req(selected_wells)
-        setup$barcodes_confirmed <- selected_wells
-        
-        })
-        
-      
-      observeEvent(input$barcode_wells_confirm, {
-        req(setup$barcodes_confirmed)
-        setup$barcodes_confirmed <- setup$barcodes_confirmed %>%
-          select(Barcode,
-                 BarcodePos) %>%
-          mutate(LibraryTube = row_number())
-        
-        req(setup$barcodes_confirmed$LibraryTube)
-        output$barcodes_confirmed <- renderReactable({
-          reactable(
-            setup$barcodes_confirmed,
-            columns = cols_barcodes_confirmed)
-        
-        })
-        
-        accordion_panel_open("barcodes_selected", "barcodes_confirmed")
-      })
       
     }
     

@@ -14,7 +14,10 @@ workflow_tab <- function() {
                               selectInput("flowcell_type", "Flow Cell Type", choices = c("Flongle", "MinION", "PromethION")),
                               textInput("flowcell_num", "Flow Cell Serial Num", value = "SERIAL"),
                               selectInput("minion", "Device Name", choices = c("Angel", "Spike")),
-                              uiOutput("flowcell_check")),
+                              value_box(title = paste0("Minimum Pores Needed for Flow Cell:"),
+                                        value = textOutput("flowcell_check"),
+                                        "Optional: Use this value to complete a flow cell check and assess the number of pores available before preparing the library."
+                              )),
                    actionButton("basics_done", "Next: Select Samples/Extracts")
                )
      
@@ -39,7 +42,7 @@ samples_tab <- function() {
                     accordion_panel(
                       title = "Review Selected Samples",
                       value = "review_samples",
-                      reactableOutput("review_samples")
+                      reactableOutput("selected")
                     )
                   ),
                     actionButton("samples_done", "Click to proceed")

@@ -38,52 +38,44 @@ render_dynamic_cards <- function(input, output, setup) {
     req(setup$workflow)
     if (setup$workflow == "rapid16s") {
       
-      output$card_I.1. <- renderUI(reactableOutput("rap16s_I.1."))
-      output$card_I.5. <- renderUI(reactableOutput("extract_prep"))
-      output$card_I.6. <- renderUI(
-          card(
-            card_header("In a 0.2 ml thin-walled PCR tube, prepare the reaction mix according to the volumes below."),
-            reactableOutput("rap16s_I.6."),
-            card_footer("Note: If the amount of input material is altered, the number of PCR cycles may need to be adjusted to produce the same yield.")
-          )
-      )
-      
-      output$card_I.8. <- renderUI(uiOutput("barcode_tubes"))
-      
-      output$card_I.9. <- renderUI(reactableOutput("extract_prep"))
-      
-      output$card_I.10. <- renderUI(gt_output("table_I.10."))
-      
-      output$card_II.1. <- renderUI(gt_output("table_II.1."))
-      
-      output$card_II.1. <- renderUI(gt_output("part2_reagents_rap16s"))
-      
-      output$card_II.4. <- renderUI(uiOutput("qc1_result"))
-      
-      output$card_II.5. <- renderUI(
-        render_card(
-          header = "Use the table below to ensure equimolar ratios based on the QC results from the previous step",
-          reactable_id = "pooling_ratios",
-          footer_text = "Samples may vary in concentration following the barcoded PCR, therefore the volume of each barcoded sample added to the pool will be different."))
-      
-      output$card_II.7. <- renderUI(
-        value_box(title = paste0("Volume AMPure XP Beads (in ", ul, "):"),
-                  value = uiOutput("beadvol")))
-      
-      
-      
-      output$card_II.17. <- renderUI(uiOutput("qc2_result"))
-      
-      output$card_II.18. <- renderUI(
-        card(
-          card_header("Use the table below to prepare the proper library concentration based on the QC results from the previous step"),
-          uiOutput("loading_vol"),
-          card_footer("This volume will yield a molecular weight of 50 fmol.")))
-      
-      output$card_II.19. <- renderUI(gt_output("table_II.19."))
-      
+      output$card_I.1.   <- renderUI({reactableOutput("rap16s_I.1.")})
+      output$card_I.5.   <- renderUI({reactableOutput("extract_prep")})
+      output$card_I.6.   <- renderUI({reactableOutput("rap16s_I.6.")})
+      output$card_I.7.   <- renderUI({reactableOutput("rap16s_I.7.")})
+      output$card_I.9.   <- renderUI({gt_output("rap16s_I.9.")})
+      output$card_II.1.  <- renderUI({gt_output("rap16s_II.1.")})
+      output$card_II.4.  <- renderUI({
+        card(uiOutput("qc1_inputs"), 
+             card_footer(actionButton("confirm_qc1", "Click to confirm values")))
+      })
+      output$card_II.5.  <- renderUI({reactableOutput("rap16s_II.5.")})
+      output$card_II.7.  <- renderUI({
+        value_box(
+          title = paste0("Volume AMPure XP Beads (in ", ul, "):"),
+          value = textOutput("beadvol")
+        )
+      })
+      output$card_II.17. <- renderUI({
+        card(uiOutput("qc2_inputs"), 
+             card_footer(actionButton("confirm_qc2", "Click to confirm values")))
+        })
+      output$card_II.18. <- renderUI({
+        value_box(
+          title = paste0("To reach total volume of 15 ", ul),
+          value = textOutput("LibDilute")
+        )
+      })
+      output$card_II.19. <- renderUI(gt_output("rap16s_II.19."))
+      output$card_III.2. <- renderUI(gt_output("flg_III.2."))
     }
     else if (setup$workflow == "lsk") {
+      
+      output$card_II.4. <- renderUI({
+        value_box(
+        title = paste0("Wash the beads by adding 250 ", ul, "of the:"),
+        value = textOutput("fragbuffer")
+          )
+      })
       
       output$card_I.3. <- renderUI(reactableOutput("extract_prep"))
       
@@ -113,85 +105,6 @@ render_dynamic_cards <- function(input, output, setup) {
   
 }
 
-switch_tabs <- function(input, setup) {
-  nav_select("setup.nav", "basics")
-  nav_hide("setup.nav", "samples")
-  nav_hide("setup.nav", "barcode_cols")
-  nav_hide("setup.nav", "barcode_wells")
-  nav_hide("setup.nav", "lsk_input")
-  nav_hide("setup.nav", "setup")
-  nav_hide("setup.nav", "conclude")
-  nav_hide("main.nav" , "part1" )
-  nav_hide("main.nav" , "part2" )
-  nav_hide("main.nav" , "part3" )
-  
-  observeEvent(input$basics_done, {
-    nav_show("setup.nav", "samples", select = TRUE)
-    nav_hide("setup.nav", "basics")
-  })
-  
-  observeEvent(input$confirm_samples, {
-    accordion_panel_open("samples_selected", "review_samples")
-  })
-  
-  observeEvent(input$samples_done, {
-    nav_hide("setup.nav", "samples")
-    req(setup$workflow)
-    if (setup$workflow == "rapid16s") {
-      nav_show("setup.nav", "barcode_cols", select = TRUE)
-      nav_remove("setup.nav", "lsk_input")
-    } else if (setup$workflow == "lsk") {
-      nav_select("setup.nav", "lsk_input", select = TRUE)
-      nav_remove("setup.nav", "barcode_cols")
-      nav_remove("setup.nav", "barcode_wells")
-    }
-  })
-  
-  observeEvent(input$barcode_cols_confirm, {
-    nav_show("setup.nav", "barcode_wells", select = TRUE)
-  })
-  observeEvent(input$barcode_wells_confirm, {
-    accordion_panel_open("barcodes_selected", "barcodes_confirmed")
-  })
-  
-  observeEvent(input$dynamic_done, {
-    nav_show("setup.nav", "setup", select = TRUE)
-    req(setup$workflow)
-    if (setup$workflow == "rapid16s") {
-      nav_hide("setup.nav", "barcode_cols")
-      nav_hide("setup.nav", "barcode_wells")
-    } else if (setup$workflow == "lsk") {
-      nav_hide("setup.nav", "lsk_input")
-    }
-  })
-  
-  observeEvent(input$setup_done, {
-    nav_hide("setup.nav", "setup")
-    nav_show( "main.nav" , "part3", select = FALSE )
-    nav_show( "main.nav" , "part2", select = FALSE )
-    nav_show( "main.nav" , "part1", select = TRUE)
-    nav_select( "main.nav" , "part1")
-  }, ignoreInit = FALSE)
-  
-  observeEvent(input$part1_done, {
-    nav_select( "main.nav" , "part2")
-  }, ignoreInit = FALSE)
-  
-  observeEvent(input$part2_done, {
-    nav_select( "main.nav" , "part3")
-  }, ignoreInit = FALSE)
-  
-  
-  observeEvent(input$part3_done, {
-    nav_hide("main.nav" , "part1" )
-    nav_hide("main.nav" , "part2" )
-    nav_hide("main.nav" , "part3" )
-    nav_show("setup.nav", "conclude")
-    nav_select( "setup.nav" , "conclude" )
-  })
-  
-}
-
 
 render_protocol_outputs <- function(output, setup) {
   observe({
@@ -206,17 +119,6 @@ render_protocol_outputs <- function(output, setup) {
   })
 }
 
-link_tabs <- function(input) {
-  
-  tab.link <- function(tab1, tab2, input, nav_id = "main.nav") {
-    observeEvent(input[[paste0(tab1, "_done")]], {
-      req(nav_id, tab2) 
-      nav_select(nav_id, tab2)
-    })
-  }
-  tab.link("part1" , "part2"  , input)
-  tab.link("part2" , "part3"  , input)
-}
 
 dynamic_protocol <- function(input, output, setup) {
   observe({
