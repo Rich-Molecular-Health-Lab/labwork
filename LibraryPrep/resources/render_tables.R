@@ -2,7 +2,6 @@
 
 output$card_I.1. <- renderUI(reactableOutput("table_I.1."))
 
-output$card_I.5. <- renderUI(reactableOutput("I.5.extract_prep"))
 
 output$card_I.6. <- renderUI(reactableOutput("I.6.16sPCR"))
 
@@ -21,10 +20,19 @@ output$card_II.17. <- renderUI("II.17.qc2_values")
 table_I.1.   <- renderReactable({
   reactable(
     isolate(samples$calculations),
-    columns = cols_I.1.,
+    columns = cols_I.1.
     
   )
 })
+
+table_I.5.   <- renderReactable({
+  reactable(
+    isolate(samples$calculations),
+    columns = cols_I.5.
+    
+  )
+})
+
 
 table_I.10.  <- render_gt(expr = rap16s_cycles)
 table_II.1.  <- render_gt(expr = part2_reagents_rap16s)

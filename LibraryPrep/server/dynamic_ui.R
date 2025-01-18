@@ -38,11 +38,12 @@ render_dynamic_cards <- function(input, output, setup) {
     req(setup$workflow)
     if (setup$workflow == "rapid16s") {
       
-      
+      output$card_I.1. <- renderUI(reactableOutput("rap16s_I.1."))
+      output$card_I.5. <- renderUI(reactableOutput("extract_prep"))
       output$card_I.6. <- renderUI(
           card(
             card_header("In a 0.2 ml thin-walled PCR tube, prepare the reaction mix according to the volumes below."),
-            reactableOutput("pcr_react"),
+            reactableOutput("rap16s_I.6."),
             card_footer("Note: If the amount of input material is altered, the number of PCR cycles may need to be adjusted to produce the same yield.")
           )
       )

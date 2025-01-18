@@ -1,39 +1,46 @@
 {
     "sourceWindowGeometry": {
-        "w1ilzq1z5pkiw": {
-            "ordinal": 3,
-            "x": 468,
-            "y": 38,
-            "width": 800,
-            "height": 744
-        },
         "wpg1y6rq4p7am": {
             "ordinal": 4,
-            "x": 34,
-            "y": 55,
+            "x": 221,
+            "y": 87,
             "width": 800,
             "height": 716
         },
-        "w1ptfaqvq79ss": {
-            "ordinal": 6,
-            "x": 771,
-            "y": 103,
+        "wx0vzl2cis7rx": {
+            "ordinal": 9,
+            "x": 671,
+            "y": 76,
             "width": 800,
-            "height": 660
+            "height": 772
         },
-        "w791lssjlk00x": {
-            "ordinal": 7,
-            "x": 120,
+        "wfh2dogu8jx4t": {
+            "ordinal": 10,
+            "x": 9,
             "y": 38,
-            "width": 800,
-            "height": 632
+            "width": 793,
+            "height": 916
         },
-        "wxau5pju83126": {
-            "ordinal": 8,
-            "x": 38,
-            "y": 38,
-            "width": 1302,
+        "w3773lfezmboc": {
+            "ordinal": 11,
+            "x": 769,
+            "y": 88,
+            "width": 793,
             "height": 888
+        },
+        "wvuwls8wwg072": {
+            "ordinal": 13,
+            "x": 483,
+            "y": 59,
+            "width": 793,
+            "height": 832
+        },
+        "ww7cdghoe4zh9": {
+            "ordinal": 14,
+            "x": 77,
+            "y": 45,
+            "width": 793,
+            "height": 804
         }
     }
 }
