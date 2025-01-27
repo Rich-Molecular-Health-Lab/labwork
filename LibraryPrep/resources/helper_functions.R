@@ -1,6 +1,7 @@
 # /LibraryPrep/server/helper_functions.R
 
 source(global$global_helpers)
+source(global$data_functions)
 
 calculate_length <- function(fragment_type) {
   case_when(
@@ -34,6 +35,89 @@ calculate_mass_final <- function(fragment_type, Length, strands) {
     TRUE ~ 300
   )
 }
+
+# Helper function to create numeric inputs
+create_numeric_inputs <- function(concentrations, prefix, label_prefix) {
+  imap(concentrations, ~ {
+    numericInput(
+      inputId = paste0(prefix      , "_", .y),
+      label   = paste0(label_prefix, " ", .y),
+      min     = 0,
+      max     = 1000
+    )
+  })
+}
+
+# Helper Function: Update samples after QC1
+update_samples_after_qc1 <- function(input, setup, samples) {
+  qc1_result <- isolate({
+    list_rbind(setup$concentrations, names_to = "LibraryTube") %>%
+      select(LibraryTube, Conc_QC1 = setup$concentrations)
+  })
+  req(qc1_result, samples$calculations)
+  
+  samples$calculations <- samples$calculations %>%
+    select(-Conc_QC1) %>%
+    left_join(qc1_result, by = join_by(LibraryTube)) %>%
+    mutate(TemplateVolLoading = setup$TemplateVolLoading)
+  
+  req(setup$workflow)
+  if (setup$workflow == "rapid16s") {
+    req(samples$calculations)
+    pool_results <- pooling_calculations(
+      Conc_QC1 = samples$calculations$Conc_QC1,
+      LibraryTube = samples$calculations$LibraryTube
+    )
+    
+    req(pool_results$TotalPoolVol)
+    setup$TotalPoolVol <- as.numeric(pool_results$TotalPoolVol)
+    setup$beadvol <- setup$TotalPoolVol * 6
+    
+    req(pool_results$SampVolPool)
+    pool_vols <- list_rbind(pool_results$SampVolPool, names_to = "LibraryTube")
+    
+    req(pool_vols, samples$calculations, setup$beadvol, setup$TotalPoolVol)
+    samples$calculations <- samples$calculations %>%
+      select(-SampVolPool) %>%
+      left_join(pool_vols, by = join_by(LibraryTube)) %>%
+      mutate(TotalPoolVol = setup$TotalPoolVol, BeadVol = setup$beadvol)
+  } else if (setup$workflow == "lsk") {
+    req(samples$calculations, setup$beadvol, setup$TotalPoolVol)
+    samples$calculations <- samples$calculations %>%
+      mutate(TotalPoolVol = setup$TotalPoolVol, BeadVol = setup$beadvol)
+  }
+}
+
+# Helper Function: Update samples after QC2
+update_samples_after_qc2 <- function(input, setup, samples) {
+  req(setup$workflow, input$Conc_QC2)
+  if (setup$workflow == "rapid16s") {
+    req(setup$Conc_QC2, setup$InputMassFinal)
+    setup$LibraryLoadingVol <- setup$InputMassFinal / setup$Conc_QC2
+    setup$LibraryWaterVol <- setup$TemplateVolLoading - setup$LibraryLoadingVol
+    
+    samples$calculations <- samples$calculations %>%
+      mutate(Conc_QC2 = setup$Conc_QC2,
+             InputMassFinal = setup$InputMassFinal,
+             LibraryLoadingVol = setup$LibraryLoadingVol,
+             TemplateVolLoading = setup$TemplateVolLoading,
+             LibraryWaterVol = setup$LibraryWaterVol)
+  } else if (setup$workflow == "lsk") {
+    qc2_result <- isolate({
+      list_rbind(setup$concentrations, names_to = "LibraryTube") %>%
+        select(LibraryTube, Conc_QC2 = setup$concentrations)
+    })
+    req(samples$calculations, qc2_result, setup$InputMassFinal, setup$TemplateVolLoading)
+    samples$calculations <- samples$calculations %>%
+      select(-Conc_QC2) %>%
+      left_join(qc2_result, by = join_by(LibraryTube)) %>%
+      mutate(InputMassFinal = setup$InputMassFinal,
+             TemplateVolLoading = setup$TemplateVolLoading,
+             LibraryLoadingVol = InputMassFinal / Conc_QC2,
+             LibraryWaterVol = TemplateVolLoading - LibraryLoadingVol)
+  }
+}
+
 
 pooling_calculations <- function(Conc_QC1, 
                                  LibraryTube, 

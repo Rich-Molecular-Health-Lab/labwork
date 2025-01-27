@@ -1,10 +1,9 @@
 
-navigate <- function() {
+navigate <- function(input, setup) {
   
   nav_select("setup.nav", "basics")
   nav_hide("setup.nav", "samples")
-  nav_hide("setup.nav", "barcode_cols")
-  nav_hide("setup.nav", "barcode_wells")
+  nav_hide("setup.nav", "barcodes")
   nav_hide("setup.nav", "lsk_input")
   nav_hide("setup.nav", "setup")
   nav_hide("setup.nav", "conclude")
@@ -25,30 +24,28 @@ navigate <- function() {
     nav_hide("setup.nav", "samples")
     req(setup$workflow)
     if (setup$workflow == "rapid16s") {
-      nav_show("setup.nav", "barcode_cols", select = TRUE)
+      nav_show("setup.nav", "barcodes", select = TRUE)
       nav_remove("setup.nav", "lsk_input")
     } else if (setup$workflow == "lsk") {
       nav_select("setup.nav", "lsk_input", select = TRUE)
-      nav_remove("setup.nav", "barcode_cols")
-      nav_remove("setup.nav", "barcode_wells")
+      nav_remove("setup.nav", "barcodes")
     }
   })
   
   observeEvent(input$barcode_cols_confirm, {
-    nav_show("setup.nav", "barcode_wells", select = TRUE)
-    nav_select("barcode_tabs", "barcode_wells")
+    accordion_panel_open("barcode_tables", "barcodes_b")
+    
   })
   
   observeEvent(input$barcode_wells_confirm, {
-    accordion_panel_open("barcodes_selected", "barcodes_confirmed")
+    accordion_panel_open("barcode_tables", "barcodes_c")
   })
   
   observeEvent(input$dynamic_done, {
     nav_show("setup.nav", "setup", select = TRUE)
     req(setup$workflow)
     if (setup$workflow == "rapid16s") {
-      nav_hide("setup.nav", "barcode_cols")
-      nav_hide("setup.nav", "barcode_wells")
+      nav_hide("setup.nav", "barcodes")
     } else if (setup$workflow == "lsk") {
       nav_hide("setup.nav", "lsk_input")
     }
@@ -70,7 +67,7 @@ navigate <- function() {
   }
   tab.link("part1" , "part2"  , input)
   tab.link("part2" , "part3"  , input)
-
+  
   observeEvent(input$part3_done, {
     nav_hide("main.nav" , "part1" )
     nav_hide("main.nav" , "part2" )

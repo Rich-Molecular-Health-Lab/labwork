@@ -1,11 +1,21 @@
 # /GlobalScripts/helper_functions.R
 
+name_substeps <- function(x) {
+  if (!is.null(x)) {
+    map_depth(x, 1, \(y) set_names(y, letters[seq_along(y)]))
+  } else {
+    return(x)
+  }
+}
+
+
 make_steps <- function(nested_steps) {
   imap(nested_steps, ~ {
     step_name    <- .y
     step_content <- .x
     main_step    <- step_content[[1]]
     substeps     <- step_content[-1]
+    display_name <- str_c(str_replace_all(step_name, "_", "\\."), ".")    
     
     substep_list <- if (length(substeps) > 0) {
       tags$ol(
@@ -20,29 +30,22 @@ make_steps <- function(nested_steps) {
       id = paste0("step_", step_name),
       class = "bg-primary",
       card_header(textOutput(outputId = paste0("stamp_", step_name))),
-      layout_sidebar(
-        fillable = TRUE,
-        sidebar = sidebar(
-          open = FALSE,
-          textAreaInput(inputId = paste0("text_", step_name), label = "Add note"),
-          actionButton(inputId = paste0("submit_", step_name), label = "Enter note"),
-          textOutput(outputId = paste0("note_", step_name))
-        ),
+      card_title(
         layout_columns(
           col_widths = c(1, 2, 9),
-          checkboxInput(inputId = paste0("check_", step_name), label = ""),
-          tags$h5(step_name),
-          tagList(
-            tags$h5(main_step),
-            substep_list
-          )
-        ),
-        layout_columns(
-          col_widths = c(12),
-          uiOutput(outputId = paste0("card_", step_name))
-        )
-      )
+          checkboxInput(inputId = paste0("check_", step_name), label = ""), display_name, main_step)
+      ),
+      card_body(substep_list),
+      card_body(layout_column_wrap(uiOutput(outputId = paste0("card_", step_name)))),
+      card_footer(accordion(open = F,accordion_panel("Add Note",
+                                                     textAreaInput(inputId = paste0("text_", step_name), label = "Add note"),
+                                                     actionButton(inputId = paste0("submit_", step_name), label = "Enter note"),
+                                                     textOutput(outputId = paste0("note_", step_name))
+      )))
     )
+  )
+  )
+)
   })
 }
 
@@ -112,37 +115,59 @@ timestamp <- function(prefix, suffix) {
   paste0(prefix, paste(format(Sys.time(), "%Y-%m-%d %H:%M:%S")), suffix)
 }
 
-render_image <- function(output, outputId, filename, base_path, height = "75%") {
-  full_path <- paste0(path$resources, "images/", filename)
+render_image <- function(output, outputId, filename, height = "75%") {
+  full_path <- file.path("path_to_images", filename)
   output[[outputId]] <- renderImage({
     list(src = full_path, height = height)
   }, deleteFile = FALSE)
 }
 
+render_image_list <- function(output, image_list) {
+  iwalk(image_list, ~ {
+    outputId <- .y
+    filename <- .x
+    full_path <- file.path(paste0(path$images, filename))
+    output[[outputId]] <- renderImage({
+      list(src = full_path, height = "85%")
+    }, deleteFile = FALSE)
+  })
+}
+
+
 render_illustration <- function(img) {
-  page_fluid(
+  card(
     accordion(
-      open = FALSE, 
+      open = FALSE,
       accordion_panel(
-        title = "Illustration", 
-        card(imageOutput(img)))))
+        title = "Illustration",
+        imageOutput(img)
+      )
+    )
+  )
 }
 
 render_illustration_x2 <- function(img1, img2) {
-  page_fluid(
+  card(
     accordion(
-      open = FALSE, 
+      open = FALSE,
       accordion_panel(
-        title = "Illustration", 
-        card(
-          layout_columns(
-            col_widths = 1/2, 
-            imageOutput(img1), 
-            imageOutput(img2))))))
+        title = "Illustration",
+        layout_columns(
+          col_widths = 1/2,
+          imageOutput(img1),
+          imageOutput(img2)
+        )
+      )
+    )
+  )
 }
 
-
-
-
-
+create_warning_card <- function(header, body, footer = NULL) {
+  card(
+    class = "bg-warning",
+    card_header(header),
+    card_body(body),
+    if (!is.null(footer)) card_footer(footer)
+  )
+}
 

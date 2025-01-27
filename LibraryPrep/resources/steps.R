@@ -24,7 +24,7 @@ part1_rap16s <- list(
        b = "Check the boxes above as you add each barcode to its assigned tube.",
        c = "Ensure the components are thoroughly mixed by pipetting the contents of the tubes 10 times and spin down. Note: Mix gently to minimise introducing air bubbles to the reactions."),
   list("Place the tubes in the thermal cycler and run the PCR by selecting the program below or manually entering it.")) %>%
-  set_names(paste0("I.", seq_along(.), "."))
+  set_names(paste0("I_", seq_along(.)))
 
 part2_rap16s <- list(
   list("Prepare the supplies for sample pooling, bead clean-up, and adapter ligation according to the table below.",
@@ -57,7 +57,7 @@ part2_rap16s <- list(
        a = "Mix gently by flicking the tube.",
        b = "Spin down briefly."),
   list("Incubate the reaction for 5 minutes at room temperature."))%>%
-  set_names(paste0("II.", seq_along(.), "."))
+  set_names(paste0("II_", seq_along(.)))
 
 
 part1_lsk <- list(
@@ -90,7 +90,7 @@ part1_lsk <- list(
   list("Pellet the beads on a magnet until the eluate is clear and colourless, for at least 1 minute."),
   list("Remove and retain 61 µl of eluate into a clean 1.5 ml Eppendorf DNA LoBind tube."),
   list("Quantify 1 µl of eluted sample using a Qubit fluorometer. Enter the QC results for each library below before proceeding.")) %>%
-  set_names(paste0("I.", seq_along(.), "."))
+  set_names(paste0("I_", seq_along(.)))
 
 part2_lsk <- list(
   list("Spin down the Ligation Adapter (LA) and Salt-T4® DNA Ligase, and place on ice."),
@@ -112,9 +112,9 @@ part2_lsk <- list(
   list("Remove and retain 15 µl of eluate containing the DNA library into a clean 1.5 ml Eppendorf DNA LoBind tube. Dispose of the pelleted beads"),
   list("Quantify 1 µl of eluted sample using a Qubit fluorometer. Enter the QC results for each library below before proceeding."),
   list("Prepare your final library in 12 µl of Elution Buffer (EB) according to the table below.")) %>%
-  set_names(paste0("II.", seq_along(.), "."))
+  set_names(paste0("II-", seq_along(.), "-"))
 
-part3.flongle <- list(
+part3_flongle <- list(
   list("Thaw the Sequencing Buffer (SB) Library Beads (LIB), Flow Cell Tether (FCT) and Flow Cell Flush (FCF) at room temperature before mixing by vortexing. Then spin down and store on ice."),
   list("To prepare the flow cell priming mix with BSA, combine Flow Cell Flush (FCF) and Flow Cell Tether (FCT), as directed below. Mix by pipetting at room temperature."),
   list("Open the MinION device lid and place the Flongle adapter into the MinION device."),
@@ -136,9 +136,9 @@ fluidic compartments."),
   list("Seal the Flongle flow cell using the adhesive on the seal tab, as follows:",
        a = "Stick the transparent adhesive tape to the sample port.",
        b = "Replace the top (Wheel icon section) of the seal tab to its original position.")) %>%
-  set_names(paste0("III.", seq_along(.), "."))
+  set_names(paste0("III_", seq_along(.)))
 
-part3 <- list(
+part3_minion <- list(
   list("Thaw the Sequencing Buffer (SB) Library Beads (LIB), Flow Cell Tether (FCT) and Flow Cell Flush (FCF) at room temperature before mixing by vortexing. Then spin down and store on ice."),
   list("To prepare the flow cell priming mix with BSA, combine Flow Cell Flush (FCF) and Flow Cell Tether (FCT), as follows:",
        a = "For kits with the old single-use tube format, add 5 µl Bovine Serum Albumin (BSA) at 50 mg/ml and 30 µl Flow Cell Tether (FCT) directly to a tube of Flow Cell Flush (FCF).",
@@ -163,69 +163,27 @@ part3 <- list(
   list("Place the light shield onto the flow cell.",
        a = "Carefully place the leading edge of the light shield against the clip. Note: Do not force the light shield underneath the clip.",
        b = "Gently lower the light shield onto the flow cell. The light shield should sit around the SpotON cover, covering the entire top section of the flow cell.")) %>%
-  set_names(paste0("III.", seq_along(.), "."))
+  set_names(paste0("III_", seq_along(.)))
 
-part1_rap16s.recs <- accordion_panel(
-  "Recommendations", 
-  card(class = "bg-warning",
-       card_header("Minimum DNA Input Amount"),
-       card_body("For optimal output, you will need 10 ng high molecular weight genomic DNA per barcode.")),
-  card(class = "bg-warning",
-       card_header("Minimum 16S Barcode Primers use requirements"),
-       card_body("For optimal output, ONT does not recommend using fewer than 4 barcodes. If you wish to multiplex less than 4 samples, please ensure you split your sample(s) across barcodes so a minimum of 4 barcodes are run.")),
-  card(class = "bg-warning",
-       card_header("DO NOT DAMAGE THE THERMAL CYCLER"),
-       card_body("Please ask for help if you have not used the thermal cycler before.",
-                 tags$ul(
-                   tags$li("You want to be sure all tube lids are properly closed. If they are not, you may waste an entire reaction due to evaporation of reagents."), 
-                   tags$li("Be sure the thermal cycler lid latches securely, but DO NOT force the lid if you are struggling. This could damage or destroy the equipment.")))))
-
-part1_lsk.recs <- accordion_panel(
-  "Recommendations", 
-  card(class = "bg-info",
-       card_header("ONT's QC Recommendation"),
-       card_body(tags$ul(
-         tags$li("Samples with a wide distribution of fragment sizes, e.g. gDNA: Start with 1 μg of material for the Ligation Sequencing Kit, or 400 ng of material for the Rapid Sequencing Kit."),
-         tags$li("Short fragment libraries, e.g. amplicons or cDNA: Start with 100-200 fmol."),
-         tags$li("Some kits which have a PCR step included as part of the protocol can be used with lower DNA inputs: Refer to individual library prep protocols for details.")))),
-  card(class = "bg-info",
-       card_header("Tip from ONT"),
-       card_body("ONT recommends using the NEBNext® Companion Module v2 for Oxford Nanopore Technologies® Ligation Sequencing (E7672S/E7672L), which contains all the NEB reagents needed for use with the Ligation Sequencing Kit."),
-       card_footer("The previous version, NEBNext® Companion Module for Oxford Nanopore Technologies® Ligation Sequencing (NEB, E7180S/E7180L) is also compatible, but the recommended v2 module offers more efficient dA-tailing and ligation.")), 
-  card(class = "bg-info",
-       card_header("Tip from ONT"),
-       card_body("ONT recommends using the DNA Control Sample (DCS) in your library prep for troubleshooting purposes."),
-       card_footer("You can also omit this step and make up the extra 1 µl with your sample DNA, if preferred.")))
-
-part2_lsk.recs <- accordion_panel(
-  "Recommendations", 
-  card(class = "bg-info",
-       card_header("Tip from ONT"),
-       card_body("ONT recommends using the  the Salt-T4® DNA Ligase (NEB, M0467)"),
-       card_footer("Salt-T4® DNA Ligase (NEB, M0467) can be bought separately or is provided in the NEBNext® Companion Module v2 for Oxford Nanopore Technologies® Ligation Sequencing (E7672S/E7672L).", br(), "The Quick T4 DNA Ligase (NEB, E6057) available in the previous version NEBNext® Companion Module for Oxford Nanopore Technologies® Ligation Sequencing (NEB, E7180S/E7180L) is also compatible, but the new recommended reagent offers more efficient and ligation.")),
-  card(class = "bg-warning",
-       card_header("IMPORTANT"),
-       card_body("Although third-party ligase products may be supplied with their own buffer, the ligation efficiency of the Ligation Adapter (LA) is higher when using the Ligation Buffer (LNB) supplied in the Ligation Sequencing Kit.")),
-  card(class = "bg-warning",
-       card_header("IMPORTANT"),
-       card_body("Depending on the wash buffer (LFB or SFB) used, the clean-up step after adapter ligation is designed to either enrich for DNA fragments of >3 kb, or purify all fragments equally."),
-       card_footer(
-         tags$ul(
-           tags$li("To enrich for DNA fragments of 3 kb or longer, use Long Fragment Buffer (LFB)"),
-           tags$li("To retain DNA fragments of all sizes, use Short Fragment Buffer (SFB)")))))
-
-part3.recs <- accordion_panel(
-  "Recommendations", 
-  card(class = "bg-warning",
-       card_header("IMPORTANT"),
-       card_body("Please note, this kit is only compatible with R10.4.1 flow cells (FLO-MIN114).")),
-  card(class = "bg-warning",
-       card_header("IMPORTANT"),
-       card_body("For optimal sequencing performance and improved output on MinION R10.4.1 flow cells (FLO-MIN114), ONT recommends adding Bovine Serum Albumin (BSA) to the flow cell priming mix at a final concentration of 0.2 mg/ml."),
-       card_footer("ONT does not recommend using any other albumin type (e.g. recombinant human serum albumin)."))
-)
 
 steps <- list(
-  rapid16s = c(part1_rap16s, part2_rap16s, part3.flongle),
-  lsk      = c(part1_lsk, part2_lsk, part3)
+  rapid16s = c(part1_rap16s, part2_rap16s, part3_flongle),
+  lsk      = c(part1_lsk, part2_lsk, part3_minion)
 )
+
+steps_workflow <- list(
+  rapid16s = list(
+    part1 = part1_rap16s,
+    part2 = part2_rap16s,
+    part3 = part3_flongle
+  ),
+  lsk = list(
+    part1 = part1_lsk,
+    part2 = part2_lsk,
+    part3 = part3_minion
+  )
+)
+
+part1_steps <- list(rapid16s = part1_rap16s , lsk = part1_lsk)
+part2_steps <- list(rapid16s = part2_rap16s , lsk = part2_lsk)
+part3_steps <- list(rapid16s = part3_flongle, lsk = part3_minion)

@@ -49,43 +49,59 @@ samples_tab <- function() {
                       ) 
 }
 
-barcode_cols <- function() {
-  nav_panel(
-    value = "barcode_cols",
-    card(
-      card_header(textOutput("barcode_header")),
-      tags$em("Note: The 96-well plates are designed to break in one direction only. Strips, or multiple strips, of eight wells/barcodes can be removed from the plate at any one time."),
-      reactableOutput("barcodes"),
-      card_footer(actionButton("barcode_cols_confirm", "Next: Confirm individual barcodes"))
-    )
-  )
-}
-barcode_wells <- function() {
-  nav_panel(
-    value = "barcode_wells",
-    card(
-      card_header(textOutput("barcode_header_2")),
-      reactableOutput("barcode_wells"),
-      card_footer(textOutput("barcode_footer", inline = TRUE),
-                  actionButton("barcode_wells_confirm", "Click to confirm selection")
-                  )
-    ),
+barcodes <- function() {
+  nav_panel("Select Barcodes",
+    value = "barcodes",
     accordion(
-      id = "barcodes_selected",
-      open = FALSE,
+      open = "barcodes_a",
+      id = "barcode_tables",
+      accordion_panel(
+        value = "barcode_warning",
+        layout_column_wrap(
+          card(class = "bg-warning",
+               card_header("Minimum DNA Input Amount"),
+               card_body("For optimal output, you will need 10 ng high molecular weight genomic DNA per barcode.")),
+          card(class = "bg-warning",
+               card_header("Minimum 16S Barcode Primers use requirements"),
+               card_body("For optimal output, ONT does not recommend using fewer than 4 barcodes. If you wish to multiplex less than 4 samples, please ensure you split your sample(s) across barcodes so a minimum of 4 barcodes are run.")
+               )
+            )
+        ),
+      accordion_panel(
+        title = "Step 1: Select plate rows to break away.",
+        value = "barcodes_a",
+        card(
+          card_header(tags$em("Note: The 96-well plates are designed to break in one direction only. Strips, or multiple strips, of eight wells/barcodes can be removed from the plate at any one time.")
+                      ),
+        reactableOutput("barcodes"),
+        card_footer(actionButton("barcode_cols_confirm", "Next: Confirm individual barcodes"))
+          )
+        ),
+      accordion_panel(
+        title = "Step 2: Select individual wells to use.",
+        value = "barcodes_b",
+        card(
+        reactableOutput("barcode_wells"),
+        card_footer(
+          layout_column_wrap(
+            textOutput("barcode_footer"),
+            actionButton("barcode_wells_confirm", "Click to confirm selection")))
+        )),
       accordion_panel(
         title = "List of barcodes matched to each tube:",
-        value = "barcodes_confirmed",
-        reactableOutput("barcodes_confirmed")
+        value = "barcodes_c",
+        card(
+          reactableOutput("barcodes_confirmed"),
+          card_footer(actionButton("dynamic_done", "Confirm Barcoding Parameters"))
+        )
       )
-    ),
-    actionButton("dynamic_done", "Confirm Barcoding Parameters")
+    )
   )
+    
 }
   
-
 lsk_input_tab <- function() {
-  nav_panel(value = "lsk_input",
+  nav_panel("Setup Continued", value = "lsk_input",
      card(
        card_header("Input DNA Specifications for Ligation Sequencing"),
        layout_column_wrap(
@@ -133,33 +149,26 @@ conclude_tab <- function() {
     actionButton("generate_report", "Generate Report for Download"),
     layout_column_wrap(downloadButton("download_tsv", "Download Updated Table"), 
                        downloadButton("download_report", "Download Report")),
-    uiOutput("step_progress")
+    uiOutput("step_report")
   )
 }
 
 part1_tab <- function() {
-  nav_panel(textOutput("part1_heading"), value = "part1",
-      uiOutput("part1_accord"),
+  nav_panel("Part 1 of 3", value = "part1",
       uiOutput("part1_steps"),
-      actionButton("part1_done", textOutput("part1_footer")))
+      actionButton("part1_done", "Next: Final Prep Steps"))
 }
 
 part2_tab <- function() {
-  nav_panel(textOutput("part2_heading"), value = "part2",
-     uiOutput("part2_accord"),
+  nav_panel("Part 2 of 3", value = "part2",
      uiOutput("part2_steps"),
      actionButton("part2_done", "Next: Prime/Load Flow Cell")
   )
 }
   
 part3_tab <- function() {
-  nav_panel("III. Prime and Load Flow Cell", value = "part3",
-    accordion(open = F, 
-              accordion_panel("Dynamic Summary Table", 
-                              value = "summary_table",
-                              uiOutput("part3_reactable")),
-              part3.recs),
-    make_steps(part3),
+  nav_panel("Part 3 of 3", value = "part3",
+            uiOutput("part3_steps"),
     actionButton("part3_done", "Next: Complete Experiment")
     )
 }

@@ -1,12 +1,21 @@
 # /LibraryPrep/server/server.R
 
 server <- function(input, output, session) {
+  options(shiny.error = browser)
   
   session$setCurrentTheme(bs_theme(bootswatch = "lumen"))
-  step_data  <- reactiveValues()
   
+  steps_parts <- reactiveValues(
+    part1 = list(),
+    part2 = list(),
+    part3 = list()
+  )
+  
+
   setup <- reactiveValues(
     steps              = list(),
+    steps_record       = list(),
+    dynamic_cards      = list(),
     workflow           = character(),
     sampleset          = character(),
     LibPrepDate        = as.Date(character()),
@@ -35,15 +44,15 @@ server <- function(input, output, session) {
     n_extracts         = numeric(),
     n_rxns             = numeric(),
     barcodes           = tibble(
-      column = integer(),
-      A      = character(),
-      B      = character(),
-      C      = character(),
-      D      = character(),
-      E      = character(),
-      F      = character(),
-      G      = character(),
-      H      = character()
+      column = numeric(),
+      row_A  = character(),
+      row_B  = character(),
+      row_C  = character(),
+      row_D  = character(),
+      row_E  = character(),
+      row_F  = character(),
+      row_G  = character(),
+      row_H  = character()
     ),
     barcode_wells      = tibble(),
     barcodes_confirmed = tibble(
@@ -55,7 +64,7 @@ server <- function(input, output, session) {
     setup_note         = character(),
     conclusion_note    = character(),
     PoolSamples        = character(),
-    rxns               = list(rapid16s = rxns_rap16s, lsk = rxns_lsk))
+    rxns               = list())
   
   samples    <- reactiveValues(
     compilation   = tibble(
@@ -106,8 +115,8 @@ server <- function(input, output, session) {
   
   report_params <- reactiveValues(
     setup             = list(),
-    step_data         = list(),
     steps             = list(),
+    notes             = list(),
     calculations      = tibble(),
     rxns              = tibble(
       step         = character(),
@@ -118,30 +127,48 @@ server <- function(input, output, session) {
     )
   )
   
-  source(paste0(path$helper_functions))
-  source(paste0(path$load_data))
-  source(paste0(path$inputs))
-  source(paste0(path$steps))
-  source(paste0(path$col_defs))
-  source(paste0(path$reactives))
-  source(paste0(path$dynamic_ui))
+  source(path$load_data)
+  source(path$card_config)
+  source(path$workflow_vals)
+  source(path$helper_functions)
+  source(path$steps)
+  source(global$inputs)
+  source(path$setup_values)
+  source(path$col_defs)
+  source(path$tabs)
+  source(path$build_tables)
+  source(path$render_text)
+  source(path$configure_workflow)
+  source(path$record_log)
+  source(path$calculations)
+  source(path$navigation)
+
+  navigate(input, setup)
   
-  switch_tabs(input, setup)
-  link_tabs(input)
-  render_images(output)
-  workflow_reactives(input, output, setup, samples)
-  observe_steps(input, output, setup, step_data)
-  samples_reactives(input, output, setup, samples, report_params)
-  barcode_reactives(input, output, setup, samples)
-  lsk_input_reactives(input, output, setup)
-  setup_reactives(input, output, setup, samples)
-  part1_reactives(input, output, setup, samples)
-  part2_reactives(input, output, setup, samples)
-  conclude_reactives(input, output, setup, samples, report_params, step_data)
-  render_dynamic_cards(input, output, setup)
-  render_protocol_outputs(output, setup)
-  dynamic_protocol(input, output, setup)
+  render_image_list(output, image_list)
+
   
+  observe_basics(input, setup)
+  observe_steps(input, output, setup)
+  setup_workflow(input, output, setup, samples, steps_parts)
+  record_steps(input, output, setup)
+  
+  setup_lsk_values(input, setup)
+  sample_selection(input, setup, samples)
+  barcodes_selection(input, setup, samples)
+  render_qc_inputs(input, output, setup)
+  build_reactables(input, output, samples, setup)
+  build_gt_tabs(output)
+  render_text_outputs(input, output, setup) 
+  record_notes(input, output, setup)
+  record_tables(input, setup, samples, report_params)
+  compile_report(input, output, report_params, setup)
+  values_from_inputs(input, setup) 
+  lsk_input_calculations(input, output, setup)
+  volumes_from_concentrations(input, setup, samples)
+  
+  
+
   
   
   

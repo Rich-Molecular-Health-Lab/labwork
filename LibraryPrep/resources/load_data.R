@@ -1,25 +1,5 @@
 # /LibraryPrep/resources/load_data.R
 
-barcodes.24 <- tibble(
-  "column" = c(1:12),
-  "A"      = rep(c("01", "09", "17", "blank"), times = 3),
-  "B"      = rep(c("02", "10", "18", "blank"), times = 3),
-  "C"      = rep(c("03", "11", "19", "blank"), times = 3),
-  "D"      = rep(c("04", "12", "20", "blank"), times = 3),
-  "E"      = rep(c("05", "13", "21", "blank"), times = 3),
-  "F"      = rep(c("06", "14", "22", "blank"), times = 3),
-  "G"      = rep(c("07", "15", "23", "blank"), times = 3),
-  "H"      = rep(c("08", "16", "24", "blank"), times = 3),
-)
-
-barcodes.24_wells <- barcodes.24 %>%
-  pivot_longer(
-    cols      = !column,
-    names_to  = "row",
-    values_to = "Barcode"
-  ) %>%
-  mutate(BarcodePos = paste0(row, column)) 
-
 rap16s_pcr  <- tibble(Reagent = c("DNA Template", 
                                   "LongAmp Hot Start Taq 2X Master Mix"), 
                       Volume_rxn = c(15, 25))
@@ -157,6 +137,12 @@ mn_prime <- minion_prime %>%
   opt_stylize(color = "blue", style = 1)
 
 
-rxns_rap16s  <- list(rap16s_pcr, flongle_load)
-rxns_lsk     <- list(lsk_endprep, lsk_adapter, minion_load)
+rxns_rapid16s <- list(
+                 rap16s_pcr   = rap16s_pcr, 
+                 flongle_load = flongle_load)
+
+rxns_lsk      <- list(
+                 lsk_endprep  = lsk_endprep, 
+                 lsk_adapter  = lsk_adapter, 
+                 minion_load  = minion_load)
 

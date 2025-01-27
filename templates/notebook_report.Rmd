@@ -1,0 +1,65 @@
+---
+title: "`r workflow` Notebook Entry"
+author: "`r author`"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme:
+      bootswatch: lumen
+    toc: false
+    code_folding: "hide"
+    fig_caption: true
+params:
+  setup: NA
+  steps: NA
+  notes: NA
+  calculations: NA
+  rxns: NA
+                     
+---
+
+```{r, include = FALSE}
+global      <- config::get(config = "default")
+
+source(global$setup)
+source(global$set_paths)
+source(global$conflicts)
+source(global$inputs)
+source(global$data_functions)
+source(path$steps)
+source(path$load_data)
+
+opts_chunk$set(message = FALSE,
+               warning = FALSE,
+               echo    = FALSE,
+               include = TRUE,
+               eval    = TRUE,
+               comment = "")
+
+workflow       <- config::get(config = paste0(params$workflow))
+protocol.steps <- steps %>% keep_at(paste0(params$workflow)) %>% list_flatten(name_spec = "{inner}")
+
+author   <- params$setup$LibPrepBy
+workflow <- params$setup$workflow
+```
+
+```{r}
+steps_list      <- params$steps
+setup_note      <- params$notes$setup
+conclusion_note <- params$notes$conclusion
+     tagList(
+        if (!is.null(setup_note)) tags$blockquote(setup_note),
+        tags$ol(
+          lapply(steps_list, function(step) {
+            tagList(
+              tags$li(step$detail),
+              tags$p(step$timestamp),
+              if (!is.null(step$note)) tags$blockquote(step$note),
+              tags$hr()
+            )
+          })
+        ),
+        if (!is.null(conclusion_note)) tags$blockquote(conclusion_note),
+      )
+```
+

@@ -7,8 +7,7 @@ ui <- page_fillable(
     id = "setup.nav",
     workflow_tab(), 
     samples_tab(),
-    barcode_cols(),
-    barcode_wells(),
+    barcodes(),
     lsk_input_tab(),
     setup_tab(),
     conclude_tab()

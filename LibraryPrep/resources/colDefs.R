@@ -35,21 +35,28 @@ cols_selected <- list(
 )
 
 cols_barcodes <- list(
-  column = colDef(name = "8-well Strip/Column"),
-  A      = colDef(name = "Row A"),
-  B      = colDef(name = "Row B"),
-  C      = colDef(name = "Row C"),
-  D      = colDef(name = "Row D"),
-  E      = colDef(name = "Row E"),
-  F      = colDef(name = "Row F"),
-  G      = colDef(name = "Row G"),
-  H      = colDef(name = "Row H"),
+  column     = colDef(name = "8-well Strip/Column"),
+  row_A      = colDef(name = "Row A"),
+  row_B      = colDef(name = "Row B"),
+  row_C      = colDef(name = "Row C"),
+  row_D      = colDef(name = "Row D"),
+  row_E      = colDef(name = "Row E"),
+  row_F      = colDef(name = "Row F"),
+  row_G      = colDef(name = "Row G"),
+  row_H      = colDef(name = "Row H"),
   .selection = colDef(name =  "Select strips/columns", sticky = "left")
 )
 
 groups_barcodes <- list(
   colGroup(name    = "Barcodes (N = 24)", 
-           columns = c("A", "B", "C", "D", "E", "F", "G", "H"))
+           columns = c("row_A", 
+                       "row_B", 
+                       "row_C", 
+                       "row_D", 
+                       "row_E", 
+                       "row_F", 
+                       "row_G", 
+                       "row_H"))
 )
 
 cols_barcode_wells <- list(
@@ -92,7 +99,7 @@ cols_setup <- list(
 )
 
 
-cols_rap16s_I.1. <- list(
+cols_rap16s_I_1 <- list(
   LibraryTube         = colDef(name = "Tube No.")  ,
   LibraryCode         = colDef(show = FALSE),
   SequenceID          = colDef(show = FALSE),
@@ -125,7 +132,7 @@ cols_rxns <-  list(
   .selection        = colDef(name = "Check when added", sticky = "left")
 )
 
-cols_rap16s_II.5. <- list(  
+cols_rap16s_II_5 <- list(  
   LibraryTube         = colDef(name = "Tube No.")  ,
   LibraryCode         = colDef(name = "Pooled Library ID"),
   SequenceID          = colDef(name = "Sequence Output"),
@@ -150,3 +157,27 @@ cols_rap16s_II.5. <- list(
   TotalPoolVol        = colDef(name = "Library volume after pooling"          ,format = colFormat(suffix = ul, digits = 2)) 
 )
 
+cols_lsk_II_19 <- list(  
+  LibraryTube         = colDef(name = "Tube No.")  ,
+  LibraryCode         = colDef(name = "Pooled Library ID"),
+  SequenceID          = colDef(name = "Sequence Output"),
+  ExtractID           = colDef(show = FALSE),    
+  ExtractBox          = colDef(show = FALSE),
+  Barcode             = colDef(show = FALSE),               
+  BarcodePos          = colDef(show = FALSE),                   
+  ExtractConc         = colDef(show = FALSE) ,     
+  TemplateVolPrep     = colDef(show = FALSE) ,             
+  Length              = colDef(show = FALSE)   ,
+  InputMassStart      = colDef(show = FALSE)   ,  
+  ExtractInputVol     = colDef(show = FALSE) ,             
+  ExtractDiluteWater  = colDef(show = FALSE) ,             
+  Conc_QC1            = colDef(show = FALSE) ,                      
+  Conc_QC2            = colDef(name = "Final Concentration"                   ,format = colFormat(suffix = ngul, digits = 2)) ,            
+  SampVolPool         = colDef(show = FALSE) ,      
+  TemplateVolLoading  = colDef(name = "Volume to load on flow cell"           ,format = colFormat(suffix = ul, digits = 2)) ,     
+  InputMassFinal      = colDef(show = FALSE)   ,     
+  LibraryLoadingVol   = colDef(name = "Volume library to include"             ,format = colFormat(suffix = ul, digits = 2)) ,            
+  LibraryWaterVol     = colDef(name = "Volume to dilute final library"        ,format = colFormat(suffix = ul, digits = 2)) ,
+  BeadVol             = colDef(show = FALSE) ,     
+  TotalPoolVol        = colDef(show = FALSE) 
+)
