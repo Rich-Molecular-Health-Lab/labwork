@@ -1,7 +1,15 @@
-library(shiny)
-source("global.R")
+here::i_am("LibraryPrep/app.R")
+source(here::here("GlobalScripts/global_setup.R"))
+source(here::here("LibraryPrep/app_setup.R"))
 
-shinyApp(
-  ui     = source(paste0(path$ui))$value,
-  server = source(paste0(path$server))$value
-  )
+ui <- page_fluid(
+  theme = bs_theme(preset = "lumen"),
+  setupUI("setup")
+)
+
+server <- function(input, output, session) {
+  options(shiny.error = browser)
+  setupServer("setup")
+}
+
+shinyApp(ui, server)
