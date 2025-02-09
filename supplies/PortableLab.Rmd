@@ -45,7 +45,25 @@ Equip <- enframe(portable, name = "Stage", value = "Category") %>%
     Manufacturer,
     Item 
   )
+
+write.table(Equip, here("supplies/portableLab_equipment.tsv"), row.names = FALSE, sep = "\t")
+
+download_table <- download_file(
+  path           = here("supplies/portableLab_equipment.tsv"),
+  output_name    = "portableLab_equipment",
+  button_label   = "Download TSV Version of Table Below",
+  button_type    = "danger",
+  has_icon       = TRUE,
+  icon           = "fa fa-save",
+  self_contained = TRUE
+)
+
 ```
+
+```{r}
+download_table
+```
+
 
 ```{r, include = F}
 equipment_table <- reactable(Equip,
@@ -71,9 +89,11 @@ equipment_table <- reactable(Equip,
             Catalog      = colDef(cell = function(value) {tags$small(tags$pre(value))}, maxWidth = 80),
             Link         = colDef(show = FALSE)
           )
-        )
+        ) %>%
+  add_title("Equipment Options/Needs for a Portable Molecular Lab")
 
 save_reactable_test(equipment_table, "portable_equipment.html")
+
 ```
 
 ```{r}
@@ -144,8 +164,25 @@ consumables <- bind_rows(
     Link         = link
   ) %>%
   arrange(Stage, Manufacturer)
+
+write.table(consumables, here("supplies/consumables.tsv"), row.names = FALSE, sep = "\t")
+
+download_consumables <- download_file(
+  path           = here("supplies/consumables.tsv"),
+  output_name    = "consumables",
+  button_label   = "Download TSV Version of Table Below",
+  button_type    = "danger",
+  has_icon       = TRUE,
+  icon           = "fa fa-save",
+  self_contained = TRUE
+)
  
 ```
+
+```{r}
+download_consumables
+```
+
 
 ```{r, include = FALSE}
 consumables_table <- reactable(consumables,
@@ -180,7 +217,8 @@ consumables_table <- reactable(consumables,
             Catalog      = colDef(cell = function(value) {tags$small(tags$pre(value))}, maxWidth = 100),
             Link         = colDef(show = FALSE)
           )
-        )
+        ) %>%
+  add_title("Consumables for Most Lab Workflows")
 
 save_reactable_test(consumables_table, "consumables.html")
 ```
