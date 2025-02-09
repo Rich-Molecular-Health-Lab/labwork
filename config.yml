@@ -15,11 +15,11 @@ libprep:
   setupModule: "LibraryPrep/setupModule.R"
   images: "LibraryPrep/images/"
   samples:
-    loris: "sample_inventories/compilation_loris.tsv"
-    marmoset: "sample_inventories/compilation_marmoset.tsv"
-    bats: "sample_inventories/compilation_bats.tsv"
-    isolates: "sample_inventories/compilation_isolates.tsv"
-    envir: "sample_inventories/compilation_envir.tsv"
+    loris: "../bioinformatics_stats/dataframes/sample_inventories/compilation_loris.tsv"
+    marmoset: "../bioinformatics_stats/dataframes/sample_inventories/compilation_marmoset.tsv"
+    bats: "../bioinformatics_stats/dataframes/sample_inventories/compilation_bats.tsv"
+    isolates: "../bioinformatics_stats/dataframes/sample_inventories/compilation_isolates.tsv"
+    envir: "../bioinformatics_stats/dataframes/sample_inventories/compilation_envir.tsv"
   
 rapid16s:
   man_protocol: "ProtocolSummaries/man_protocols/rapid16s.pdf"

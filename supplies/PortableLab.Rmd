@@ -1,0 +1,194 @@
+---
+title: "Portable Lab Supply Lists"
+author: "Alicia Rich"
+output:
+  html_document:
+    theme:
+      bootswatch: flatly
+    toc: false
+    code_folding: "hide"
+    fig_caption: true
+    df_print: paged
+                     
+---
+
+```{r, include = F}
+global             <- config::get(config = "default")
+
+here::i_am("supplies/PortableLab.Rmd")
+source(here::here(global$setup))
+source(here("supplies/equipment.R"))
+source(here("supplies/consumables.R"))
+
+```
+
+# Equipment
+
+```{r, include = F}
+Equip <- enframe(portable, name = "Stage", value = "Category") %>%
+  mutate(Stage = fct(Stage, levels = ordered_stages)) %>%
+  unnest_longer(Category, indices_to = "Category", values_to = "Item") %>%
+  unnest_longer(Item, indices_to = "Item", values_to = "Details") %>%
+  unnest_wider(Details) %>%
+  select(
+    Stage,
+    Category,
+    Item,
+    Price        = price,
+    Manufacturer = manufacturer,
+    Catalog      = catalog,
+    Link         = link
+  ) %>%
+  arrange(
+    Stage,
+    Category,
+    Manufacturer,
+    Item 
+  )
+```
+
+```{r, include = F}
+equipment_table <- reactable(Equip,
+          height          = 800,
+          theme           = flatly(),
+          groupBy         = c("Stage", "Category"),
+          defaultExpanded = TRUE,
+          columns = list(
+            Stage    = colDef(maxWidth = 80),
+            Category = colDef(maxWidth = 100),
+            Item = colDef(cell = function(value, index) {
+              tags$a(href = Equip$Link[index], target = "_blank", value)
+            }, style = cell_style(font_size = 18, font_color = "black")),
+            Price        = colDef(cell = data_bars(
+              Equip, 
+              text_position = "outside-end", 
+              box_shadow    = TRUE, 
+              number_fmt    = label_currency()
+              )
+            ),
+            Manufacturer = colDef(cell = pill_buttons(opacity = 0.5, text_size = 9.5, box_shadow = TRUE),
+                                  style = cell_style(horizontal_align = "right"), maxWidth = 85),
+            Catalog      = colDef(cell = function(value) {tags$small(tags$pre(value))}, maxWidth = 80),
+            Link         = colDef(show = FALSE)
+          )
+        )
+
+save_reactable_test(equipment_table, "portable_equipment.html")
+```
+
+```{r}
+equipment_table
+```
+
+# Consumables
+
+```{r, include = FALSE}
+consumables_tubes <- enframe(rxnTubes, name = "Purpose", value = "Details") %>%
+  unnest_wider(Details) %>% mutate(Stage = "General Use") %>% select(-Purpose)
+
+consumables_extraction <- enframe(extraction, name = "Purpose", value = "Details") %>%
+  unnest_wider(Details) %>% select(-c("Purpose", "contents")) %>% mutate(Stage = "Extraction")
+
+consumables_gels <- enframe(gels, name = "Purpose", value = "Details") %>%
+  unnest_wider(Details) %>% select(-c("Purpose", "contents")) %>% mutate(Stage = "Quality Control")
+
+consumables_cleanup <- enframe(cleanup, name = "Purpose", value = "Details") %>%
+  unnest_wider(Details) %>% select(-c("Purpose", "contents")) %>% mutate(Stage = "General Use")
+
+consumables_collection <- enframe(collection, name = "Purpose", value = "Item") %>%
+  unnest_wider(Item) %>% select(-c("Purpose", "contents")) %>% mutate(Stage = "Sample Collection")
+
+consumables_libprep <- enframe(library_prep, name = "Kit", value = "Details") %>%
+  unnest_wider(Details) %>% select(-c("Kit", "contents")) %>% mutate(Stage = "Library Prep")
+
+expansions_libprep <- enframe(expansions, name = "Expansion", value = "Item") %>%
+  unnest_wider(Item) %>% select(-c("Expansion", "contents")) %>% mutate(Stage = "Library Prep")
+
+consumables_tips <- enframe(tips, name = "Volume", value = "Details") %>%
+  unnest_wider(Details) %>% mutate(Stage = "General Use") %>% select(-Volume)
+
+consumables_flowcells <- enframe(flowcells, name = "Num", value = "Details") %>%
+  unnest_wider(Details) %>% mutate(Stage = "Sequencing") %>% select(-Num)
+```
+
+
+```{r, include = FALSE}
+consumables <- bind_rows(
+  consumables_tubes,
+  consumables_extraction,
+  consumables_gels,
+  consumables_cleanup,
+  consumables_collection,
+  consumables_libprep,
+  expansions_libprep,
+  consumables_tips,
+  consumables_flowcells
+  ) %>%
+  mutate(cost_N = cost/(samples_prep * preps),
+         N_kit  = samples_prep * preps,
+         Stage     = fct(Stage, levels = c(
+           "General Use", 
+           "Sample Collection", 
+           "Extraction", 
+           "Quality Control", 
+           "Library Prep",
+           "Sequencing"))) %>%
+  select(
+    Stage,
+    Item         = name,
+    Cost         = cost,
+    N_kit,
+    Cost_N       = cost_N,
+    Manufacturer = manufacturer,
+    Catalog      = catalog,
+    Link         = link
+  ) %>%
+  arrange(Stage, Manufacturer)
+ 
+```
+
+```{r, include = FALSE}
+consumables_table <- reactable(consumables,
+          height          = 800,
+          theme           = flatly(),
+          groupBy         = "Stage",
+          defaultExpanded = TRUE,
+          columns = list(
+            Stage    = colDef(maxWidth = 80),
+            Item = colDef(cell = function(value, index) {
+              tags$a(href = consumables$Link[index], target = "_blank", value)
+            }, style = cell_style(font_size = 18, font_color = "black"), minWidth = 200),
+            Cost          = colDef(name = "Cost/Item", 
+              cell = data_bars(
+              consumables, 
+              text_position = "outside-end", 
+              box_shadow    = TRUE, 
+              number_fmt    = label_currency()
+              )
+            ),
+            N_kit         = colDef(name = "Est. N/Item", format = colFormat(digits = 0), maxWidth = 50),
+            Cost_N        = colDef(name = "Est. Cost/N",
+              cell = data_bars(
+              consumables, 
+              text_position = "outside-end", 
+              box_shadow    = TRUE, 
+              number_fmt    = label_currency()
+              )
+            ),
+            Manufacturer = colDef(cell = pill_buttons(opacity = 0.5, text_size = 9.5, box_shadow = TRUE),
+                                  style = cell_style(horizontal_align = "right"), maxWidth = 85),
+            Catalog      = colDef(cell = function(value) {tags$small(tags$pre(value))}, maxWidth = 100),
+            Link         = colDef(show = FALSE)
+          )
+        )
+
+save_reactable_test(consumables_table, "consumables.html")
+```
+
+```{r}
+consumables_table
+```
+
+
+
+
