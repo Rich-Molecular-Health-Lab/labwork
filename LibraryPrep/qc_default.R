@@ -17,7 +17,7 @@ kit <- keep_at(kits, "dsDNAqubit") %>%
 
 reagents <- kit$contents
 
-steps  <- list(
+qc_default  <- list(
   list(
     step     = "Set up the required number of assay tubes (or tube strips) for 2 standards + N samples.",
     note     = "Use thin-wall, clear, 0.5-mL PCR tubes (Cat. No. Q32856) for the Qubit™ 4 Fluorometer.",
