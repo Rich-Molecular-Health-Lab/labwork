@@ -1,0 +1,242 @@
+---
+title: "General Lab Budget"
+author: "Alicia Rich"
+output:
+  html_document:
+    theme:
+      bootswatch: flatly
+    toc: false
+    code_folding: "hide"
+    fig_caption: true
+    df_print: paged
+                     
+---
+
+```{r, include = F}
+global             <- config::get(config = "default")
+
+here::i_am("supplies/Budget.Rmd")
+source(here::here(global$setup))
+source(here("supplies/consumables.R"))
+source(here("supplies/portable.R"))
+
+```
+
+# Overview and Introduction
+
+## Purpose
+
+This is a broad estimated budget for the Rich Lab's fiscal year costs. It includes some of our routine supplies that should remain constant year-to-year and some of the project-specific infrastructure that will generate enough pilot data to secure a federal grant.
+
+## Time Frame
+
+Academic Year 2025 - 2026
+
+# Budget
+
+```{r, include = FALSE}
+
+make_total <- function(df) {
+  df <- df %>% rowwise() %>%
+    mutate(Cost_month = Each * N_month,
+           Cost_year  = 12 * (Each * N_month)) %>%
+    ungroup()
+  
+  return(df)
+}
+
+equip_total <- function(df) {
+  df <- df %>% rowwise() %>%
+    mutate(Cost_year  = Each * N_year) %>%
+    ungroup()
+  
+  return(df)
+}
+
+```
+
+
+## Personnel
+
+### Lab Manager or Technician
+
+My graduate student Shayda Azadmanesh has been managing my lab under a graduate research stipend at 20 hours per week. After she secures a permanent position I would like to pay someone to act as a lab technician at minimum wage for 20 hours per week.
+
+```{r, include = FALSE}
+lab.manager <- tibble(
+  Category = "Personnel",
+  Title    = "Lab Technican",
+  Each     = 15,
+  Per      = "hours",
+  N_month  = 80
+) %>% make_total()
+```
+
+
+### Work Study Undergraduates
+
+Trineca Segura-Palacio completed an undergraduate independent study with me and stayed in the lab as a work-study intern at 10 hours per week. I would like to offer her the same arrangement next year, as she is already fully trained and capable. I also want to maximize opportunities for students like her representing nontraditional and racial minority communities that are likely to face heightened barriers in the next several years.
+  
+After Trineca graduates, I would like to continue using work-study to compensate at least one student from an underrepresented community at all times.
+
+
+```{r, include = FALSE}
+work.study <- tibble(
+  Category = "Personnel",
+  Title    = "Work Study Undergrads",
+  Each     = 3.75,
+  Per      = "hour",
+  N_month  = 40
+) %>% make_total()
+```
+
+```{r, include = FALSE}
+personnel <- bind_rows(lab.manager, work.study) %>%
+  gt(groupname_col = "Category", rowname_col = "Title") %>%
+  fmt_currency(columns = c("Each", "Cost_month", "Cost_year")) %>%
+  cols_hide(N_month) %>%
+  cols_label(
+    Each       = "Cost",
+    Cost_month = "Per Month",
+    Cost_year  = "Per Year"
+  ) %>%
+  summary_rows(
+    columns = c("Cost_month", "Cost_year"),
+    fns = list(
+      label = md("*Personnel Total*"),
+      fn    = "sum"),
+    fmt = ~ fmt_currency(.)
+  ) %>%
+  opt_stylize(style = 1, color = "cyan")
+```
+
+```{r}
+personnel
+```
+
+## Equipment
+
+### ONT Sequencing Devices
+
+The MinION Mk1b portable sequencing devices that I purchased with startup funds in 2022 have become the crux of all my lab's workflows and long-term projects. Oxford Nanopore just released the upgraded Mk1d and announced that all Mk1b devices would soon become obsolete. We currently have two Mk1b devices, so I would like to replace both and get one more flongle starter pack (includes one flongle adapter and 12 consumable flow cells) so that we can run the flongle flow cells on two devices simultaneously.
+
+```{r, include = FALSE}
+sequencers <- tibble(
+  Category = "Equipment",
+  Title    = c("MinION Mk1d Sequencers", "Flongle Starter Pack"),
+  Manuf    = "ONT",
+  Link     = c("https://store.nanoporetech.com/us/minion.html", "https://store.nanoporetech.com/us/flongle-intro-pack-2.html"),
+  Cat      = c("MIN-101D", "FLGIntSP"),
+  Each     = c(2999, 1995),
+  Per      = c("device", "pack"),
+  N_year   = c(2, 1)
+) %>% equip_total()
+```
+
+
+### Computational Upgrades
+
+Since diving further into the long-read sequencing realm, I have realized that computational power limits our pipelines more so than sequencing devices themselves. I purchased a Linux System76 laptop with the minimum computational requirements to perform more of our bioinformatic tasks locally and handle more complex sequencing runs on the MinION devices. If we also incorporate a high performance workstation, we will be able to sequence more complex genomes at a higher throughput and reserve the laptop for our mobile sequencing operations.
+
+```{r}
+computers <- tibble(
+  Category = "Equipment",
+  Title    = "Linux High Performance Workstation",
+  Manuf    = "system76",
+  Link     = "https://system76.com/desktops/thelio-major-r5-n3/configure",
+  Cat      = "thelio-major-r5-n3",
+  Each     = 4554,
+  Per      = "device",
+  N_year   = 1
+) %>% equip_total()
+```
+
+
+### Portable Lab
+
+```{r}
+portable.lab <- enframe(portable$equipment, name = "Title") %>%
+  mutate(Category = "Equipment") %>%
+  unnest_wider(value) %>% equip_total()
+```
+
+```{r}
+equipment <- bind_rows(sequencers, computers, portable.lab) %>%
+  select(
+    Category,
+    Title,
+    Each,
+    Per,
+    N_year,
+    Cost_year,
+    Manuf,
+    Cat,
+    Link
+  ) %>%
+  arrange(Manuf, Cat) %>%
+  gt(groupname_col = "Category", rowname_col = "Title") %>%
+  fmt_currency(columns = c("Each", "Cost_year")) %>%
+  cols_hide(N_year) %>%
+  cols_label(
+    Each       = "Cost",
+    Cost_year  = "Cost/Year",
+    Link       = ""
+  ) %>%
+  fmt_url(columns = Link,
+          label   = fontawesome::fa(
+          name           = "link",
+          height         = "0.75em",
+          vertical_align = "0em"
+          ),
+    color = "gray65"
+    ) %>%
+  sub_missing(missing_text = "-") %>%
+  summary_rows(
+    columns = c("Each", "Cost_year"),
+    fns = list(
+      label = md("*Equipment Total*"),
+      fn    = "sum"),
+    fmt = ~ fmt_currency(.)
+  ) %>%
+  opt_stylize(style = 1, color = "cyan")
+```
+
+
+
+## Supplies
+
+### Parts or Replacements
+
+```{r}
+replacements <- tibble(
+  Category = "Supplies",
+  Title    = "UV 30W, (G30T8) Germicidal Lamp",
+  Link     = "https://a.co/d/hJlNPLC",
+  Manuf    = "Sylvania",
+  Cat      = NA,
+  Each     = 19.46,
+  Per      = "item",
+  N_year   = 1
+)
+```
+
+
+### Kits
+
+### Reagents
+
+### Other Basic Consummables
+
+## Travel
+
+## Other Expenses
+
+# Summary
+
+```{r}
+budget.summary <- tibble(
+  
+)
+```
+
+
