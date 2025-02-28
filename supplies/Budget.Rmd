@@ -19,6 +19,7 @@ here::i_am("supplies/Budget.Rmd")
 source(here::here(global$setup))
 source(here("supplies/consumables_concise.R"))
 source(here("supplies/portable_lab.R"))
+source(here("supplies/travel.R"))
 
 ```
 
@@ -152,6 +153,18 @@ personnel <- bind_rows(lab.manager, work.study) %>%
 
 ## Travel
 
+```{r}
+travel.cost <- enframe(travel, name = "Project") %>%
+  mutate(Category = "Travel") %>%
+  unnest_longer(value, indices_to = "Supplies") %>%
+  unnest_wider(value) %>% 
+  mutate(Price = as.numeric(Price),
+         Title = Supplies) %>%
+  rowwise() %>%
+    mutate(Cost_total  = N * Price) %>%
+    ungroup() %>%
+  select(all_of(budget_cols))
+```
 
 
 ## Equipment
@@ -175,7 +188,7 @@ computers <- tibble(
   Manuf    = "system76",
   Link     = "https://system76.com/desktops/thelio-major-r5-n3/configure",
   Cat      = "thelio-major-r5-n3",
-  Each     = 4554,
+  Each     = 3554,
   Per      = "device",
   N_year   = 1,
   Purpose  = "DNA Sequencing"
@@ -269,7 +282,7 @@ loris_microbiomes <- consumables_table %>%
          Title != "DNA/RNA Shield Lysis Tubes (Microbe)" &
          Title != "2mL Collection Tubes"
          ) %>%
-  mutate(Samples = 400) %>%
+  mutate(Samples = 200) %>%
   project_total("Pygmy Loris Molecular Health")
 ```
 
@@ -281,13 +294,15 @@ projects <- c(
   "Pygmy Loris Taxonomy/Phylogenetics",
   "Urbanization Bat Health",
   "eDNA Endangered Bats",
-  "Lithium Tolerant Microbial Communities"
+  "Lithium Tolerant Microbial Communities",
+  "2025 Nocturnal Mammal Workshop at the London Zoo"
 )
 
 categories <- c(
   "Personnel",
   "Equipment",
-  "Consumables"
+  "Consumables",
+  "Travel"
 )
 
 supplies <- c(
@@ -303,7 +318,11 @@ supplies <- c(
         "Reagents",
         "Flowcells",
         "Tubes",
-        "Tips"
+        "Tips",
+        "Registration",
+        "International Flight",
+        "Lodging",
+        "Meals Per Diem"
 )
 ```
 
@@ -316,17 +335,50 @@ budget_summary <- bind_rows(
   bat_microbiome,
   bat_eDNA,
   equipment, 
-  personnel) %>%
+  personnel,
+  travel.cost) %>%
+  mutate(spent_by = case_when(
+    str_detect(Project, "General") & Category == "Personnel" ~ ymd("2026-05-31") ,
+    str_detect(Project, "General") & Category != "Personnel" ~ ymd("2025-05-31") ,
+    str_detect(Project, "Mammal Workshop") ~ ymd("2025-12-10") ,
+    str_detect(Project, "Lithium")         ~ ymd("2026-1-31") ,
+    str_detect(Project, "eDNA")            ~ ymd("2025-12-31") ,
+    str_detect(Project, "Bat")             ~ ymd("2025-12-31") ,
+    str_detect(Project, "Loris Molecular") ~ ymd("2026-2-1") ,
+    str_detect(Project, "Taxonomy")        ~ ymd("2026-5-1") 
+  )) %>%
   mutate(Project  = fct(Project , levels = projects),
          Category = fct(Category, levels = categories),
          Supplies = fct(Supplies, levels = supplies)) %>%
   relocate(all_of(budget_cols)) %>%
-  arrange(Project, Category, Supplies)
+  relocate(spent_by) %>%
+  arrange(spent_by, Project, Category, Supplies)  %>%
+  filter(Project != "Lithium Tolerant Microbial Communities" &
+         Project != "Urbanization Bat Health"  )
+```
+
+
+```{r}
+write.table(budget_summary, 
+            here("supplies/RichLab_budget_summary.tsv"), 
+            row.names = FALSE, 
+            sep       = "\t")
+
+download_budget <- download_file(
+  path           = here("supplies/RichLab_budget_summary.tsv"),
+  output_name    = "RichLab_budget_summary",
+  button_label   = "Download TSV Version",
+  button_type    = "danger",
+  has_icon       = TRUE,
+  icon           = "fa fa-save",
+  self_contained = TRUE
+)
+
 ```
 
 ```{r}
 project_budgets <- budget_summary %>%
-  group_by(Project, Category) %>%
+  group_by(spent_by, Project, Category) %>%
   group_split() %>%
   set_names(map_chr(., ~ paste(unique(.x$Project),
                                 unique(.x$Category),
@@ -335,10 +387,11 @@ project_budgets <- budget_summary %>%
 
 proj_summary <- tibble(
   Index      = names(project_budgets),
+  Spent_by   = map(project_budgets, ~ .x$spent_by[1]),
   Project    = str_remove_all(names(project_budgets), "_.+$"),
   Category   = str_remove_all(names(project_budgets), "^.+_"),
   Subtotal   = map_dbl(project_budgets, ~ sum(.x$Cost_total, na.rm = TRUE))
-)
+) %>% relocate(Spent_by)
 ```
 
 
@@ -353,252 +406,136 @@ project_supplies_budgets <- budget_summary %>%
                                 unique(.x$Supplies))))
 ```
 
-
 ```{r}
 supplies_summary <- tibble(
   Index      = str_remove_all(names(project_supplies_budgets), ":.+$"),
-  Project    = str_remove_all(names(project_supplies_budgets), "_.+$"),
-  Category   = str_extract_all(names(project_supplies_budgets), "(?<=_)\\w+(?=:.+$)"),
+  Project    = "",
+  Category   = "",
   Supplies   = str_remove_all(names(project_supplies_budgets), "^.+:"),
   Cost       = map_dbl(project_supplies_budgets, ~ sum(.x$Cost_total, na.rm = TRUE))
 )
 ```
 
+
 ```{r}
 budget.react <- reactable(
   proj_summary,
-  fullWidth       = FALSE,
-  groupBy        = "Project",
-  theme           = fivethirtyeight(),
-  defaultExpanded = TRUE,
+  fullWidth       = TRUE,
+  resizable       = TRUE,
+  wrap            = FALSE,
+  groupBy         = "Project",
+  theme           = fivethirtyeight(font_size = 16),
+  defaultExpanded = FALSE,
   defaultColDef   = colDef(footerStyle = list(fontWeight = "bold")),
   columns = list(
     Index     = colDef(show = FALSE),
-    Project   = colDef(name       = "Project or Category",
+    Spent_by  = colDef(name   = "Filled By", 
+                       format = colFormat(date = TRUE),
+                       maxWidth = 100),
+    Project   = colDef(name       = "Project",
+                       align      = "left",
                        footer     = "Grand Total",
+                       maxWidth = 300,
       rowHeader = TRUE,
       grouped   = JS("function(cellInfo) {
-                        return cellInfo.value;
-                      }")),
-    Category  = colDef(name = ""),
+      return `<strong>${cellInfo.value}</strong>`;
+                      }"),
+      html = TRUE,
+      style = cell_style(
+        data       = proj_summary,
+        font_size  = 13,
+        font_color = "#333333"
+        )
+      ),
+    Category  = colDef(name     = "Category",
+                       maxWidth = 150),
     Subtotal  = colDef(
-      name   = "Subtotal",
+      name      = "Total",
+      align     = "left",
+      format    = colFormat(currency = "USD", separators = TRUE),
       aggregate = "sum", 
-      format    = list(aggregated = colFormat(currency = "USD", separators = TRUE)),
-      cell      = data_bars(
-                    proj_summary, 
-                    text_position = "outside-end", 
-                    box_shadow    = TRUE, 
-                    number_fmt    = label_currency(prefix = "$", big.mark = ",")
-                  ),
+      aggregated = JS("function(cellInfo) {
+        return `<strong>${cellInfo.value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</strong>`
+      }"
+      ),
+      html = TRUE,
       footer    = function(values, name) {
                     total <- sum(values, na.rm = TRUE)
                     label_currency(prefix = "$", big.mark = ",")(total)
-                  }
+                  },
+      cell      = data_bars(
+                    proj_summary, 
+                    text_position = "outside-base", 
+                    number_fmt    = label_currency(prefix = "$", big.mark = ","),
+                    box_shadow    = TRUE,
+                    round_edges   = TRUE,
+                    fill_color    = paletteer_d("PNWColors::Starfish"),
+                    bias          = 1.5,
+                    icon          = 'dollar-sign',
+                    background    = 'transparent',
+                    bar_height    = 4
+                              ),
+                       maxWidth = 300
     )
   ),
   details = function(index) {
-      value <- supplies_summary$Supplies[Index]
-    }
-) %>% add_title("Budget Summary")
-```
-
-
-```{r}
-budget.react <- reactable(
-  proj_summary,
-  fullWidth       = FALSE,
-  theme           = fivethirtyeight(),
+    supplies_budget <- supplies_summary[supplies_summary$Index == proj_summary$Index[index], ]
+    div(
+    style = "margin-bottom: 40px;",
+    reactable(supplies_budget,
+  fullWidth       = TRUE,
+  theme           = void(),
   defaultExpanded = FALSE,
-  defaultColDef   = colDef(footerStyle = list(fontWeight = "bold")),
   columns = list(
-    Project   = colDef(name       = "Project",
-                       footer     = "Grand Total",
+    Index     = colDef(show = FALSE),
+    Project   = colDef(name = "",  maxWidth = 200),
+    Category  = colDef(name       = "",
+                       align      = "right",
       rowHeader = TRUE,
       grouped   = JS("function(cellInfo) {
                         return cellInfo.value;
-                      }")),
-    Subtotal  = colDef(
-      name   = "Cost Subtotal",
-      format = colFormat(currency = "USD", separators = TRUE),
-      footer    = function(values, name) {
-                    total <- sum(values, na.rm = TRUE)
-                    label_currency(prefix = "$", big.mark = ",")(total)
-                  }
+                      }"),  maxWidth = 200),
+    Supplies  = colDef(name = "", align = "right",  maxWidth = 200),
+    Cost      = colDef(name   = "", 
+                       align  = "left",
+                   aggregate = "sum",
+                   format    = list(aggregated = 
+                                      colFormat(currency   = "USD", 
+                                                separators = TRUE),
+                                    cell =  colFormat(currency = "USD",
+                                                      separators = TRUE))
+      )
     )
-  ),
-      details = function(index) {
-        cat_val <- cat_summary$Category[cat_index]
-        
-        supplies <- project_supplies_budgets %>% 
-          keep(~ unique(.x$Project) == proj_val & unique(.x$Category) == cat_val)
-        
-        if (length(supplies) == 0) return(NULL)
-        supp_summary <- tibble(
-          Supplies  = map_chr(supplies, ~ unique(.x$Supplies)),
-          TotalCost = map_dbl(supplies, ~ sum(.x$Cost_total, na.rm = TRUE))
-        )
-        
-reactable(supp_summary,
-  fullWidth       = FALSE,
-  theme           = fivethirtyeight(),
-  outlined        = TRUE,
-  defaultColDef   = colDef(footerStyle = list(fontWeight = "bold")),
-  defaultExpanded = FALSE,
-          columns = list(
-            Supplies  = colDef(name = "Supplies",
+  ))
+    }
+) %>% add_title("Rich Lab Budget Summary") %>%
+  add_source(tagList(download_budget))
+
+save_reactable_test(budget.react, here("supplies/RichLab_budget_summary.html"))
+```
+
+```{r}
+htmltools::browsable(
+  tagList(
+    tags$button(
+      "Show/hide more columns",
+      onclick = "Reactable.setHiddenColumns('cars-vis-table', prevColumns => {
+        return prevColumns.length === 0 ? ['Passengers', 'DriveTrain', 'Cylinders', 'EngineSize'] : []
+      })"
+    ),
+    reactable(
+      data,
+      columns = list(
+        Passengers = colDef(show = FALSE),
+        DriveTrain = colDef(show = FALSE),
+        Cylinders = colDef(show = FALSE),
+        EngineSize = colDef(show = FALSE)
       ),
-            TotalCost = colDef(
-              name = "Total Cost",
-              format = colFormat(currency = "USD", separators = TRUE),
-      footer    = function(values, name) {
-                    total <- sum(values, na.rm = TRUE)
-                    label_currency(prefix = "$", big.mark = ",")(total)
-                  }
-            )
-          )
-        )
-      }
+      elementId = "cars-vis-table"
     )
-  }
+  )
 )
 ```
-
-```{r}
-budget.react <- reactable(
-  budget_summary,
-  height          = 800,
-  theme           = fivethirtyeight(),
-  groupBy         = c("Category", "Project", "Supplies"),
-  defaultExpanded = FALSE,
-  columns         = list(
-    Category = colDef(
-      name      = "",
-      footer    = "Total", 
-      rowHeader = TRUE,
-      grouped   = JS("function(cellInfo) {
-                        return cellInfo.value;
-                      }")
-    ),
-    Project = colDef(
-      grouped = JS("function(cellInfo) {
-                        return cellInfo.value;
-                      }")
-    ),
-    Supplies = colDef(
-      grouped = JS("function(cellInfo) {
-                        return cellInfo.value;
-                      }")
-    ),
-    Title = colDef(
-      name = "",
-    ),
-    Cost_total = colDef(
-      name      = "Total Cost",
-      cell      = data_bars(
-                    budget_summary, 
-                    text_position = "outside-end", 
-                    box_shadow    = TRUE, 
-                    number_fmt    = label_currency(prefix = "$", big.mark = ",")
-                  ),
-      aggregate = "sum", 
-      format    = list(aggregated = colFormat(currency = "USD", separators = TRUE)),
-      footer    = function(values, name) {
-                    total <- sum(values, na.rm = TRUE)
-                    label_currency(prefix = "$", big.mark = ",")(total)
-                  }
-    ),
-    N = colDef(name = "N", aggregate = "median"),
-    Price = colDef(name = "Price/Unit"),
-    Manuf = colDef(
-      name  = "Manufacturer",
-      cell  = pill_buttons(opacity = 0.5, text_size = 9.5, box_shadow = TRUE),
-      style = cell_style(horizontal_align = "right")
-    ),
-    Cat = colDef(
-      name = "Catalog", 
-      cell = function(value) { tags$small(tags$pre(value)) }
-    ),
-    N_each   = colDef(show = FALSE),
-    N_needed = colDef(show = FALSE),
-    Link     = colDef(show = FALSE)
-  ),
-  defaultColDef = colDef(footerStyle = list(fontWeight = "bold"))
-) %>% add_title("Budget Summary")
-```
-
-
-```{r}
-
-
-budget.react <- reactable(
-  budget_summary,
-  height          = 800,
-  theme           = fivethirtyeight(),
-  groupBy         = c("Category", "Project", "Supplies"),
-  defaultExpanded = FALSE,
-  columns         = list(
-    Category      = colDef(footer    = "Total", 
-                           rowHeader = TRUE,
-                           grouped = JS("function(cellInfo) {
-                               return cellInfo.value
-                             }")
-                           ),
-    Project       = colDef(
-                          
-                          grouped = JS("function(cellInfo) {
-                               return cellInfo.value
-                             }")
-                           ),
-    Supplies      = colDef(grouped = JS("function(cellInfo) {
-                               return cellInfo.value
-                             }")
-                           ),
-    
-    Title         = colDef(name = ""),
-    
-    Cost_total = colDef(
-                         name      = "Total Cost",
-                         cell      = data_bars(
-                                          budget_summary, 
-                                          text_position = "outside-end", 
-                                          box_shadow    = TRUE, 
-                                          number_fmt    = label_currency(prefix = "$", big.mark = ",")
-                                          ),
-                         aggregate = "sum", 
-                         format    = list(aggregated = colFormat(currency = "USD", separators = TRUE)),
-                         footer    = function(values, name) {
-                                                          total <- sum(values, na.rm = TRUE)
-                                                          label_currency(prefix = "$", big.mark = ",")(total)
-                                                        }
-                         ), 
-    
-    N             = colDef(name = "N", aggregate = "median"),
-    
-    Price         = colDef(name      = "Price/Unit"),
-    
-    Manuf      = colDef(
-                          name  = "Manufacturer",
-                          cell  = pill_buttons(opacity = 0.5, text_size = 9.5, box_shadow = TRUE),
-                          style = cell_style(horizontal_align = "right")
-                        ),
-    
-    Cat        = colDef(
-                        name = "Catalog", 
-                        cell = function(value) {
-                                                tags$small(tags$pre(value))
-                                              }
-                        ),
-    
-    N_each        = colDef(show = FALSE),
-    N_needed      = colDef(show = FALSE),
-    Link          = colDef(show = FALSE)
-  ),
-  defaultColDef = colDef(footerStyle = list(fontWeight = "bold"))
-) %>% add_title("Budget Summary")
-```
-
-
 
 
 ## Travel

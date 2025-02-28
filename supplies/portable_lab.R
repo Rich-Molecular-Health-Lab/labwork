@@ -18,15 +18,6 @@ portable <- list(
    N_year       = 1,
    Purpose      = "Sample Collection"
  ),
- "Electrophoresis Setup" = list(
-   Link         = "https://www.minipcr.com/product/bluegel-electrophoresis-with-built-in-illuminator/",
-   Each        = 309.00,
-   Cat      = "QP-1500-01",
-   Manuf = "miniPCR",
-   Per          = "device",
-   N_year       = 1,
-   Purpose      = "Quality Control"
- ),
  "Quantus™ Fluorometer" = list(
    Link         = "https://www.fishersci.com/us/en/browse/90207111/fluorometers-and-fluorescence-polarization-systems",
    Each        = 3650.00,
@@ -53,15 +44,6 @@ portable <- list(
    Per          = "device",
    N_year       = 1,
    Purpose      = "Portable Lab"
- ),
- "BenchMixer™ MP Vortex Mixer" = list(
-   Link         = "https://www.benchmarkscientific.com/product/bv1007/",
-   Each         = 499.00,
-   Cat          = "BV1007",
-   Manuf        = "Benchmark Scientific",
-   Per          = "device",
-   N_year       = 1,
-   Purpose      = "DNA Extraction"
  ),
  "Mortexer™ Vortex Mixer" = list(
    Link         = "https://www.benchmarkscientific.com/product/bv1005/",
@@ -99,15 +81,6 @@ portable <- list(
    N_year          = 1,
    Purpose         = "Sample Collection"
  ),
- "32-Place Mini Benchtop Coolers (-20°C)" = list(
-   Link         = "https://www.heathrowscientific.com/32-place-mini-benchtop-coolers/",
-   Each        = 282.00,
-   Cat      = "120075",
-   Manuf = "Heathrow Scientific",
-   Per          = "device",
-   N_year       = 1,
-   Purpose         = "Sample Collection"
- ),
  "Gyro™ Microcentrifuge, fixed speed" = list(
    Link         = "https://www.minipcr.com/product/gyro-microcentrifuge-fixed-speed/",
    Each        = 169.00,
@@ -126,15 +99,6 @@ portable <- list(
    N_year       = 1,
    Purpose         = "DNA Extraction"
    
- ),
- "BeadBug™3 Microtube homogenizer" = list(
-   Link         = "https://www.benchmarkscientific.com/product/d1030/",
-   Each        = 998.00,
-   Cat      = "D1030",
-   Manuf = "Benchmark Scientific",
-   Per          = "device",
-   N_year       = 1,
-   Purpose         = "DNA Extraction"
  ),
  "BeadBug™6 Microtube homogenizer" = list(
    Link         = "https://www.benchmarkscientific.com/product/d1036/",
