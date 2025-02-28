@@ -20,16 +20,16 @@ portable <- list(
  ),
  "Quantus™ Fluorometer" = list(
    Link         = "https://www.fishersci.com/us/en/browse/90207111/fluorometers-and-fluorescence-polarization-systems",
-   Each        = 3650.00,
-   Cat      = "E6150",
-   Manuf = "Promega",
+   Each         = 3650.00,
+   Cat          = "E6150",
+   Manuf        = "Promega",
    Per          = "device",
    N_year       = 1,
-   Purpose     = "Quality Control"
+   Purpose      = "Quality Control"
  ),
  "Tube Rotator" = list(
    Link         = "https://pipette.com/labnet-revolver-adjustable-lab-tube-rotator.html",
-   Each        = 339.56,
+   Each         = 339.56,
    Cat          = "H5600",
    Manuf        = "Labnet",
    Per          = "device",
@@ -77,24 +77,24 @@ portable <- list(
    Each           = 137.00,
    Cat            = "120070",
    Manuf          = "Heathrow Scientific",
-   Per             = "device",
-   N_year          = 1,
-   Purpose         = "Sample Collection"
+   Per            = "device",
+   N_year         = 1,
+   Purpose        = "Sample Collection"
  ),
  "Gyro™ Microcentrifuge, fixed speed" = list(
    Link         = "https://www.minipcr.com/product/gyro-microcentrifuge-fixed-speed/",
-   Each        = 169.00,
-   Cat      = "QP-1800-01",
-   Manuf = "miniPCR",
+   Each         = 169.00,
+   Cat          = "QP-1800-01",
+   Manuf        = "miniPCR",
    Per          = "device",
    N_year       = 1,
    Purpose         = "Library Prep"
  ),
  "MC-12 Microcentrifuge" = list(
    Link         = "https://www.benchmarkscientific.com/product/c1612/",
-   Each        = 1715.69,
-   Cat      = "C1612",
-   Manuf = "Benchmark Scientific",
+   Each         = 1715.69,
+   Cat          = "C1612",
+   Manuf        = "Benchmark Scientific",
    Per          = "device",
    N_year       = 1,
    Purpose         = "DNA Extraction"
@@ -102,12 +102,12 @@ portable <- list(
  ),
  "BeadBug™6 Microtube homogenizer" = list(
    Link         = "https://www.benchmarkscientific.com/product/d1036/",
-   Each        = 2736.67,
-   Cat      = "D1036",
-   Manuf = "Benchmark Scientific",
+   Each         = 2736.67,
+   Cat          = "D1036",
+   Manuf        = "Benchmark Scientific",
    Per          = "device",
    N_year       = 1,
-   Purpose         = "DNA Extraction"
+   Purpose      = "DNA Extraction"
  )
 )
   )

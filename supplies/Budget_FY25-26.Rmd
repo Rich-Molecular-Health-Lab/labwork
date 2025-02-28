@@ -1,0 +1,544 @@
+---
+title: "General Lab Budget"
+author: "Alicia Rich"
+output:
+  html_document:
+    theme:
+      bootswatch: flatly
+    toc: false
+    code_folding: "hide"
+    fig_caption: true
+    df_print: paged
+                     
+---
+
+```{r, include = F}
+global             <- config::get(config = "default")
+
+here::i_am("supplies/Budget_FY25-26.Rmd")
+source(here::here(global$setup))
+source(here("supplies/consumables_concise.R"))
+source(here("supplies/portable_lab.R"))
+source(here("supplies/travel.R"))
+
+```
+
+# Overview and Introduction
+
+## Purpose
+
+This is a broad estimated budget for the Rich Lab's fiscal year costs. It includes some of our routine supplies that should remain constant year-to-year and some of the project-specific infrastructure that will generate enough pilot data to secure a federal grant.
+
+## Time Frame
+
+Academic Year 2025 - 2026
+
+# Budget
+
+```{r, include = FALSE}
+
+budget_cols <- c(
+      "Project",
+      "Category",
+      "Supplies",
+      "Title",
+      "Cost_total",
+      "N",
+      "Price",
+      "Manuf",
+      "Cat",
+      "N_each",
+      "N_needed",
+      "Link"
+)
+
+make_total <- function(df) {
+  df <- df %>% rowwise() %>%
+    mutate(Cost_month = Each * N_month,
+           Cost_year  = 12 * (Each * N_month)) %>%
+    ungroup()
+  
+  return(df)
+}
+
+equip_total <- function(df) {
+  df <- df %>% rowwise() %>%
+    mutate(Cost_year  = Each * N_year) %>%
+    ungroup() %>%
+    rename(Supplies   = Purpose,
+           Price      = Each,
+           N_needed   = N_year,
+           Cost_total = Cost_year) %>%
+    mutate(Project = "General",
+           N       = N_needed,
+           N_each  = 1)
+  
+  return(df)
+}
+
+project_total <- function(df, project) {
+  df <- df %>% rowwise() %>%
+    mutate(
+      N_each         = floor(preps * samples_prep),
+      N_needed       = ceiling(Samples/N_each),
+      Cost_total     = N_needed * Each,
+      Project        = project,
+      Supplies       = fct(str_to_title(Category), levels = c(
+        "Kits",
+        "Reagents",
+        "Flowcells",
+        "Tubes",
+        "Tips"
+      )
+      )
+    ) %>%
+    mutate(Category = "Consumables") %>%
+    select(
+      Category,
+      Project,
+      Supplies,
+      Title,
+      Cost_total,
+      N_each,
+      N = Samples,
+      N_needed,
+      Price = Each,
+      Manuf,
+      Cat,
+      Link
+    ) %>%
+    relocate(all_of(budget_cols)) %>%
+    arrange(
+      Supplies,
+      Manuf,
+      Cat
+    )
+}
+
+```
+
+
+## Personnel
+
+```{r, include = FALSE}
+lab.manager <- tibble(
+  Category = "Personnel",
+  Title    = "Lab Technician",
+  Each     = 15,
+  Per      = "hours",
+  N_month  = 80
+) %>% make_total()
+
+work.study <- tibble(
+  Category = "Personnel",
+  Title    = "Work Study Undergrads",
+  Each     = 3.75,
+  Per      = "hour",
+  N_month  = 40
+) %>% make_total()
+
+personnel <- bind_rows(lab.manager, work.study) %>%
+  rename(Price      = Each, 
+         Cost_total = Cost_year,
+         N          = N_month) %>%
+  mutate(Project    = "General",
+         N_needed   = N * 12, 
+         N_each     = 1,
+         Link       = NA, 
+         Cat        = NA,
+         Supplies   = Title,
+         Manuf      = NA) %>%
+  select(all_of(budget_cols))
+```
+
+## Travel
+
+```{r}
+travel.cost <- enframe(travel, name = "Project") %>%
+  mutate(Category = "Travel") %>%
+  unnest_longer(value, indices_to = "Supplies") %>%
+  unnest_wider(value) %>% 
+  mutate(Price = as.numeric(Price),
+         Title = Supplies) %>%
+  rowwise() %>%
+    mutate(Cost_total  = N * Price) %>%
+    ungroup() %>%
+  select(all_of(budget_cols))
+```
+
+
+## Equipment
+
+```{r, include = FALSE}
+sequencers <- tibble(
+  Category = "Equipment",
+  Title    = c("MinION Mk1d Sequencer", "Flongle Starter Pack"),
+  Manuf    = "ONT",
+  Link     = c("https://store.nanoporetech.com/us/minion.html", "https://store.nanoporetech.com/us/flongle-intro-pack-2.html"),
+  Cat      = c("MIN-101D", "FLGIntSP"),
+  Each     = c(2999, 1995),
+  Per      = c("device", "pack"),
+  N_year   = c(2, 1),
+  Purpose  = c("DNA Sequencing", "DNA Sequencing")
+) %>% equip_total()
+
+computers <- tibble(
+  Category = "Equipment",
+  Title    = "Linux High Performance Workstation",
+  Manuf    = "system76",
+  Link     = "https://system76.com/desktops/thelio-major-r5-n3/configure",
+  Cat      = "thelio-major-r5-n3",
+  Each     = 3554,
+  Per      = "device",
+  N_year   = 1,
+  Purpose  = "DNA Sequencing"
+) %>% equip_total()
+
+portable.lab <- enframe(portable$equipment, name = "Title") %>%
+  mutate(Category = "Equipment") %>%
+  unnest_wider(value) %>% equip_total()
+
+equipment <- tibble(
+  Category = "Equipment",
+  Title    = "UV 30W, (G30T8) Germicidal Lamp",
+  Link     = "https://a.co/d/hJlNPLC",
+  Manuf    = "Sylvania",
+  Cat      = NA,
+  Each     = 19.46,
+  Per      = "item",
+  N_year   = 1,
+  Purpose  = "DNA Extraction"
+) %>%
+  equip_total() %>%
+  bind_rows(sequencers, computers, portable.lab) %>%
+  select(all_of(budget_cols))
+```
+
+### Consumables 
+
+```{r}
+consumables_table <- enframe(consumables, name = "Category") %>%
+  unnest_longer(value, indices_to = "Title") %>%
+  unnest_wider(value)
+bat_eDNA <- consumables_table %>% 
+  filter(Title != "Ligation Sequencing Kit" &
+         Title != "16S Barcoding Kit 24"    &
+         Title != "LongAmp Hot Start Taq 2X Master Mix" &
+         Title != "NEBNext® Companion Module v2" &
+         Title != "T7 Endonuclease I" &
+         Title != "Blunt/TA Ligase" &
+         Title != "MinION" &
+         Title != "DNA/RNA Shield" &
+         Title != "DNA/RNA Shield Lysis Tubes (Microbe)" &
+         Title != "2mL Collection Tubes" &
+         Title != "5mL Collection Tubes"
+         ) %>%
+  mutate(Samples = 50) %>%
+  project_total("eDNA Endangered Bats")
+bat_microbiome <- consumables_table %>% 
+  filter(Title != "Ligation Sequencing Kit" &
+         Title != "Rapid Barcoding Kit 24"    &
+         Title != "NEBNext® Companion Module v2" &
+         Title != "REPLI-g UltraFast Mini Kit" &
+         Title != "T7 Endonuclease I" &
+         Title != "Blunt/TA Ligase" &
+         Title != "MinION" &
+         Title != "DNA/RNA Shield" 
+         ) %>%
+  mutate(Samples = 200) %>%
+  project_total("Urbanization Bat Health")
+salci <- consumables_table %>% 
+  filter(Title != "Rapid Barcoding Kit 24" &
+         Title != "16S Barcoding Kit 24"    &
+         Title != "LongAmp Hot Start Taq 2X Master Mix" &
+         Title != "MinION" &
+         Title != "DNA/RNA Shield" &
+         Title != "2mL Collection Tubes" &
+         Title != "5mL Collection Tubes"
+         ) %>%
+  mutate(Samples = 30) %>%
+  project_total("Lithium Tolerant Microbial Communities")
+loris_taxonomy <- consumables_table %>% 
+  filter(Title != "Ligation Sequencing Kit" &
+         Title != "16S Barcoding Kit 24"    &
+         Title != "LongAmp Hot Start Taq 2X Master Mix" &
+         Title != "NEBNext® Companion Module v2" &
+         Title != "T7 Endonuclease I" &
+         Title != "Blunt/TA Ligase" &
+         Title != "MinION" &
+         Title != "DNA/RNA Shield Lysis Tubes (Microbe)" &
+         Title != "2mL Collection Tubes"
+         ) %>%
+  mutate(Samples = 60) %>%
+  project_total("Pygmy Loris Taxonomy/Phylogenetics")
+loris_microbiomes <- consumables_table %>% 
+  filter(Title != "Ligation Sequencing Kit" &
+         Title != "Rapid Barcoding Kit 24"    &
+         Title != "NEBNext® Companion Module v2" &
+         Title != "REPLI-g UltraFast Mini Kit" &
+         Title != "T7 Endonuclease I" &
+         Title != "Blunt/TA Ligase" &
+         Title != "MinION" &
+         Title != "DNA/RNA Shield Lysis Tubes (Microbe)" &
+         Title != "2mL Collection Tubes"
+         ) %>%
+  mutate(Samples = 200) %>%
+  project_total("Pygmy Loris Molecular Health")
+```
+
+
+```{r}
+projects <- c(
+  "General",
+  "Pygmy Loris Molecular Health",
+  "Pygmy Loris Taxonomy/Phylogenetics",
+  "Urbanization Bat Health",
+  "eDNA Endangered Bats",
+  "Lithium Tolerant Microbial Communities",
+  "2025 Nocturnal Mammal Workshop at the London Zoo"
+)
+
+categories <- c(
+  "Personnel",
+  "Equipment",
+  "Consumables",
+  "Travel"
+)
+
+supplies <- c(
+        "Lab Technician",
+        "Work Study Undergrads",
+        "Portable Lab",
+        "Sample Collection",
+        "DNA Extraction",
+        "Quality Control",
+        "Library Prep",
+        "DNA Sequencing",
+        "Kits",
+        "Reagents",
+        "Flowcells",
+        "Tubes",
+        "Tips",
+        "Registration",
+        "International Flight",
+        "Lodging",
+        "Meals Per Diem"
+)
+```
+
+
+```{r}
+budget_summary <- bind_rows(
+  loris_microbiomes,
+  loris_taxonomy,
+  salci,
+  bat_microbiome,
+  bat_eDNA,
+  equipment, 
+  personnel,
+  travel.cost) %>%
+  mutate(spent_by = case_when(
+    str_detect(Project, "General") & Category == "Personnel" ~ ymd("2026-05-31") ,
+    str_detect(Project, "General") & Category != "Personnel" ~ ymd("2025-05-31") ,
+    str_detect(Project, "Mammal Workshop") ~ ymd("2025-12-10") ,
+    str_detect(Project, "Lithium")         ~ ymd("2026-1-31") ,
+    str_detect(Project, "eDNA")            ~ ymd("2025-12-31") ,
+    str_detect(Project, "Bat")             ~ ymd("2025-12-31") ,
+    str_detect(Project, "Loris Molecular") ~ ymd("2026-2-1") ,
+    str_detect(Project, "Taxonomy")        ~ ymd("2026-5-1") 
+  )) %>%
+  mutate(Project  = fct(Project , levels = projects),
+         Category = fct(Category, levels = categories),
+         Supplies = fct(Supplies, levels = supplies)) %>%
+  relocate(all_of(budget_cols)) %>%
+  relocate(spent_by) %>%
+  arrange(spent_by, Project, Category, Supplies)  %>%
+  filter(Project != "Lithium Tolerant Microbial Communities" &
+         Project != "Urbanization Bat Health"  )
+```
+
+
+```{r}
+write.table(budget_summary, 
+            here("supplies/RichLab_budget_summary.tsv"), 
+            row.names = FALSE, 
+            sep       = "\t")
+
+download_budget <- download_file(
+  path           = here("supplies/RichLab_budget_summary.tsv"),
+  output_name    = "RichLab_budget_summary",
+  button_label   = "Download TSV Version",
+  button_type    = "danger",
+  has_icon       = TRUE,
+  icon           = "fa fa-save",
+  self_contained = TRUE
+)
+
+```
+
+```{r}
+project_budgets <- budget_summary %>%
+  group_by(spent_by, Project, Category) %>%
+  group_split() %>%
+  set_names(map_chr(., ~ paste(unique(.x$Project),
+                                unique(.x$Category),
+                                sep = "_")))
+
+
+proj_summary <- tibble(
+  Index      = names(project_budgets),
+  Spent_by   = map(project_budgets, ~ .x$spent_by[1]),
+  Project    = str_remove_all(names(project_budgets), "_.+$"),
+  Category   = str_remove_all(names(project_budgets), "^.+_"),
+  Subtotal   = map_dbl(project_budgets, ~ sum(.x$Cost_total, na.rm = TRUE))
+) %>% relocate(Spent_by)
+```
+
+
+```{r}
+project_supplies_budgets <- budget_summary %>%
+  group_by(Project, Category, Supplies) %>%
+  group_split() %>%
+  set_names(map_chr(., ~ paste0(unique(.x$Project),
+                                "_",
+                                unique(.x$Category),
+                                ":",
+                                unique(.x$Supplies))))
+```
+
+```{r}
+supplies_summary <- tibble(
+  Index      = str_remove_all(names(project_supplies_budgets), ":.+$"),
+  Project    = "",
+  Category   = "",
+  Supplies   = str_remove_all(names(project_supplies_budgets), "^.+:"),
+  Cost       = map_dbl(project_supplies_budgets, ~ sum(.x$Cost_total, na.rm = TRUE))
+)
+```
+
+
+```{r}
+budget.react <- reactable(
+  proj_summary,
+  fullWidth       = TRUE,
+  resizable       = TRUE,
+  wrap            = FALSE,
+  groupBy         = "Project",
+  theme           = fivethirtyeight(font_size = 16),
+  defaultExpanded = FALSE,
+  defaultColDef   = colDef(footerStyle = list(fontWeight = "bold")),
+  columns = list(
+    Index     = colDef(show = FALSE),
+    Spent_by  = colDef(name   = "Filled By", 
+                       format = colFormat(date = TRUE),
+                       maxWidth = 100),
+    Project   = colDef(name       = "Project",
+                       align      = "left",
+                       footer     = "Grand Total",
+                       maxWidth = 300,
+      rowHeader = TRUE,
+      grouped   = JS("function(cellInfo) {
+      return `<strong>${cellInfo.value}</strong>`;
+                      }"),
+      html = TRUE,
+      style = cell_style(
+        data       = proj_summary,
+        font_size  = 13,
+        font_color = "#333333"
+        )
+      ),
+    Category  = colDef(name     = "Category",
+                       maxWidth = 150),
+    Subtotal  = colDef(
+      name      = "Total",
+      align     = "left",
+      format    = colFormat(currency = "USD", separators = TRUE),
+      aggregate = "sum", 
+      aggregated = JS("function(cellInfo) {
+        return `<strong>${cellInfo.value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</strong>`
+      }"
+      ),
+      html = TRUE,
+      footer    = function(values, name) {
+                    total <- sum(values, na.rm = TRUE)
+                    label_currency(prefix = "$", big.mark = ",")(total)
+                  },
+      cell      = data_bars(
+                    proj_summary, 
+                    text_position = "outside-base", 
+                    number_fmt    = label_currency(prefix = "$", big.mark = ","),
+                    box_shadow    = TRUE,
+                    round_edges   = TRUE,
+                    fill_color    = paletteer_d("PNWColors::Starfish"),
+                    bias          = 1.5,
+                    icon          = 'dollar-sign',
+                    background    = 'transparent',
+                    bar_height    = 4
+                              ),
+                       maxWidth = 300
+    )
+  ),
+  details = function(index) {
+    supplies_budget <- supplies_summary[supplies_summary$Index == proj_summary$Index[index], ]
+    div(
+    style = "margin-bottom: 40px;",
+    reactable(supplies_budget,
+  fullWidth       = TRUE,
+  theme           = void(),
+  defaultExpanded = FALSE,
+  columns = list(
+    Index     = colDef(show = FALSE),
+    Project   = colDef(name = "",  maxWidth = 200),
+    Category  = colDef(name       = "",
+                       align      = "right",
+      rowHeader = TRUE,
+      grouped   = JS("function(cellInfo) {
+                        return cellInfo.value;
+                      }"),  maxWidth = 200),
+    Supplies  = colDef(name = "", align = "right",  maxWidth = 200),
+    Cost      = colDef(name   = "", 
+                       align  = "left",
+                   aggregate = "sum",
+                   format    = list(aggregated = 
+                                      colFormat(currency   = "USD", 
+                                                separators = TRUE),
+                                    cell =  colFormat(currency = "USD",
+                                                      separators = TRUE))
+      )
+    )
+  ))
+    }
+) %>% add_title("Rich Lab Budget Summary") %>%
+  add_source(tagList(download_budget))
+
+save_reactable_test(budget.react, here("supplies/RichLab_budget_summary.html"))
+```
+
+```{r}
+htmltools::browsable(
+  tagList(
+    tags$button(
+      "Show/hide more columns",
+      onclick = "Reactable.setHiddenColumns('cars-vis-table', prevColumns => {
+        return prevColumns.length === 0 ? ['Passengers', 'DriveTrain', 'Cylinders', 'EngineSize'] : []
+      })"
+    ),
+    reactable(
+      data,
+      columns = list(
+        Passengers = colDef(show = FALSE),
+        DriveTrain = colDef(show = FALSE),
+        Cylinders = colDef(show = FALSE),
+        EngineSize = colDef(show = FALSE)
+      ),
+      elementId = "cars-vis-table"
+    )
+  )
+)
+```
+
+
+## Travel
+
+## Other Expenses
+

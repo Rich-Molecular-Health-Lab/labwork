@@ -181,3 +181,89 @@ dna_prep <- enframe(extraction[1], name = NULL) %>% unnest_wider(value)
 ### Reagents
 
 ### Other Basic Consumables
+
+## Personnel
+
+### Lab Manager or Technician
+
+My graduate student Shayda Azadmanesh has been managing my lab under a graduate research stipend at 20 hours per week. After she secures a permanent position I would like to pay someone to act as a lab technician at minimum wage for 20 hours per week.
+
+```{r, include = FALSE}
+lab.manager <- tibble(
+  Category = "Personnel",
+  Title    = "Lab Technican",
+  Each     = 15,
+  Per      = "hours",
+  N_month  = 80
+) %>% make_total()
+```
+
+
+### Work Study Undergraduates
+
+Trineca Segura-Palacio completed an undergraduate independent study with me and stayed in the lab as a work-study intern at 10 hours per week. I would like to offer her the same arrangement next year, as she is already fully trained and capable. I also want to maximize opportunities for students like her representing nontraditional and racial minority communities that are likely to face heightened barriers in the next several years.
+
+After Trineca graduates, I would like to continue using work-study to compensate at least one student from an underrepresented community at all times.
+
+
+```{r, include = FALSE}
+work.study <- tibble(
+  Category = "Personnel",
+  Title    = "Work Study Undergrads",
+  Each     = 3.75,
+  Per      = "hour",
+  N_month  = 40
+) %>% make_total()
+```
+
+
+```{r}
+personnel <- bind_rows(lab.manager, work.study) %>%
+  rename(Price      = Each, 
+         Cost_total = Cost_year,
+         N          = N_month) %>%
+  mutate(Project    = "All Projects",
+         N_needed   = N * 12, 
+         N_each     = 1,
+         Link       = NA, 
+         Cat        = NA,
+         Supplies   = NA,
+         Manuf      = NA) %>%
+  select(all_of(budget_cols))
+```
+### ONT Sequencing Devices
+
+The MinION Mk1b portable sequencing devices that I purchased with startup funds in 2022 have become the crux of all my lab's workflows and long-term projects. Oxford Nanopore just released the upgraded Mk1d and announced that all Mk1b devices would soon become obsolete. We currently have two Mk1b devices, so I would like to replace both and get one more flongle starter pack (includes one flongle adapter and 12 consumable flow cells) so that we can run the flongle flow cells on two devices simultaneously.
+
+```{r, include = FALSE}
+sequencers <- tibble(
+  Category = "Equipment",
+  Title    = c("MinION Mk1d Sequencers", "Flongle Starter Pack"),
+  Manuf    = "ONT",
+  Link     = c("https://store.nanoporetech.com/us/minion.html", "https://store.nanoporetech.com/us/flongle-intro-pack-2.html"),
+  Cat      = c("MIN-101D", "FLGIntSP"),
+  Each     = c(2999, 1995),
+  Per      = c("device", "pack"),
+  N_year   = c(2, 1)
+) %>% equip_total()
+```
+
+
+### Computational Upgrades
+
+Since diving further into the long-read sequencing realm, I have realized that computational power limits our pipelines more so than sequencing devices themselves. I purchased a Linux System76 laptop with the minimum computational requirements to perform more of our bioinformatic tasks locally and handle more complex sequencing runs on the MinION devices. If we also incorporate a high performance workstation, we will be able to sequence more complex genomes at a higher throughput and reserve the laptop for our mobile sequencing operations.
+
+```{r}
+computers <- tibble(
+  Category = "Equipment",
+  Title    = "Linux High Performance Workstation",
+  Manuf    = "system76",
+  Link     = "https://system76.com/desktops/thelio-major-r5-n3/configure",
+  Cat      = "thelio-major-r5-n3",
+  Each     = 4554,
+  Per      = "device",
+  N_year   = 1
+) %>% equip_total()
+```
+
+
