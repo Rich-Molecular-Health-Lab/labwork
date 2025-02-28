@@ -1,10 +1,13 @@
 default:
-  packages: "GlobalScripts/packages.R"
-  setup: "GlobalScripts/global_setup.R"
-  set_paths: "GlobalScripts/set_paths.R"
-  conflicts: "GlobalScripts/conflicts.R"
-  functions: "GlobalScripts/functions.R"
-  fonts: "GlobalScripts/fonts/FA6_Free-Solid-900.otf"
+  packages: "setup/packages.R"
+  setup: "setup/setup.R"
+  conflicts: "setup/conflicts.R"
+  functions: "setup/functions.R"
+  inputs: "setup/inputs.R"
+  fonts: "setup/fonts/FA6_Free-Solid-900.otf"
+  
+budget:
+  scripts: !expr list("supplies/consumables_byFY.R", "supplies/travel_byFY.R", "supplies/personnel_byFY.R", "supplies/equipment_byFY.R", "supplies/projects_byFY.R")
   
 libprep:
   app: "LibraryPrep/app.R"

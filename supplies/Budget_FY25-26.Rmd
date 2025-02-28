@@ -1,5 +1,5 @@
 ---
-title: "General Lab Budget"
+title: "General Lab Budget by Fiscal Year"
 author: "Alicia Rich"
 output:
   html_document:
@@ -17,23 +17,13 @@ global             <- config::get(config = "default")
 
 here::i_am("supplies/Budget_FY25-26.Rmd")
 source(here::here(global$setup))
-source(here("supplies/consumables_concise.R"))
-source(here("supplies/portable_lab.R"))
-source(here("supplies/travel.R"))
+
+for (file in budget$scripts) {
+  source(here(file))
+}
 
 ```
 
-# Overview and Introduction
-
-## Purpose
-
-This is a broad estimated budget for the Rich Lab's fiscal year costs. It includes some of our routine supplies that should remain constant year-to-year and some of the project-specific infrastructure that will generate enough pilot data to secure a federal grant.
-
-## Time Frame
-
-Academic Year 2025 - 2026
-
-# Budget
 
 ```{r, include = FALSE}
 
