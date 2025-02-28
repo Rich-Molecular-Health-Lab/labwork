@@ -19,6 +19,26 @@ consumables <- list(
       N_per_prep   = 1
     )
   ),
+  "DNA Extraction" = list(
+    "Fecal/Soil Kit" = list(
+      Name         = "Quick-DNA Fecal/Soil Microbe Miniprep",
+      Link         = "https://www.zymoresearch.com/collections/quick-dna-fecal-soil-microbe-kits/products/quick-dna-fecal-sshield",
+      Price        = 264.90,
+      Cat          = "D6010",
+      Manuf        = "Zymo Research",
+      N_units      = 50,
+      N_per_prep   = 1
+    ),
+    "Purification Kit" = list(
+      Name         = "DNA Clean & Concentrator MagBead Kit",
+      Link         = "https://www.zymoresearch.com/collections/dcc-pcr-purification-kits/products/dna-clection/products/dna-rna-shield-lysis-and-collection-tubes",
+      Price        = 154.90,
+      Cat          = "D4012",
+      Manuf        = "Zymo Research",
+      N_units      = 100,
+      N_per_prep   = 1
+    )
+  ),
   "Quality Control"   = list(
     "Qubit Assay Tubes" = list(
       Name         = "500 μL thin-walled polypropylene tubes",
@@ -39,8 +59,93 @@ consumables <- list(
       N_per_prep   = 1
     )
   ),
-  "Library Prep"      = list(),
-  "DNA Sequencing"    = list(),
+  "Library Prep Kits"      = list(
+    "Ligation Sequencing Kit" = list(
+      Name         = "Ligation Sequencing Kit",
+      Link         = "https://store.nanoporetech.com/us/ligation-sequencing-kit-v14.html",
+      Price        = 599,
+      Cat          = "SQK-LSK114",
+      Manuf        = "ONT",
+      N_units      = 6,
+      N_per_prep   = 1
+      ),
+    "16S Barcoding Kit 24" = list(
+      Name         = "16S Barcoding Kit 24",
+      Link         = "https://store.nanoporetech.com/us/16s-barcoding-kit-24-v14.html",
+      Price        = 900,
+      Cat          = "SQK-16S114.24",
+      Manuf        = "ONT",
+      N_units      = 6,
+      N_per_prep   = 24
+      ),
+    "Rapid Barcoding Kit 24" = list(
+      Name         = "Rapid Barcoding Kit 24",
+      Link         = "https://store.nanoporetech.com/us/rapid-barcoding-sequencing-kit-24-v14.html",
+      Price        = 699,
+      Cat          = "SQK-RBK114.24",
+      Manuf        = "ONT",
+      N_units      = 6,
+      N_per_prep   = 24
+      )
+    ),
+  "Library Prep Extras"      = list(
+    "Taq Master Mix" = list(
+      Name         = "LongAmp Hot Start Taq 2X Master Mix",
+      Link         = "https://www.neb.com/en-us/products/m0533-longamp-hot-start-taq-2x-master-mix",
+      Price        = 210,
+      Cat          = "M0533",
+      Manuf        = "NEB",
+      N_units      = 100,
+      N_per_prep   = 1
+    ),
+    "Ligation Companion Module" = list(
+      Name         = "NEBNext® Companion Module v2",
+      Link         = "https://www.neb.com/en-us/products/e7672-nebnext-companion-module-oxford-nanopore-technologies-ligation-sequencing",
+      Price        = 752,
+      Cat          = "E7672S",
+      Manuf        = "NEB",
+      N_units      = 24,
+      N_per_prep   = 1
+    ),
+    "Endonuclease" = list(
+      Name         = "T7 Endonuclease I",
+      Link         = "https://www.neb.com/en-us/products/m0302-t7-endonuclease-i",
+      Price        = 80,
+      Cat          = "M0302",
+      Manuf        = "NEB",
+      N_units      = 250,
+      N_per_prep   = 1
+    ),
+    "Blunt/TA Ligase" = list(
+      Name         = "Blunt/TA Ligase",
+      Link         = "https://www.neb.com/en-us/products/m0367-blunt-ta-ligase-master-mix",
+      Price        = 115,
+      Cat          = "M0367",
+      Manuf        = "NEB",
+      N_units      = 50,
+      N_per_prep   = 1
+    ),
+    "MDA Amplification Kit" = list(
+      Name         = "REPLI-g UltraFast Mini Kit",
+      Link         = "https://www.qiagen.com/us/products/discovery-and-translational-research/pcr-qpcr-dpcr/preamplification/repli-g-kits?catno=150035",
+      Price        = 1056,
+      Cat          = "150035",
+      Manuf        = "Qiagen",
+      N_units      = 100,
+      N_per_prep   = 1
+    )
+  ),
+  "DNA Sequencing"    = list(
+    "Flow Cells" = list(
+      Name         = "MinION Flow Cells",
+      Link         = "https://store.nanoporetech.com/us/flow-cell-r10-4-1-2025.html",
+      Price        = 800,
+      Cat          = "FLO-MIN114",
+      Manuf        = "ONT",
+      N_units      = 4,
+      N_per_prep   = 24
+    )
+  ),
   "General"        = list(
     "Reagents" = list(
       "Ethanol" = list(
