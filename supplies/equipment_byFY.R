@@ -7,8 +7,9 @@ equipment <- list(
       Cat          = NULL,
       Manuf        = "EcoFlow",
       Per          = "device",
-      N_25         = 1,
-      N_26         = 0
+      N_25         = 0,
+      N_26         = 1,
+      Funds        = "Startup"
     ),
     "Portable Incubator" = list(
       Name         = "5L Laboratory Incubator 0°C to +55°C",
@@ -18,7 +19,8 @@ equipment <- list(
       Manuf        = "IVYX Scientific",
       Per          = "device",
       N_25         = 1,
-      N_26         = 0
+      N_26         = 0,
+      Funds        = "Startup"
     ),
     "Portable Freezer" = list(
       Name         = "-20°C Portable Lab Sample Freezer and Refrigerator",
@@ -28,7 +30,8 @@ equipment <- list(
       Manuf        = "IVYX Scientific",
       Per          = "device",
       N_25         = 1,
-      N_26         = 0
+      N_26         = 0,
+      Funds        = "Startup"
     )
   ),
   "Sample Collection" = list(
@@ -40,7 +43,8 @@ equipment <- list(
       Manuf        = "coospider-repta",
       Per          = "device",
       N_25         = 1,
-      N_26         = 0
+      N_26         = 0,
+      Funds        = "Startup"
     ),
     "Sample Transport Cooler" = list(
       Name         = "12-Place Mini Benchtop Coolers (0)",
@@ -50,7 +54,8 @@ equipment <- list(
       Manuf        = "Heathrow Scientific",
       Per          = "device",
       N_25         = 1,
-      N_26         = 0
+      N_26         = 0,
+      Funds        = "Startup"
     )
   ),
   "DNA Extraction"    = list(
@@ -62,7 +67,8 @@ equipment <- list(
       Manuf        = "Sylvania",
       Per          = "bulb",
       N_25         = 1,
-      N_26         = 0
+      N_26         = 0,
+      Funds        = "Startup"
     ),
     "Bead Homogenizer" = list(
       Name         = "BeadBug™6 Microtube homogenizer",
@@ -72,7 +78,8 @@ equipment <- list(
       Manuf        = "Benchmark Scientific",
       Per          = "device",
       N_25         = 1,
-      N_26         = 0
+      N_26         = 0,
+      Funds        = "Startup"
     ),
     "Thermal Mixer" = list(
       Name         = "Mortexer™ Vortex Mixer",
@@ -82,7 +89,8 @@ equipment <- list(
       Manuf        = "Benchmark Scientific",
       Per          = "device",
       N_25         = 1,
-      N_26         = 0
+      N_26         = 0,
+      Funds        = "TBD"
     ),
     "Portable Microcentrifuge" = list(
       Name         = "MC-12 Microcentrifuge",
@@ -92,7 +100,8 @@ equipment <- list(
       Manuf        = "Benchmark Scientific",
       Per          = "device",
       N_25         = 1,
-      N_26         = 0
+      N_26         = 0,
+      Funds        = "Startup"
     )
   ),
   "Quality Control"   = list(
@@ -103,8 +112,9 @@ equipment <- list(
       Cat          = "E6150",
       Manuf        = "Promega",
       Per          = "device",
-      N_25         = 1,
-      N_26         = 0
+      N_25         = 0,
+      N_26         = 1,
+      Funds        = "Startup"
       )
     ),
   "Library Prep"      = list(
@@ -116,7 +126,8 @@ equipment <- list(
         Manuf        = "Labnet",
         Per          = "device",
         N_25         = 1,
-        N_26         = 0
+        N_26         = 0,
+        Funds        = "Startup"
         ),
       "Mini Microfuge" = list(
         Name         = "Gyro™ Microcentrifuge, fixed speed",
@@ -125,8 +136,9 @@ equipment <- list(
         Cat          = "C1612",
         Manuf        = "Benchmark Scientific",
         Per          = "device",
-        N_25         = 1,
-        N_26         = 0
+        N_25         = 0,
+        N_26         = 1,
+        Funds        = "Startup"
         ),
       "Mini Thermal Cycler" = list(
         Name         = "mini16X thermal cycler",
@@ -136,7 +148,8 @@ equipment <- list(
         Manuf        = "miniPCR",
         Per          = "device",
         N_25         = 1,
-        N_26         = 0
+        N_26         = 0,
+        Funds        = "Startup"
         )
       ),
   "DNA Sequencing"    = list(
@@ -147,18 +160,35 @@ equipment <- list(
       Cat          = "MIN-101D",
       Manuf        = "ONT",
       Per          = "device",
-      N_25         = 2,
-      N_26         = 0
+      N_25         = 1,
+      N_26         = 1,
+      Funds        = "Startup"
       ),
     "Sequencing Computer" = list(
       Name         = "Linux High Performance Thelio Major Workstation",
       Link         = "https://system76.com/desktops/thelio-major-r5-n3/configure",
-      Price        = 4554,
+      Price        = 3554,
       Cat          = "thelio-major-r5-n3",
       Manuf        = "ONT",
       Per          = "device",
       N_25         = 1,
-      N_26         = 0
+      N_26         = 0,
+      Funds        = "Startup"
       )
     )
   )
+
+equipment.25 <- enframe(equipment, name = "Purpose") %>% 
+  unnest_longer(value, indices_to = "Supply") %>%
+  unnest_wider(value) %>%
+  mutate(FY = 25, N = N_25, .keep = "unused")
+
+equipment.total <- equipment.25 %>%
+  mutate(FY = 26, N = N_26) %>%
+  bind_rows(equipment.25) %>%
+  select(-N_26) %>%
+  filter(N > 0) %>%
+  mutate(Category = "Equipment",
+         Project  = "General") %>% 
+  select(-Per)
+

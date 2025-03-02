@@ -229,3 +229,14 @@ consumables <- list(
       )
     )
   )
+
+consumables.tbl <- modify_at(consumables, 
+                             c("Library Prep",
+                               "General"), \(x) list_flatten(x,
+                                                             name_spec = "{inner}")) %>%
+  enframe(., name = "Purpose") %>% 
+  unnest_longer(value, indices_to = "Supply") %>%
+  unnest_wider(value) %>%
+  mutate(Category = "Consumables")
+
+
