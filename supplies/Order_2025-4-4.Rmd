@@ -1,0 +1,379 @@
+---
+title: "Purchasing List for April 2025"
+author: "Alicia Rich"
+output:
+  html_document:
+    theme:
+      bootswatch: flatly
+    toc: false
+    code_folding: "hide"
+    fig_caption: true
+    df_print: paged
+                     
+---
+
+```{r, include = F}
+global             <- config::get(config = "default")
+
+here::i_am("supplies/Order_2025-4-4.Rmd")
+source(here::here(global$setup))
+
+for (file in budget$scripts) {
+  source(here(file))
+}
+
+```
+
+```{r}
+check_stock <- c(
+  "NEBNext® Companion Module v2",
+  "Ligation Sequencing Kit",
+  "LongAmp Hot Start Taq 2X Master Mix",
+  "Qubit 1X dsDNA HS Assay Kit"
+)
+
+equipment_maybe <- c(
+  "Gyro™ Microcentrifuge, fixed speed"
+)
+
+purchase_list <- c(
+  "16S Barcoding Kit 24",
+  "MinION Flow Cells",
+  "DNA/RNA Shield Lysis Tubes (Microbe)",
+  "Quick-DNA Fecal/Soil Microbe Miniprep",
+  "Rapid Barcoding Kit 24",
+  "UVC Sanitizer Ozone Box",
+  "BeadBug™6 Microtube homogenizer",
+  "mini16X thermal cycler",
+  "MinION Mk1d Sequencer"
+)
+```
+
+
+
+```{r}
+purchase <- budget %>%
+  filter(Name %in% c(purchase_list, equipment_maybe, check_stock)) %>%
+  group_by(Category, Price, Supply, Manuf, Cat, Name, Link) %>%
+  summarize(N     = sum(N)) %>%
+  ungroup() %>%
+  mutate(N = if_else(Cat == "MIN-101D" | Supply %in% c("DNA Decontamination System", "Portable Incubator", "Portable Freezer"), 1, N)) %>%
+  mutate(N = ceiling(N)) %>%
+  mutate(Cost = N*Price) %>%
+  mutate(Priority = case_when(
+    Name %in% purchase_list   ~ "Purchase",
+    Name %in% equipment_maybe ~ "Maybe",
+    Name %in% check_stock     ~ "Check Inventory"
+  )) %>%
+  mutate(Vendor = case_when(
+    Manuf %in% c("IVYX Scientific", "ONT", "Zymo Research", "miniPCR", "Benchmark Scientific", "NEB") ~ Manuf,
+    Manuf == "Invitrogen"         ~ "Thermofisher",
+    Manuf == "Promega"            ~ "Fisher Scientific",
+    Manuf == "coospider-repta"    ~ "Amazon"
+      )
+    ) %>%
+  mutate(Purchase_with = if_else(
+    Vendor %in% c("ONT", "IVYX Scientific", "Zymo Research", "miniPCR"), "P Card (5k limit)",
+    "Eshop"
+  )
+    ) %>%
+  select(
+    Priority,
+    Purchase_with,
+    Vendor,
+    Manuf,
+    Name,
+    Price,
+    Cat,
+    N,
+    Cost,
+    Link
+  ) %>%
+  arrange(Priority, Purchase_with, Vendor, Manuf)
+
+
+purchase_by_mfr <- purchase %>%
+  group_by(Vendor, Priority, Purchase_with) %>%
+  summarize(Subtotal = sum(Cost)) %>%
+  ungroup() %>%
+  pivot_wider(names_from  = "Priority",
+              values_from = "Subtotal",
+              values_fill = 0) %>%
+  select(Purchase_with,
+         Vendor,
+         Purchase, 
+         Maybe, 
+         Check_Inventory = "Check Inventory") %>%
+  rowwise() %>%
+  mutate(Total = sum(Maybe, Purchase, Check_Inventory)) %>%
+  ungroup() %>%
+  arrange(Purchase_with, Vendor, desc(Total))
+
+```
+
+
+```{r}
+purchase_order <- purchase_by_mfr %>%
+  reactable(
+  groupBy         = "Purchase_with",
+  fullWidth       = FALSE,
+  theme           = nytimes(),
+  defaultColDef   = colDef(footerStyle = list(fontWeight = "bold")),
+  columns         = list(
+    Purchase_with = colDef(name = "Purchase via"),
+    Vendor        = colDef(minWidth = 150),
+    Purchase = colDef(
+      name       = "Purchase Today",
+      minWidth   = 90,
+      aggregate  = "sum",
+      align      = "right",
+      aggregated = JS("function(cellInfo) {
+        return `${cellInfo.value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`  }"),
+      format    = colFormat(currency = "USD", separators = TRUE),
+      footer    = function(values, name) {
+                     total <- sum(values, na.rm = TRUE)
+                                  label_currency(prefix = "$", big.mark = ",")(total)
+                                },
+      details   = function(index) {
+    items <- filter(purchase, Vendor == purchase_by_mfr$Vendor[index] & Priority == "Purchase") %>%
+      select(Manuf, Name, Price, Cat, N, Cost, Link) %>%
+      arrange(Manuf, Price)
+    tbl <- reactable(items,
+                     fullWidth       = FALSE,
+                     theme           = nytimes(),
+                     defaultColDef   = colDef(footerStyle = list(fontWeight = "bold")),
+                     columns = list(
+    Manuf   = colDef(name = "Manufacturer", 
+      minWidth   = 120,
+                  style = JS("function(rowInfo, column, state) {
+                    const firstSorted = state.sorted[0]
+                    if (!firstSorted || firstSorted.id === 'Priority') {
+                      const prevRow = state.pageRows[rowInfo.viewIndex - 1]
+                      if (prevRow && rowInfo.values['Priority'] === prevRow['Priority']) {
+                        return { visibility: 'hidden' }
+                      }
+                    }
+                  }")
+                  ),
+    Price = colDef(
+      name      = "Price Each",
+      minWidth  = 90,
+      format    = colFormat(currency = "USD", separators = TRUE)
+    ),
+    Cost = colDef(
+      name       = "Total Cost",
+      minWidth   = 90,
+      aggregate  = "sum",
+      align      = "right",
+      aggregated = JS("function(cellInfo) {
+        return `${cellInfo.value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`  }"),
+      format    = colFormat(currency = "USD", separators = TRUE),
+      footer    = function(values, name) {
+                     total <- sum(values, na.rm = TRUE)
+                                  label_currency(prefix = "$", big.mark = ",")(total)
+                                }
+                    ),
+    Cat = colDef(
+      name  = "Catalog",
+      minWidth   = 75,
+      style = list(fontFamily = "Courier New, monospace")
+    ),
+    N = colDef(
+      name       = "N",
+      minWidth   = 40
+    ),
+    Name = colDef(
+      name       = "Item",
+      minWidth   = 170,
+      cell = function(value, index) {
+        link <- items$Link[index]
+        tags$a(href = link, target = "_blank", value)
+      }
+    ),
+    Link = colDef(show = FALSE)
+    )
+    )
+    
+    div(style = "padding: 0.5rem 20rem 0.5rem 5rem", 
+        h4("Purchase Today:"),
+        div(tbl))
+        
+      }
+                    ),
+    Maybe = colDef(
+      name       = "Maybe purchase today?",
+      minWidth   = 90,
+      aggregate  = "sum",
+      align      = "right",
+      aggregated = JS("function(cellInfo) {
+        return `${cellInfo.value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`  }"),
+      format    = colFormat(currency = "USD", separators = TRUE),
+      footer    = function(values, name) {
+                     total <- sum(values, na.rm = TRUE)
+                                  label_currency(prefix = "$", big.mark = ",")(total)
+      },
+      details   = function(index) {
+    items <- filter(purchase, Vendor == purchase_by_mfr$Vendor[index] & Priority == "Maybe") %>%
+      select(Manuf, Name, Price, Cat, N, Cost, Link) %>%
+      arrange(Manuf, Price)
+    tbl <- reactable(items,
+                     fullWidth       = FALSE,
+                     theme           = nytimes(),
+                     defaultColDef   = colDef(footerStyle = list(fontWeight = "bold")),
+                     columns = list(
+    Manuf   = colDef(name = "Manufacturer", 
+      minWidth   = 120,
+                  style = JS("function(rowInfo, column, state) {
+                    const firstSorted = state.sorted[0]
+                    if (!firstSorted || firstSorted.id === 'Priority') {
+                      const prevRow = state.pageRows[rowInfo.viewIndex - 1]
+                      if (prevRow && rowInfo.values['Priority'] === prevRow['Priority']) {
+                        return { visibility: 'hidden' }
+                      }
+                    }
+                  }")
+                  ),
+    Cost = colDef(
+      name       = "Total Cost",
+      minWidth   = 90,
+      aggregate  = "sum",
+      align      = "right",
+      aggregated = JS("function(cellInfo) {
+        return `${cellInfo.value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`  }"),
+      format    = colFormat(currency = "USD", separators = TRUE),
+      footer    = function(values, name) {
+                     total <- sum(values, na.rm = TRUE)
+                                  label_currency(prefix = "$", big.mark = ",")(total)
+                                }
+                    ),
+    Price = colDef(
+      name      = "Price Each",
+      minWidth  = 90,
+      format    = colFormat(currency = "USD", separators = TRUE)
+    ),
+    Cat = colDef(
+      name  = "Catalog",
+      minWidth   = 75,
+      style = list(fontFamily = "Courier New, monospace")
+    ),
+    N = colDef(
+      name       = "N",
+      minWidth   = 40
+    ),
+    Name = colDef(
+      name = "Item",
+      minWidth   = 170,
+      cell = function(value, index) {
+        link <- items$Link[index]
+        tags$a(href = link, target = "_blank", value)
+      }
+    ),
+    Link = colDef(show = FALSE)
+    )
+    )
+    
+    div(style = "padding: 0.5rem 15rem 0.5rem 15rem", 
+        h4("Maybe Purchase Today:"),
+        div(tbl))
+        
+      }
+                    ),
+    Check_Inventory = colDef(
+      name       = "Depends on Inventory",
+      minWidth   = 90,
+      aggregate  = "sum",
+      align      = "right",
+      aggregated = JS("function(cellInfo) {
+        return `${cellInfo.value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`  }"),
+      format    = colFormat(currency = "USD", separators = TRUE),
+      footer    = function(values, name) {
+                     total <- sum(values, na.rm = TRUE)
+                                  label_currency(prefix = "$", big.mark = ",")(total)
+      },
+      details   = function(index) {
+    items <- filter(purchase, Vendor == purchase_by_mfr$Vendor[index] & Priority == "Check Inventory") %>%
+      select(Manuf, Name, Price, Cat, N, Cost, Link) %>%
+      arrange(Manuf, Price)
+    tbl <- reactable(items,
+                     fullWidth       = FALSE,
+                     theme           = nytimes(),
+                     defaultColDef   = colDef(footerStyle = list(fontWeight = "bold")),
+                     columns = list(
+    Manuf   = colDef(name = "Manufacturer", 
+      minWidth   = 120,
+                  style = JS("function(rowInfo, column, state) {
+                    const firstSorted = state.sorted[0]
+                    if (!firstSorted || firstSorted.id === 'Priority') {
+                      const prevRow = state.pageRows[rowInfo.viewIndex - 1]
+                      if (prevRow && rowInfo.values['Priority'] === prevRow['Priority']) {
+                        return { visibility: 'hidden' }
+                      }
+                    }
+                  }")
+                  ),
+    Price = colDef(
+      name      = "Price Each",
+      minWidth  = 90,
+      format    = colFormat(currency = "USD", separators = TRUE)
+    ),
+    Cost = colDef(
+      name       = "Total Cost",
+      minWidth   = 90,
+      aggregate  = "sum",
+      align      = "right",
+      aggregated = JS("function(cellInfo) {
+        return `${cellInfo.value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`  }"),
+      format    = colFormat(currency = "USD", separators = TRUE),
+      footer    = function(values, name) {
+                     total <- sum(values, na.rm = TRUE)
+                                  label_currency(prefix = "$", big.mark = ",")(total)
+                                }
+                    ),
+    Cat = colDef(
+      name  = "Catalog",
+      minWidth   = 75,
+      style = list(fontFamily = "Courier New, monospace")
+    ),
+    N = colDef(
+      name       = "N",
+      minWidth   = 40
+    ),
+    Name = colDef(
+      name = "Item",
+      minWidth   = 170,
+      cell = function(value, index) {
+        link <- items$Link[index]
+        tags$a(href = link, target = "_blank", value)
+      }
+    ),
+    Link = colDef(show = FALSE)
+    )
+    )
+    
+    div(style = "padding: 0.5rem 1rem 0.5rem 20rem", 
+        h4("Check our Inventory Levels:"),
+        div(tbl))
+        
+      }
+                    ),
+    Total = colDef(
+      name       = "Total",
+      minWidth   = 90,
+      aggregate  = "sum",
+      align      = "right",
+      aggregated = JS("function(cellInfo) {
+        return `${cellInfo.value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`  }"),
+      format    = colFormat(currency = "USD", separators = TRUE),
+      footer    = function(values, name) {
+                     total <- sum(values, na.rm = TRUE)
+                                  label_currency(prefix = "$", big.mark = ",")(total)
+                                }
+                    )
+    
+  )
+  )
+
+
+save_reactable_test(purchase_order, here("supplies/RichLab_purchase_order_2025-4-4.html"))
+```
+
