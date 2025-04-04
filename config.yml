@@ -10,6 +10,7 @@ budget:
   scripts: !expr list("supplies/consumables_byFY.R", "supplies/travel_byFY.R", "supplies/personnel_byFY.R", "supplies/equipment_byFY.R", "supplies/projects_byFY.R", "supplies/budget_summary.R")
   table: "supplies/budget_byFY.tsv"
   html: "supplies/budget_byFY.html"
+  purchasing: "supplies/purchasing.R"
   
 libprep:
   app: "LibraryPrep/app.R"

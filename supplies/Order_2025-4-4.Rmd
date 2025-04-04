@@ -18,36 +18,97 @@ global             <- config::get(config = "default")
 here::i_am("supplies/Order_2025-4-4.Rmd")
 source(here::here(global$setup))
 
-for (file in budget$scripts) {
-  source(here(file))
-}
+source(here(budget$purchasing))
 
 ```
 
 ```{r}
+consumables_purchase <- list(
+  "Large Sample Collection Tubes" = 1,
+  "Lysis Collection Tube"         = 1,
+  "Fecal/Soil Kit"                = 1,
+  "Purification Kit"              = 1,
+  "Qubit Assay Tubes"             = 1,
+  "Qubit Assay Kit"               = 1,
+  "PCR Tubes"                     = 1,
+  "Ligation Companion Module"     = 1,
+  "16S Barcoding Kit 24"          = 1,
+  "Rapid Barcoding Kit 24"        = 1,
+  "Flow Cells"                    = 1
+) %>% enframe(name = "Supply", value = "N") %>%
+  left_join(consumables.tbl, by = join_by(Supply)) %>%
+  left_join(purchasing, by = join_by(Manuf == Manufacturer)) %>%
+  rowwise() %>%
+  mutate(Total = Price * N) %>%
+  ungroup() %>%
+  select(
+    Purchase_with,
+    Vendor,
+    Manuf,
+    Supply,
+    Price,
+    N,
+    Total,
+    Name,
+    Cat,
+    N_units,
+    Link
+  ) %>% arrange(Purchase_with, Vendor, Manuf, Price)
+```
+
+```{r}
+consumables_purchase <- list(
+  "Large Sample Collection Tubes" = 1,
+  "Lysis Collection Tube"         = 1,
+  "Fecal/Soil Kit"                = 1,
+  "Purification Kit"              = 1,
+  "Qubit Assay Tubes"             = 1,
+  "Qubit Assay Kit"               = 1,
+  "PCR Tubes"                     = 1,
+  "Ligation Companion Module"     = 1,
+  "16S Barcoding Kit 24"          = 1,
+  "Rapid Barcoding Kit 24"        = 1,
+  "Flow Cells"                    = 1
+) %>%
+  purchase_order_consumables() %>%
+  purchase_order_tbl()
+```
+
+
+
+```{r}
 check_stock <- c(
-  "NEBNext® Companion Module v2",
   "Ligation Sequencing Kit",
-  "LongAmp Hot Start Taq 2X Master Mix",
-  "Qubit 1X dsDNA HS Assay Kit"
+  "Taq Master Mix"
 )
 
 equipment_maybe <- c(
-  "Gyro™ Microcentrifuge, fixed speed"
+  "Portable Microcentrifuge"
 )
 
-purchase_list <- c(
-  "16S Barcoding Kit 24",
-  "MinION Flow Cells",
-  "DNA/RNA Shield Lysis Tubes (Microbe)",
-  "Quick-DNA Fecal/Soil Microbe Miniprep",
-  "Rapid Barcoding Kit 24",
-  "UVC Sanitizer Ozone Box",
-  "BeadBug™6 Microtube homogenizer",
-  "mini16X thermal cycler",
-  "MinION Mk1d Sequencer"
+purch_equipment <- c(
+  "Bead Homogenizer",
+  "Mini Thermal Cycler",
+  "Portable Sequencer"
 )
 ```
+
+```{r}
+purch_consumables <- c(
+  "Large Sample Collection Tubes",
+  "Lysis Collection Tube",
+  "Fecal/Soil Kit",
+  "Purification Kit",
+  "Qubit Assay Tubes",
+  "Qubit Assay Kit",
+  "PCR Tubes",
+  "Ligation Companion Module",
+  "16S Barcoding Kit 24",
+  "Rapid Barcoding Kit 24",
+  "Flow Cells"
+)
+```
+
 
 
 
@@ -65,18 +126,7 @@ purchase <- budget %>%
     Name %in% equipment_maybe ~ "Maybe",
     Name %in% check_stock     ~ "Check Inventory"
   )) %>%
-  mutate(Vendor = case_when(
-    Manuf %in% c("IVYX Scientific", "ONT", "Zymo Research", "miniPCR", "Benchmark Scientific", "NEB") ~ Manuf,
-    Manuf == "Invitrogen"         ~ "Thermofisher",
-    Manuf == "Promega"            ~ "Fisher Scientific",
-    Manuf == "coospider-repta"    ~ "Amazon"
-      )
-    ) %>%
-  mutate(Purchase_with = if_else(
-    Vendor %in% c("ONT", "IVYX Scientific", "Zymo Research", "miniPCR"), "P Card (5k limit)",
-    "Eshop"
-  )
-    ) %>%
+  left_join(purchasing, by = join_by(Manuf == Manufacturer)) %>%
   select(
     Priority,
     Purchase_with,
@@ -375,5 +425,103 @@ purchase_order <- purchase_by_mfr %>%
 
 
 save_reactable_test(purchase_order, here("supplies/RichLab_purchase_order_2025-4-4.html"))
+```
+
+```{r}
+# Helper function to create a details function for nested reactables.
+# The 'priority' parameter tells which rows to filter, 
+# 'header_text' is the message to display,
+# 'padding_style' is the CSS padding,
+# and 'order' (either "price_first" or "cost_first") controls the order of Price and Cost columns.
+create_details_function <- function(priority, header_text, padding_style, order = "price_first") {
+  function(index) {
+    items <- filter(purchase, Vendor == purchase_by_mfr$Vendor[index] & Priority == priority) %>%
+      select(Manuf, Name, Price, Cat, N, Cost, Link) %>%
+      arrange(Manuf, Price)
+    
+    # Common column definitions for the nested table
+    manuf_def <- colDef(
+      name = "Manufacturer",
+      minWidth = 120,
+      style = JS("function(rowInfo, column, state) {
+        const firstSorted = state.sorted[0];
+        if (!firstSorted || firstSorted.id === 'Priority') {
+          const prevRow = state.pageRows[rowInfo.viewIndex - 1];
+          if (prevRow && rowInfo.values['Priority'] === prevRow['Priority']) {
+            return { visibility: 'hidden' };
+          }
+        }
+      }")
+    )
+    price_def <- colDef(
+      name = "Price Each",
+      minWidth = 90,
+      format = colFormat(currency = "USD", separators = TRUE)
+    )
+    cost_def <- colDef(
+      name = "Total Cost",
+      minWidth = 90,
+      aggregate = "sum",
+      align = "right",
+      aggregated = format_aggregated(),
+      format = colFormat(currency = "USD", separators = TRUE),
+      footer = function(values, name) {
+        total <- sum(values, na.rm = TRUE)
+        label_currency(prefix = "$", big.mark = ",")(total)
+      }
+    )
+    cat_def <- colDef(
+      name = "Catalog",
+      minWidth = 75,
+      style = list(fontFamily = "Courier New, monospace")
+    )
+    n_def <- colDef(name = "N", minWidth = 40)
+    name_def <- colDef(
+      name = "Item",
+      minWidth = 170,
+      cell = function(value, index) {
+        link <- items$Link[index]
+        tags$a(href = link, target = "_blank", value)
+      }
+    )
+    link_def <- colDef(show = FALSE)
+    
+    # Choose column order based on the 'order' parameter
+    if(order == "price_first") {
+      columns_list <- list(
+        Manuf = manuf_def,
+        Price = price_def,
+        Cost = cost_def,
+        Cat = cat_def,
+        N = n_def,
+        Name = name_def,
+        Link = link_def
+      )
+    } else if(order == "cost_first") {
+      columns_list <- list(
+        Manuf = manuf_def,
+        Cost = cost_def,
+        Price = price_def,
+        Cat = cat_def,
+        N = n_def,
+        Name = name_def,
+        Link = link_def
+      )
+    }
+    
+    tbl <- reactable(
+      items,
+      fullWidth = FALSE,
+      theme = nytimes(),
+      defaultColDef = colDef(footerStyle = list(fontWeight = "bold")),
+      columns = columns_list
+    )
+    
+    div(style = paste0("padding: ", padding_style),
+        h4(header_text),
+        div(tbl))
+  }
+}
+
 ```
 
